@@ -51,8 +51,9 @@ header('Location: /bproject/index.html');
  			$one=1;
 
 	    // mysql inserting a new row
-	    $sql = "insert into student(USN,Name,Phone_NO,Email_ID) values('".$usn."','".$name."' ,'".$phno."','".$email."')";
-    	$res = mysql_query($sql);
+ 			//This is to update the profile
+	    /*$sql = "insert into student(USN,Name,Phone_NO,Email_ID) values('".$usn."','".$name."' ,'".$phno."','".$email."')";
+    	$res = mysql_query($sql); */
     	$sql1 = "INSERT INTO `project`.`approve_1` (`USN`, `Sem`,`sgpa`) VALUES ('".$usn."', '".$sem."','".$sgpa."')";
     	$res2 = mysql_query($sql1);
     	$sql2= "UPDATE `project`.`user` SET `registered`='".$one."' WHERE `USN`='".$usn."'";

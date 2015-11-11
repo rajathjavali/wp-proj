@@ -7,12 +7,15 @@ header('Location: /bproject/index.html');
 ?>
 
 
-
-
-
-
  <?php include ('header.php'); ?>
 <?php include ('navbar.php'); ?>
+
+
+<?php 
+$scode=$sname=$hdep=$credit=NULL;
+
+?>
+
  
 <!DOCTYPE html>
 <html>

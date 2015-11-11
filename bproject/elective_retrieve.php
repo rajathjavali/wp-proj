@@ -21,7 +21,7 @@ header('Location: /bproject/index.html');
     
    require_once __DIR__ . '/db_connect.php';
     
-    
+    $numrows=NULL;
       $db = new DB_CONNECT();
     if($db){
 
@@ -33,7 +33,7 @@ header('Location: /bproject/index.html');
         $ti=array($numrows);
         $ii=0;
         while ($rows = mysql_fetch_assoc($resusn)) 
-          {   $ti[$ii]=$rows[Sem];
+          {   $ti[$ii]=$rows["Sem"];
            $ii=$ii+1; }
       }
     }
@@ -127,10 +127,10 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
   <tbody>
     <tr ><ol>
       <td><h4><?php echo $rr; ?>]</h4> </td>
-      <td><h4><?php echo $rows[S_Code] ?></h4></td>
-      <td><h4><?php echo $rows[Name] ?></h4></td>
-      <td><h4><?php echo $rows[Credits] ?></h4></td>
-      <td><h4><?php echo $rows[Host_Dpt] ?></h4></td>
+      <td><h4><?php echo $rows["S_Code"] ?></h4></td>
+      <td><h4><?php echo $rows["Name"] ?></h4></td>
+      <td><h4><?php echo $rows["Credits"] ?></h4></td>
+      <td><h4><?php echo $rows["Host_Dpt"] ?></h4></td>
    </ol> </tr>
  <?php 
 $rr=$rr+1;
@@ -157,10 +157,10 @@ $rr=$rr+1;
   <tbody>
     <tr ><ol>
       <td><h4><?php echo $rr; ?>]</h4> </td>
-      <td><h4><?php echo $rows[S_Code] ?></h4></td>
-      <td><h4><?php echo $rows[Name] ?></h4></td>
-      <td><h4><?php echo $rows[Credits] ?></h4></td>
-      <td><h4><?php echo $rows[Host_Dpt] ?></h4></td>
+      <td><h4><?php echo $rows["S_Code"] ?></h4></td>
+      <td><h4><?php echo $rows["Name"] ?></h4></td>
+      <td><h4><?php echo $rows["Credits"] ?></h4></td>
+      <td><h4><?php echo $rows["Host_Dpt"] ?></h4></td>
    </ol> </tr>
  <?php 
 $rr=$rr+1;

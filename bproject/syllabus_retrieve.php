@@ -23,7 +23,7 @@ echo "<h1>Syllabus data</h1>";
 	 
 	 $sem=$_POST['sem'];
 	 require_once __DIR__ . '/db_connect.php';
-	  
+	$numrows=NULL;
 	 //$ac='HSS';
 	    // connecting to db
 	    $db = new DB_CONNECT();
@@ -38,7 +38,7 @@ echo "<h1>Syllabus data</h1>";
 	 			$ti=array($numrows);
     		$ii=0;
 	 			while ($rows = mysql_fetch_assoc($resusn)) 
-        	{  	$ti[$ii]=$rows[Sem];
+        	{  	$ti[$ii]=$rows["Sem"];
      			 $ii=$ii+1;	}
 	 		}
 	 	}
@@ -95,10 +95,10 @@ $i=0;
   <tbody>
     <tr ><ol>
       <td><h4><?php echo $rr; ?>]</h4> </td>
-      <td><h4><?php echo $rows[S_Code] ?></h4></td>
-      <td><h4><?php echo $rows[Name] ?></h4></td>
-      <td><h4><?php echo $rows[Credits] ?></h4></td>
-      <td><h4><?php echo $rows[Host_Dpt] ?></h4></td>
+      <td><h4><?php echo $rows["S_Code"] ?></h4></td>
+      <td><h4><?php echo $rows["Name"] ?></h4></td>
+      <td><h4><?php echo $rows["Credits"] ?></h4></td>
+      <td><h4><?php echo $rows["Host_Dpt"] ?></h4></td>
    </ol> </tr>
  <?php 
 $rr=$rr+1;

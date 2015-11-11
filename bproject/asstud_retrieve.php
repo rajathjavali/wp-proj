@@ -85,17 +85,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 
 
-<form method=post action="stud_update.php"> 
+<!--<form method=post action="stud_update.php"> 
 <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
         <button type="submit" class="btn btn-primary" value="UPDATE" >UPDATE</button>
-         <input type=hidden name=usn value= <?php echo  $usn ?>> 
+         <input type=hidden name=usn value= <?php //echo  $usn ?>> 
       </div>
     </div>
 </form>
  
 <br></br>
-
+!-->
 <div class="row-md-2 text-right">
    <form method=post action="stud_delete.php"> 
 <div class="form-group">

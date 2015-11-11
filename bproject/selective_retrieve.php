@@ -156,10 +156,10 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
   <tbody>
     <tr ><ol>
       <td><h4><?php echo $rr; ?>]</h4> </td>
-      <td><h4><?php echo $rows[S_Code] ?></h4></td>
-      <td><h4><?php echo $rows[Name] ?></h4></td>
-      <td><h4><?php echo $rows[Credits] ?></h4></td>
-      <td><h4><?php echo $rows[Host_Dpt] ?></h4></td>
+      <td><h4><?php echo $rows["S_Code"] ?></h4></td>
+      <td><h4><?php echo $rows["Name"] ?></h4></td>
+      <td><h4><?php echo $rows["Credits"] ?></h4></td>
+      <td><h4><?php echo $rows["Host_Dpt"] ?></h4></td>
    </ol> </tr>
  <?php 
 $rr=$rr+1;
@@ -186,10 +186,10 @@ $rr=$rr+1;
   <tbody>
     <tr ><ol>
       <td><h4><?php echo $rr; ?>]</h4> </td>
-      <td><h4><?php echo $rows[S_Code] ?></h4></td>
-      <td><h4><?php echo $rows[Name] ?></h4></td>
-      <td><h4><?php echo $rows[Credits] ?></h4></td>
-      <td><h4><?php echo $rows[Host_Dpt] ?></h4></td>
+      <td><h4><?php echo $rows["S_Code"] ?></h4></td>
+      <td><h4><?php echo $rows["Name"] ?></h4></td>
+      <td><h4><?php echo $rows["Credits"] ?></h4></td>
+      <td><h4><?php echo $rows["Host_Dpt"] ?></h4></td>
    </ol> </tr>
  <?php 
 $rr=$rr+1;

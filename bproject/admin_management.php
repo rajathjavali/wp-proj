@@ -98,6 +98,17 @@ header('Location: /bproject/index.html');
          <li><a href="add_syllabus.php"><h5> <p class="text-info"> Add syllabus  </p> </h5></a></li><hr>
         </ul>
         </div>
+        <div id="maincontent">
+         <center>
+          <p> <h3>Add deadline for semister registration</h3></p>
+          <form method="POST" action="add_deadline.php">
+            <input type="datetime-local" name="deadline" step="1"><br>
+           <p> <h3>Add deadline for elective Registration</h3></p>
+            <input type="datetime-local" name="deadline_ele" step="1"><br> 
+            <input type="submit" value="Add deadline date" name="Add deadline date" id="dead_line">
+          </form>
+        </center>
+        </div>
 </div>
  
     </body>

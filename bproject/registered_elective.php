@@ -10,11 +10,7 @@ header('Location: /bproject/index.html');
 <?php include ('header.php'); ?>
 <?php include ('navbar.php'); ?>
 <?php
-session_start();
-// Check, if username session is NOT set then this page will jump to login page
-if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /project/index.html');
-}
+
 ?>
 
 
@@ -79,10 +75,10 @@ else{
   <tbody>
     <tr ><ol>
       <td><h4><?php echo $rr; ?>]</h4> </td>
-      <td><h4><?php echo $rows[S_Code] ?></h4></td>
-      <td><h4><?php echo $rows[Name] ?></h4></td>
-      <td><h4><?php echo $rows[Credits] ?></h4></td>
-      <td><h4><?php echo $rows[Host_Dpt] ?></h4></td>
+      <td><h4><?php echo $rows["S_Code"] ?></h4></td>
+      <td><h4><?php echo $rows["Name"] ?></h4></td>
+      <td><h4><?php echo $rows["Credits"] ?></h4></td>
+      <td><h4><?php echo $rows["Host_Dpt"] ?></h4></td>
    </ol> </tr>
  <?php 
 $rr=$rr+1;

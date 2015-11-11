@@ -46,6 +46,3 @@ header('Location: /bproject/index.html');
 	}
 	
 ?>
-
-   
-

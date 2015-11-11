@@ -71,10 +71,10 @@ else{
   <tbody>
     <tr ><ol>
       <td><h4><?php echo $rr; ?>]</h4> </td>
-      <td><h4><?php echo $rows[Staff_ID] ?></h4></td>
-      <td><h4><?php echo $rows[Name] ?></h4></td>
-      <td><h4><?php echo $rows[Phone_No] ?></h4></td>
-      <td><h4><?php echo $rows[Email_ID] ?></h4></td>
+      <td><h4><?php echo $rows["Staff_ID"] ?></h4></td>
+      <td><h4><?php echo $rows["Name"] ?></h4></td>
+      <td><h4><?php echo $rows["Phone_No"] ?></h4></td>
+      <td><h4><?php echo $rows["Email_ID"] ?></h4></td>
    </ol> </tr>
  <?php 
 $rr=$rr+1;
