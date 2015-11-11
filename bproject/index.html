@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION['usn']))
+{
+   // header('Location: studentHome.php');
+}
+?>
+ 
+<head>
+
+  <title>Login Form</title>
+  <style>
+  div.login{
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: white;
+    color:black;
+    width: 600px;
+    height: 350px;
+
+  }
+  div.box{
+    position: relative;
+    border-radius: 10px;
+    padding-top: 5px;
+    top:10px;
+    width: 575px;
+    background-color: #ff6600;
+  }
+  </style>
+  </head>
+<link href="css/bootstrap.css" rel="stylesheet" media="screen"> 
+      
+       <link href="css/docs.css" rel="stylesheet" media="screen"> 
+      
+       <link rel="stylesheet" type="text/css" href="css/style.css" /> 
+      <link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css" />
+  
+  <!-- js -->     
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+  <script src="js/jquery.hoverdir.js"></script>
+  <script type="text/javascript" charset="utf-8" language="javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
+      
+
+       <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!--div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Student Registartion Management</a>
+    </div-->
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="about.php">About <span class="sr-only">(current)</span></a></li>
+        <li><a href="rules.php">Rules & Regulation</a></li>
+        
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+
+
+<body>
+  <section class="container">
+  <center>
+    <div class="login">
+    <div class="box">
+      <p style="float: left;"><img src="images/logo1.gif" height="120px" width="120px" border="1px"></p>
+      <p style="font-size:45px"> RVCE Registration Management System</p>
+      </div>
+      <p>Please enter user name and password</p>
+      <form method="post" action="logincheck.php">
+        <p><input type="text" name="usn" value="" placeholder="USN"></p>
+        <p><input type="password" name="password" value="" placeholder="Password"></p>
+        
+          
+        </p>
+        <p class="submit"><button class="btn-info">Login</button></p>
+      </form>
+    </div>
+
+  
+  </section>
+
+</body>
+</html>
