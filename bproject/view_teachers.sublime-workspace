@@ -1,0 +1,483 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ma",
+				"management"
+			],
+			[
+				"header",
+				"header"
+			],
+			[
+				"now",
+				"now"
+			],
+			[
+				"sc",
+				"script"
+			],
+			[
+				"ed",
+				"edate"
+			],
+			[
+				"res",
+				"res2"
+			],
+			[
+				"mys",
+				"mysql_query"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"my",
+				"mysql"
+			],
+			[
+				"Va",
+				"VALUES"
+			],
+			[
+				"dd",
+				"deadline"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"ddline",
+				"ddline"
+			],
+			[
+				"date",
+				"date_create"
+			],
+			[
+				"deadline",
+				"deadline"
+			],
+			[
+				"to",
+				"today"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"e",
+				"echo	echo \"…\""
+			],
+			[
+				"da",
+				"deadline"
+			],
+			[
+				"loca",
+				"localhost"
+			],
+			[
+				"onl",
+				"onclick	Attr"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"A",
+				"a-zA-Z"
+			],
+			[
+				"staff",
+				"Staff_ID"
+			],
+			[
+				"em",
+				"email"
+			],
+			[
+				"ph",
+				"phno"
+			],
+			[
+				"se",
+				"sem"
+			],
+			[
+				"f",
+				"fname"
+			],
+			[
+				"course",
+				"course"
+			],
+			[
+				"c",
+				"cname"
+			],
+			[
+				"mysql_fetc",
+				"mysql_fetch_assoc"
+			],
+			[
+				"mysql_nu",
+				"mysql_num_rows"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"S",
+				"S_Code"
+			],
+			[
+				"a",
+				"align	Attr"
+			],
+			[
+				"al",
+				"alt	Attr"
+			],
+			[
+				"fo",
+				"font	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/xampp/htdocs/bproject/retrieve.php",
+		"/C/xampp/htdocs/p6/config.php",
+		"/C/xampp/htdocs/p6/ajaxFile.php",
+		"/C/xampp/htdocs/p6/T1.html",
+		"/C/xampp/htdocs/p6/submit.php",
+		"/C/xampp/htdocs/wp-proj/bproject/stud_retrieve.php",
+		"/C/xampp/htdocs/bproject/add_deadline.php",
+		"/C/xampp/htdocs/bproject/stud_retrieve.php",
+		"/C/xampp/htdocs/bproject/admin_management.php",
+		"/C/Users/Suhas Bhat/Downloads/bproject/form_stud.php",
+		"/C/xampp/htdocs/bproject/management.php",
+		"/C/xampp/htdocs/bproject/retrieve_elective.php",
+		"/C/xampp/htdocs/bproject/elective_retrieve.php",
+		"/C/Users/Suhas Bhat/Downloads/bproject/admin_management.php",
+		"/C/Users/Suhas Bhat/Downloads/bproject/add_deadline.php",
+		"/C/Users/Suhas Bhat/Downloads/bproject/about.php",
+		"/C/xampp/htdocs/bproject/stud_update.php",
+		"/C/xampp/htdocs/bproject/add_syllabus.php",
+		"/C/xampp/htdocs/bproject/selective_retrieve.php",
+		"/C/xampp/htdocs/bproject/assyllabus_retrieve.php",
+		"/C/xampp/htdocs/bproject/amonitor_ret.php",
+		"/C/xampp/htdocs/bproject/asstud_retrieve.php",
+		"/C/xampp/htdocs/bproject/asretrieve.php",
+		"/C/xampp/htdocs/bproject/view_teachers.php",
+		"/C/xampp/htdocs/bproject/ssyllabus_retrieve.php",
+		"/C/xampp/htdocs/bproject/syllabus_retrieve.php",
+		"/C/xampp/htdocs/bproject/registered_subject.php",
+		"/C/xampp/htdocs/bproject/registered_elective.php",
+		"/C/xampp/htdocs/bproject/aform_teach.php",
+		"/C/xampp/htdocs/bproject/stud_register.php",
+		"/C/xampp/htdocs/bproject/form_stud.php",
+		"/C/xampp/htdocs/bproject/6elective_register.php",
+		"/C/xampp/htdocs/bproject/header.php",
+		"/C/xampp/htdocs/bproject/navbar.php",
+		"/C/xampp/htdocs/bproject/logout.php",
+		"/C/Users/Suhas Bhat/Downloads/Front.ps",
+		"/C/Users/Suhas Bhat/Desktop/edited.txt",
+		"/C/xampp/htdocs/bproject/5elective_register.php",
+		"/C/xampp/htdocs/bproject/amonitor.php",
+		"/C/xampp/htdocs/bproject/sstud_retrieve.php",
+		"/C/xampp/htdocs/bproject/approve.php",
+		"/C/xampp/htdocs/bproject/aselective_retrieve.php",
+		"/C/xampp/htdocs/Final_Project/db_config.php",
+		"/C/xampp/htdocs/Final_Project/db_connect.php",
+		"/C/xampp/htdocs/bproject/supdate.php",
+		"/C/xampp/htdocs/bproject/stud_update2.php",
+		"/C/xampp/htdocs/bproject/syllabus_register.php",
+		"/C/xampp/htdocs/bproject/course_register.php",
+		"/C/xampp/htdocs/bproject/asretrive_syllabus.php",
+		"/C/xampp/htdocs/bproject/ateach_register.php",
+		"/C/xampp/htdocs/Final_Project/elective_retrieve.php",
+		"/C/Users/Suhas Bhat/Downloads/prog5.html",
+		"/C/Users/Suhas Bhat/Downloads/prog4.html",
+		"/C/Users/Suhas Bhat/Downloads/journal.ps",
+		"/C/Users/Suhas Bhat/Downloads/base.css",
+		"/C/Users/Suhas Bhat/Downloads/5.xml",
+		"/C/Users/Suhas Bhat/Downloads/base.xml",
+		"/I/InkPad_Notepad/backup/7/October-1444093546723.txt",
+		"/C/Users/Suhas Bhat/Desktop/assignment .txt",
+		"/E/Suhas/7th Sem/WP/Program 3/p3.html",
+		"/C/Users/Suhas Bhat/Desktop/a.xml",
+		"/D/P3/index.html",
+		"/D/Program 3/index.html",
+		"/C/Users/Suhas Bhat/Desktop/pg3/pg3/details.html",
+		"/E/Suhas/7th Sem/WP/Program 6/T1.html",
+		"/I/Download/Difference between GCC and CC Compiler.txt",
+		"/I/Download/Difference Between Vmodel and Waterfall Model.txt",
+		"/E/Suhas/7th Sem/WP/Program1/department.html",
+		"/E/Suhas/7th Sem/WP/Program1/management.html",
+		"/E/Suhas/7th Sem/WP/Program1/home.html",
+		"/E/Suhas/7th Sem/WP/Program1/feedback.html",
+		"/E/Suhas/7th Sem/WP/Program 6/config.php",
+		"/E/Suhas/7th Sem/WP/Program 6/submit.php",
+		"/E/Suhas/7th Sem/WP/Program 6/ajaxFile.php",
+		"/E/Suhas/7th Sem/WP/notes(21-8-15).txt",
+		"/E/Suhas/7th Sem/WP/JavaScript/Web Programming.txt",
+		"/C/Users/Suhas Bhat/Desktop/Program1/feedback.html",
+		"/D/WP-sub page-template.html",
+		"/C/Users/Suhas Bhat/Desktop/home.html",
+		"/C/Users/Suhas Bhat/Desktop/management.html",
+		"/C/Users/Suhas Bhat/Desktop/department.html",
+		"/C/Users/Suhas Bhat/Desktop/feedback.html",
+		"/C/Users/Suhas Bhat/Desktop/Web Programming.txt",
+		"/C/Users/Suhas Bhat/Desktop/argument_object.html",
+		"/C/Users/Suhas Bhat/Desktop/selfInvoking_function.html",
+		"/C/Users/Suhas Bhat/Desktop/function_constructors.html",
+		"/C/Users/Suhas Bhat/Desktop/null_undefined.html",
+		"/C/Users/Suhas Bhat/Desktop/console_log.html",
+		"/C/Users/Suhas Bhat/Desktop/inner_html.html",
+		"/C/Users/Suhas Bhat/Desktop/window_alert.html",
+		"/C/Users/Suhas Bhat/Desktop/document_write.html",
+		"/C/Users/Suhas Bhat/Desktop/first.html",
+		"/C/Users/Suhas Bhat/Desktop/changeHTML.html",
+		"/C/Users/Suhas Bhat/Desktop/changeHTMLAttribute.html",
+		"/C/Users/Suhas Bhat/Desktop/changeCSS.html",
+		"/C/Users/Suhas Bhat/Desktop/validateData.html",
+		"/C/Users/Suhas Bhat/Desktop/New Text Document.txt",
+		"/C/Users/Suhas Bhat/Desktop/notes.txt",
+		"/F/Movie/English/Batman Series/Batman The Dark Knight [2008]-720p-BRrip-x264-KurdishAngel/Read me/Torrent downloaded from 1337x.org.txt",
+		"/C/Users/Suhas Bhat/Downloads/Program 6/ajaxFile.php",
+		"/C/Users/Suhas Bhat/Desktop/demo.html",
+		"/F/Python Videos/software required.txt",
+		"/C/Users/Suhas Bhat/Desktop/login.html",
+		"/C/Users/Suhas Bhat/Desktop/home.php",
+		"/C/Users/Suhas Bhat/Desktop/jogin.html",
+		"/C/Users/Suhas Bhat/Desktop/Login.html",
+		"/C/Users/Suhas Bhat/Downloads/Driver_Auto_Installer_v1.1236.00/usb_driver/i386/NOTICE.txt",
+		"/C/Users/Suhas Bhat/Downloads/Driver_Auto_Installer_v1.1236.00/ReadMe.txt",
+		"/C/Users/Suhas Bhat/Downloads/Driver_Auto_Installer_v1.1236.00/gizbeat.com.txt",
+		"/C/Users/Suhas Bhat/Downloads/Driver_Auto_Installer_v1.1236.00/chinaphonecompare.com.txt",
+		"/E/Suhas/6th Sem/MA&D/Apress - Beginning Android 3/Torrent downloaded from Demonoid.me.txt",
+		"/D/FG-WhatsAppLog.txt",
+		"/D/BG-WhatsAppLog.txt",
+		"/D/airdroid_log.txt",
+		"/D/tbslog/tbslog.txt",
+		"/E/Suhas/6th Sem/MA&D/Must Read/How to read Android.txt",
+		"/E/Suhas/6th Sem/MA&D/Android_CIE3/Unit 4/Unit 4/services.txt",
+		"/E/Suhas/6th Sem/MA&D/How to read Android.txt",
+		"/E/Suhas/6th Sem/MA&D/androidstudymaterials/Unit 4/services.txt",
+		"/C/xampp/htdocs/Student/db_config.php",
+		"/C/xampp/htdocs/Student/android_course_marks.php",
+		"/C/xampp/htdocs/Teacher/db_config.php",
+		"/C/xampp/htdocs/bproject/bproject/db_config.php",
+		"/E/Suhas/Online Course/Coursera/Mobile Applocation Devolopment - 1/Week 8/To Download.txt",
+		"/E/Suhas/Online Course/Coursera/Mobile Applocation Devolopment - 1/Week 7/To Download.txt",
+		"/E/Suhas/Online Course/Coursera/Mobile Application Developement - 2/Week 2/To Download.txt",
+		"/E/Suhas/Online Course/Coursera/Mobile Applocation Devolopment - 1/Week 4/To download.txt",
+		"/C/Users/Suhas Bhat/Desktop/Corpus.txt"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"$one",
+			"'>",
+			"POST"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"GET"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "view_teachers.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

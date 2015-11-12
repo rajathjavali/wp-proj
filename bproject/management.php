@@ -36,8 +36,7 @@ header('Location: /bproject/index.html');
       // document.getElementById("reg").innerHTML="Deadline is crossed, You cannot register now";
 
   }
-
-
+ 
 	</script>
 <div class="container">
 	<h1>Registration Management</h1>

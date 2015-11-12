@@ -15,7 +15,7 @@ header('Location: /bproject/index.html');
 <body>
 	<h1>Retrieve Student Info</h1>
 
-	<form method="POST">
+	<form method="POST" action="stud_retrieve.php">
 		<!-- USN: <input type="text" name="usn"  required value="<?php //echo $usn;?>"> -->
 
 

@@ -84,7 +84,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <br></br>
 
 
-
+<!--
 <form method=post action="stud_update.php"> 
 <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
@@ -105,8 +105,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       </div>
     </div>
 </div>
+
 </form>
- 
+--> 
 
 
 

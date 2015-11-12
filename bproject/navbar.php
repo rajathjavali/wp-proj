@@ -17,7 +17,10 @@
         
         </li>
       </ul>
-       
+      <ul class="active nav navbar-nav navbar-right">
+        <li class="active"> <a href = "my_profile.php">My Profile </a></li>
+      </ul>
+     
       <ul class="active nav navbar-nav navbar-right">
         <li class="active"><a href="logout.php">Logout</a></li>
       </ul>
