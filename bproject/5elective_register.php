@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	 			$ti=array($numrows);
     		$ii=0;
 	 			while ($rows = mysql_fetch_assoc($resusn)) 
-        	{  	$ti[$ii]=$rows["Sem"];
+        	{  	$ti[$ii]=$rows[Sem];
      			 $ii=$ii+1;	}
 	 		}
 	 	}
@@ -87,8 +87,8 @@ $sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllab
         	{ 
             	//$scode= $row[S_Code];
      			//echo $scode;
-     		 	$ta[$i]=$row["S_Code"];
-     		 	$na[$i]=$row["Name"];
+     		 	$ta[$i]=$row[S_Code];
+     		 	$na[$i]=$row[Name];
      			 $i=$i+1;
 
      			 //echo "<br></br> <b><li>Subject name </b>:".$row[Name]."  <b>Subject Code </b>:".$row[S_Code]."</li>";
@@ -162,8 +162,8 @@ $sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllab
         	{ 
             	//$scode= $row[S_Code];
      			//echo $scode;
-     		 	$tb[$i]=$row["S_Code"];
-     		 	$nb[$i]=$row["Name"];
+     		 	$tb[$i]=$row[S_Code];
+     		 	$nb[$i]=$row[Name];
      			 $i=$i+1;
 
      			 //echo "<br></br> <b><li>Subject name </b>:".$row[Name]."  <b>Subject Code </b>:".$row[S_Code]."</li>";

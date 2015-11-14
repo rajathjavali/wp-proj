@@ -29,14 +29,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	 		$sql = "INSERT INTO `approve_2` (`Staff_ID`, `approved`) VALUES ('".$ssid."','".$usni."')";
 	 		$res = mysql_query($sql);
 	 		if($res){
-	 			echo "<script>alert('successfully approved');</script></br>";
-	 			echo "<script>
-						window.location = '/bproject/sretrieve.php'; </script>";
+	 			echo "successfully approved<br></br>";
 	 		}
 	 		else{
-	 			echo "<script>alert('Failed');</script></br>";
-	 			echo "<script>
-						window.location = '/bproject/sretrieve.php'; </script>";
+	 			echo "error in approving";
 	 		}
 	 	}
 

@@ -17,10 +17,14 @@
         
         </li>
       </ul>
+<<<<<<< HEAD
       <ul class="active nav navbar-nav navbar-right">
         <li class="active"> <a href = "edit_profile.php">My Profile </a></li>
       </ul>
      
+=======
+       
+>>>>>>> parent of e056009... Check profile,Registration
       <ul class="active nav navbar-nav navbar-right">
         <li class="active"><a href="logout.php">Logout</a></li>
       </ul>

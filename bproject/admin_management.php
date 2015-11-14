@@ -1,5 +1,5 @@
 <?php include ('navbar.php'); ?>
-<?php include ('header.php'); ?>
+
 <?php
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
@@ -54,21 +54,15 @@ header('Location: /bproject/index.html');
     width: 250px;
     margin-left: -200px;
     background-color: #2B3E50;
-    height: 95%;
+    height: 100%;
     top:40px;
     bottom:0;
-    overflow: scroll;
 }
 #topbar{
   background-color: white;
   position: relative;
 
 }
-#date {
-      background: #badc55;
-      color: white;
-      float:right;
-    }
 </style>
 
     </head>
@@ -83,17 +77,6 @@ header('Location: /bproject/index.html');
           <p><h4><b>R V College of Engineering</b></h4></p>
           <p><h6>Mysore Road, RV Vidyaniketan Post, Bagalore - 560 059</h6></p>
         </div>    
-          <div id="date">
-         <center>
-          <p> <h3>Add deadline for semister registration</h3></p>
-          <form method="POST" action="add_deadline.php">
-            <input type="datetime-local" name="deadline" step="1"><br>
-           <p> <h3>Add deadline for elective Registration</h3></p>
-            <input type="datetime-local" name="deadline_ele" step="1"><br> 
-            <input type="submit" value="Add deadline date" name="Add deadline date" id="dead_line">
-          </form>
-        </center>
-        </div>
           <!--p> <h3>Add deadline for semister registration</h3></p>
           <form method="POST" action="add_deadline.php">
             <input type="datetime-local" name="deadline" step="1"><br>
@@ -104,8 +87,7 @@ header('Location: /bproject/index.html');
         </center>
       </div-->
             </div>
-
-      <div id="menuleftcontent" class="leftSidebar">
+      <div id="menuleftcontent" class="container">
         <ul id="menu" class="nav nav-pills nav-stacked">
          <li><h3>Welcome <?php echo $_SESSION['usn']; ?></h3></li><hr>
          <li><a href="aform_teach.php"><h5> <p class="text-info">Add Staff Details</p> </h5></a></li><hr>
@@ -114,11 +96,19 @@ header('Location: /bproject/index.html');
          <li><a href="asretrive_syllabus.php"><h5> <p class="text-info"> Get core subject list  </p> </h5></a></li><hr>
          <li><a href="sretrieve_elective.php"><h5> <p class="text-info"> Get elective subject list  </p> </h5></a></li><hr>
          <li><a href="add_syllabus.php"><h5> <p class="text-info"> Add syllabus  </p> </h5></a></li><hr>
-         <li><a href="send_NSAR.php"><h5><p class="text-info">Send NSAR list </p></h5></a></li><hr>
-         <li><a href="send_NSSR.php"><h5><p class="text-info">Send NSSR list </p></h5></a></li>
         </ul>
         </div>
-      
+        <div id="maincontent">
+         <center>
+          <p> <h3>Add deadline for semister registration</h3></p>
+          <form method="POST" action="add_deadline.php">
+            <input type="datetime-local" name="deadline" step="1"><br>
+           <p> <h3>Add deadline for elective Registration</h3></p>
+            <input type="datetime-local" name="deadline_ele" step="1"><br> 
+            <input type="submit" value="Add deadline date" name="Add deadline date" id="dead_line">
+          </form>
+        </center>
+        </div>
 </div>
  
     </body>

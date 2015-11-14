@@ -35,7 +35,7 @@ echo "<h1>Details Regarding Course registration</h1>";
     		$i=0;
         	while ($row = mysql_fetch_assoc($result)) 
         	{ 
-            	$t[$i]=$row["S_Code"];
+            	$t[$i]=$row[S_Code];
      			$i=$i+1;
       		}
       }     
@@ -95,10 +95,10 @@ echo "<br></br>".$usn."<>";
         	{ 
             	//$scode= $row[S_Code];
      			//echo $scode;
-     		 	$t[$i]=$row["Code"];
+     		 	$t[$i]=$row[Code];
      			 $i=$i+1;
 
-     			 echo "<br><li> <b>Subject Code :</b>".$row["Code"]."</li>";
+     			 echo "<br><li> <b>Subject Code :</b>".$row[Code]."</li>";
 
       		}
             echo "</ol>";
