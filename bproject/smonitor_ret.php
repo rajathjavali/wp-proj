@@ -70,16 +70,16 @@ else{
   <tbody>
     <tr ><ol>
       <td><h4><?php echo $rr; ?>]</h4> </td>
-      <td><h4><?php echo $rows[USN] ?></h4></td>
-      <td><h4><?php if( $rows[registered] == 1){echo "registered";} else {echo "<p class=text-warning>not registered</p>";} ?></h4></td>
+      <td><h4><?php echo $rows['USN'] ?></h4></td>
+      <td><h4><?php if( $rows['registered'] == 1){echo "registered";} else {echo "<p class=text-warning>not registered</p>";} ?></h4></td>
      
 
       <td><h4><?php 
-$sql23 = "SELECT `timeor` FROM `student` WHERE `USN`='".$rows[USN]."'";
+$sql23 = "SELECT `timeor` FROM `student` WHERE `USN`='".$rows['USN']."'";
 $result23=mysql_query($sql23);
  
  while($rows23=mysql_fetch_assoc($result23)){
- 	echo "<p class=text-info >".$rows23[timeor]."</p>";
+ 	echo "<p class=text-info >".$rows23['timeor']."</p>";
 }
 if($rows23==" "){
 	echo "string";

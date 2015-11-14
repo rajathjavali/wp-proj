@@ -153,13 +153,13 @@ $rr=$rr+1;
 </table> 
 <br>
 
- 
-
- <br></br>
-  
-
- 
-
+<form method="post" action="excel_subjects_list.php">
+  <div class="col-lg-50" align="right">
+    <input type="hidden" id="sem" required name="sem" value="<?php echo $sem;?>"><button type="submit" class="btn btn-primary">Download Table</button>
+  </div>
+</form>
+ <br/><br/>
+<div>
     <ul class="breadcrumb">
   <li><a href="staff_management.php">Home</a></li>
   <li class="active">Registration</li>

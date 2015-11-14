@@ -85,37 +85,6 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
       }  
  
 
-// switch ($sem) {
-	 	
-// 	 case '5':
-// 		$abc = '5elective_register.php';
-// 		break;
-	
-// 	 case '6':
-// 	 	$abc = '6elective_register.php';
-// 	 	break;
-
-// 	 case '7':
-// 		$abc = '7course_register.php';
-// 		break;
-// }
-
-//$ti[0] has got semester this data is retrived from aprove_1 tabel
-// if($ti[0]==$sem){
-
-// echo "<form method=post action=$abc>";
-// 				echo "<input type=hidden name=sem value=$sem>";
-// 				echo "<br><br><input type=submit name=submit value=Register>";
-// 				echo "</form>";}
-// else{
-// 	echo "<br><b>You cannot register for this semester now</b></br>";
-// }
-
-// //echo "<form method=post action=course_register.php><input type=submit name=submit2 value=Register></form>";		
-
-// echo "<form method=post action=retrieve_elective.php><input type=submit name=submit2 value=Done></form>";		
-
-
 }
 			
 		else{
@@ -134,7 +103,7 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
 <div class="container">
 
 <h1>There are <?php echo $numrows; ?> entries in <i>Group <?php echo $type1."  "; ?></i> elective subject:<br /><br /></h1>
-
+<div>
 <table class="table table-striped table-hover ">
   <thead>
     <tr class="danger">
@@ -164,9 +133,17 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
  <?php 
 $rr=$rr+1;
  } ?>    
-
+</div>
+<div>
 
  <table class="table table-striped table-hover ">
+  <form method="post" action="excel_elective_list.php">
+  <div class="col-lg-50" align="right">
+    <input type="hidden" id="etype" required name="etype" value="<?php echo $type1;?>">
+    <input type="hidden" id="sem" required name="sem" value="<?php echo $sem;?>">
+    <button type="submit" class="btn btn-primary">Download Table</button>
+  </div>
+</form>
   <thead><h1>There are <?php echo $numrows; ?> entries in <i>Group <?php echo $type2."  "; ?></i> elective subject:<br /><br /></h1>
     <tr class="danger">
       <th>`</th>
@@ -197,26 +174,30 @@ $rr=$rr+1;
     
   </tbody>
 </table> 
+<br>
 
- <br></br>
- 
-
- <br></br>
-  
+<form method="post" action="excel_elective_list.php">
+  <div class="col-lg-50" align="right">
+    <input type="hidden" id="etype" required name="etype" value="<?php echo $type2;?>">
+    <input type="hidden" id="sem" required name="sem" value="<?php echo $sem;?>">
+    <button type="submit" class="btn btn-primary">Download Table</button>
+  </div>
+</form>
+ <br/><br/>
+<div>
     <ul class="breadcrumb">
   <li><a href="staff_management.php">Home</a></li>
   <li class="active">Registration</li>
 </ul>
+</div>
 
 
-
-
+</div>
 
 
   </fieldset>
 </form>  
 </div>
-
     <div class="progress progress-striped active">
   <div class="progress-bar progress-bar-danger" style="width: 100%"></div>
 </body>

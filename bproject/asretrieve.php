@@ -75,17 +75,25 @@ else{
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
-
-
-
+</form>
+<br/><br/>
+<form method="post" action="excel_stud_retrieve.php">
+ 	<div class="form-group">
+	    <label for="select" class="col-lg-2 control-label"><h4>All Students Details</h4></label>
+	    <div class="col-lg-10">
+	    <button type="submit" class="btn btn-primary">Download Excel</button>
+  		</div>
+ 	</div>
+</form>
+<br/><br/><br/>
 	<!-- </form>
 	<form action="management.php"><input type="submit" value="Home" name="sub"></form> -->
+<div>
 
-<br></br>
 <ul class="breadcrumb">
   <li><a href="admin_management.php">Home</a></li>
   <li class="active">Student information</li>
 </ul>
-
+</div>
 </body>
 </html>

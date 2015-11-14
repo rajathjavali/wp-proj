@@ -47,16 +47,6 @@ echo "<h1>Syllabus data</h1>";
 		
  	 if ($result && mysql_num_rows($result)) 
  	 {	
- 	 	// $numdat= mysql_fetch_row($resusn);
- 	 	// echo $numdata;
- 	 	// $x=array();
- 	 	// $y=0;
- 	 	//  while ($seme=mysql_fetch_assoc($resusn)) {
- 	 	//  	echo "<>".$seme[Sem]."<>";
- 	 	//  	$x[$y]=$seme[Sem];
- 	 	//  	$y=$y+1;
- 	 	//  }
- 
 
     	    $numrows = mysql_num_rows($result);
             print "<h2>There are $numrows entries in core subject:<br ></h2>";
@@ -67,43 +57,7 @@ echo "<h1>Syllabus data</h1>";
       	echo "<br><b> Request admin to update syllabus of <i>semester '$sem'</i> ...!!</b></br>";
       }  
 
-
- 
-
-
-// below while loop is for printing the array
-$i=0;
-// while ($i<$numrows) {
-// 	echo $t[$i]."<br>";
-// 	$i=$i+1;
- 
-// }
-
-// echo "!".$t[0]." !";
-
-// switch ($sem) {
-// 	case '3':
-// 		$abc = '3course_register.php';
-// 		break;
-// 	case '4':
-// 		$abc = '4course_register.php';
-// 		break;
-// 	case '5':
-// 		$abc = '5course_register.php';
-// 		break;
-	
-// 	 case '6':
-// 	 	$abc = '6course_register.php';
-// 	 	break;
-// }
-
-
-
-
-//echo "<form method=post action=course_register.php><input type=submit name=submit2 value=Register></form>";		
-
-//echo "<form method=post action=retrive_syllabus.php><input type=submit name=submit2 value=Done></form>";		
-
+    $i=0;
 
 }
 			
@@ -153,19 +107,18 @@ $rr=$rr+1;
 </table> 
 <br>
 
- 
-
- <br></br>
-  
-
- 
-
-    <ul class="breadcrumb">
+<form method="post" action="excel_subjects_list.php">
+  <div class="col-lg-50" align="right">
+    <input type="hidden" id="sem" required name="sem" value="<?php echo $sem;?>"><button type="submit" class="btn btn-primary">Download Table</button>
+  </div>
+</form>
+ <br/><br/>
+<div>
+  <ul class="breadcrumb">
   <li><a href="admin_management.php">Home</a></li>
   <li class="active">Registration</li>
-</ul>
-  </fieldset>
-</form>  
+  </ul>
+ <div>
 </div>
 
     <div class="progress progress-striped active">

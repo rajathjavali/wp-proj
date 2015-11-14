@@ -3,6 +3,7 @@
 
 <?php
 session_start();
+$fname=$email=$staffid=$phno=NULL;
 // Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
 header('Location: /bproject/index.html');
