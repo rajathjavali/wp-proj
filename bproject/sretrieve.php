@@ -32,6 +32,7 @@ header('Location: /bproject/index.html');
 			require_once __DIR__ . '/db_connect.php';
 			 $db = new DB_CONNECT();
 
+
 			 if ($db) {
 			 	# code...
 			 
@@ -56,6 +57,7 @@ header('Location: /bproject/index.html');
 				echo "no connection";
 			}
 			?>
+
 
  		</select>
         <br>
