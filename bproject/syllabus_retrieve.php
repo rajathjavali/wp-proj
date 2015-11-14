@@ -5,7 +5,7 @@
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location:../bproject/index.html');
+header('Location: /bproject/index.html');
 }
 ?>
 <!DOCTYPE html>
@@ -140,13 +140,28 @@ switch ($sem) {
 				 <!-- <input type=hidden name=sem value= <?php //echo $sem ?>>  -->
 <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-       <!--  <button type="reset" class="btn btn-default">Cancel</button> -->
+
+
+<?php
+       $today= Date("Y-m-d H:i:s");
+    $qry="SELECT RegDeadline FROM admin where username='root'";
+    $res=mysql_query($qry);
+    $row = mysql_fetch_row($res);
+    $Dealine= $row[0];
+if($ti[0]==$sem && strtotime($today)<strtotime($Dealine)){
+    echo '
+        <button type="reset" class="btn btn-default">Cancel</button>
         <button type="submit" class="btn btn-primary" value="Register" >Register</button>
-         <input type=hidden name=sem value= <?php echo $sem ?>> 
+         <input type=hidden name=sem value= <?php echo $sem ?>> ';} ?>
       </div>
     </div>
 
-
+<?php echo "<script>alert('Registration is closed now');</script>";
+      //header('Location:/bproject/management.php');
+      echo "<script>
+window.location = '/bproject/management.php';
+</script>"
+     ?>
 
 
 				<!--  <br><br><input type=submit name=submit value=Register>  -->

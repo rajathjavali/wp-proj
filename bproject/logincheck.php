@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		{
 		    $_SESSION['usn']=$usn; // Initializing Session
 		   	$_SESSION['password']=$password;
-		    header("location:../bproject/staff_management.php");
+		    header("location: /bproject/staff_management.php");
 		    $flag=1;
 		     // Redirecting To Other Page
 		}
@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		{
 			$_SESSION['usn']=$usn; // Initializing Session
 			$_SESSION['password']=$password;
-			header("location:../bproject/management.php"); // Redirecting To Other Page
+			header("location: /bproject/management.php"); // Redirecting To Other Page
 			$flag=1;
 		}
 		$result = mysql_query("SELECT * from admin WHERE username='$usn' and password='$password'");
@@ -53,12 +53,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 			$_SESSION['usn']=$usn; // Initializing Session
 			$_SESSION['password']=$password;
 			$flag=1;
-			header("location: ../bproject/admin_management.php"); // Redirecting To Other Page
+			header("location: /bproject/admin_management.php"); // Redirecting To Other Page
 		}
 		if($flag==0) 
 		{
 			$_SESSION['err']="login";
-			header('Location: ../bproject/index.html');
+			header('Location: /bproject/index.html');
 
 		} 
 	

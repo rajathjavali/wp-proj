@@ -18,7 +18,7 @@
         </li>
       </ul>
       <ul class="active nav navbar-nav navbar-right">
-        <li class="active"> <a href = "my_profile.php">My Profile </a></li>
+        <li class="active"> <a href = "edit_profile.php">My Profile </a></li>
       </ul>
      
       <ul class="active nav navbar-nav navbar-right">

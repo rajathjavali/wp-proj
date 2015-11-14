@@ -1,7 +1,7 @@
  <?php
 session_start();
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location:../bproject/index.html');
+header('Location: /bproject/index.html');
 }
 ?> 
 

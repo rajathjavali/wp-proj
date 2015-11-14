@@ -4,7 +4,7 @@
 <?php
 session_start();
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location:../bproject/index.html');
+header('Location: /bproject/index.html');
 }
 ?>
 
@@ -30,6 +30,7 @@ header('Location:../bproject/index.html');
 
 
 
+
 	<script type="text/javascript">
       function change(){
        document.getElementById("reg").style.display = "none";
@@ -38,7 +39,48 @@ header('Location:../bproject/index.html');
   }
  
 	</script>
-<div class="container">
+ <style>.error {color: #FF0000;}
+            html,body {
+    font: small sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100%;
+}
+#page {
+    margin-left: 200px;
+    height:100%;
+    background-color: #CCCCCC;
+}
+#maincontent {
+    float: right;
+    width: 100%;
+    height:100%;
+    background-color: #CCCCCC;
+}
+#menuleftcontent {
+    float: left;
+    position: absolute;
+    width: 250px;
+    margin-left: -200px;
+    background-color: #2B3E50;
+    height: 95%;
+    top:40px;
+    bottom:0;
+    overflow: scroll;
+}
+#topbar{
+  background-color: white;
+  position: relative;
+
+}
+#date {
+      background: #badc55;
+      color: white;
+      float:right;
+    }
+</style>
+<div >
 	<h1>Registration Management</h1>
 	<h3>Welcome User <?php echo $_SESSION['usn'];?></h3>
 	
