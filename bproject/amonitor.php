@@ -16,87 +16,127 @@ header('Location: /bproject/index.html');
  
 <!DOCTYPE html>
 <html>
- 
+<head>
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/carousel.css" rel="stylesheet">
+      <script src="js/jquery-1.7.2.min.js"></script>
+      <script src="js/bootstrap.js"></script>
+      <script src="js/jquery.hoverdir.js"></script>
+      <script type="text/javascript" charset="utf-8" language="javascript" src="js/jquery.dataTables.js"></script>
+      <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
+      <script src="jquery-1.9.1.min.js"></script>
+      <style>
+        #topbar
+        {
+          background-color: #686868;
+          padding-top: 70px;
+          padding-bottom: 20px;
+          position: relative;
+
+        }
+  div.box{
+    border-radius: 10px;
+    position: relative;
+    background-color: #686868;
+    color:white;
+    width: 600px;
+    height: 270px;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }  
+  #footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+ </style>
+</head>
 <body>
-<?php $usn=$_SESSION['usn']; ?>
- 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <div id="page">
+      <div id="maincontent">
+        <div id="topbar" style="color:#FFFFFF;">
+          <center>
+        <div style="position:relative;">
+            <p style="float: left; "><img src="images/logo1.gif" style="position:absolute; left:340px" height="70px" width="70px" border="1px"></p>
+            </div>
+            <p><h5>Rashtreeya Sikshana Samithi Trust</h5></p>
+            <p><h4><b>R V College of Engineering</b></h4></p>
+            <p><h6>Mysore Road, RV Vidyaniketan Post, Bagalore - 560 059</h6></p>
+          </center>
+        </div>
+        <hr>
+        <div class="box"><center>
+          <?php $usn=$_SESSION['usn']; ?>
+           
 
-<form class="form-horizontal" id="demo-form" data-parsley-validate method="post" action="amonitor_ret.php">
-  <fieldset>
-    <legend>Student present under particular Staff Id</legend>
-    
+          <form class="form-horizontal" id="demo-form" data-parsley-validate method="post" action="amonitor_ret.php">
+            <fieldset>
+              <legend style="color:#FFFFFF">Select Student Councillor</legend>
+           <div class="form-group">
+              <label for="select" class="col-lg-2 control-label"><h4>Staff ID</h4></label>
+                <div class="col-lg-10">
+                  <select class="form-control" id="sfid" name="sfid" style="width: 150px;">
 
+                      <?php
+                        require_once __DIR__ . '/db_connect.php';
+                       $db = new DB_CONNECT();
+
+                       if ($db) 
+                        {
+                          $sql = "SELECT `Staff_ID` FROM `staff` WHERE 1 ";
+                          $result = mysql_query($sql);
+                          $a=mysql_fetch_row($result);
+                        	if ( $a != 0) 
+                          {
+                        		// output data of each row
+                        		while($row = mysql_fetch_array($result)) 
+                            {
+                        			$sfid = $row["Staff_ID"];
+                        			echo "<option>$sfid</option>";
+                        		}
+                        			
+                        	} 
+                          else 
+                          {
+                        		echo "0 results";
+                    			}
+
+                        }
+
+                        else
+                        {
+                        	echo "no connection";
+                        }
+                      ?>
+
+                  </select>
+                  <br>
+                  
+                </div>
+          </div>
+        </select>
+	     <br><br>
      
-  
- <div class="form-group">
-      <label for="select" class="col-lg-2 control-label"><h4>Select Staff ID</h4></label>
-      <div class="col-lg-10">
-        <select class="form-control" id="sfid" name="sfid" style="width: 150px;">
-
-
-
-<?php
-require_once __DIR__ . '/db_connect.php';
- $db = new DB_CONNECT();
-
- if ($db) {
- 	# code...
- 
-$sql = "SELECT `Staff_ID` FROM `staff` WHERE 1 ";
-			$result = mysql_query($sql);
-$a=mysql_fetch_row($result);
-
-			if ( $a != 0) {
-				// output data of each row
-				while($row = mysql_fetch_array($result)) {
-					$sfid = $row["Staff_ID"];
-					echo "<option>$sfid</option>";
-				}
-			
-			} else {
-				echo "0 results";
-			}
-
-}
-
-else{
-	echo "no connection";
-}
-?>
-
- </select>
-        <br>
-        
-      </div>
-    </div>
-
-
-
-
-</select>
-	<br><br>
-     
-  
- 
-
-    
- 
-    
-
-
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
         <button type="reset" class="btn btn-default">Cancel</button>
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
-
-    <ul class="breadcrumb">
+  </fieldset>
+</form> 
+</center>
+</div>
+<hr>
+  <ul class="breadcrumb" id="footer" style="background-color:#202020">
   <li><a href="admin_management.php">Home</a></li>
   <li class="active">Registration</li>
 </ul>
-  </fieldset>
-</form>  
-
+</div>
+</div>
 </body>
 </html>
