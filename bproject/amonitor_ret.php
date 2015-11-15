@@ -34,8 +34,7 @@ $usn=NULL;
   div.box{
     border-radius: 10px;
     position: relative;
-    background-color: #686868;
-    color:white;
+    background-color: #9DBCBC;
     width: 600px;
     height: 270px;
     margin: auto;
@@ -48,7 +47,7 @@ $usn=NULL;
     position: fixed;
     bottom: 0;
     width: 100%;
-}
+  }
 </style>
 </head>
 <body>
@@ -67,7 +66,7 @@ $usn=NULL;
         </div>
         <hr>
 
-<div class="container" style="background-color:#686868">
+<div class="container" style="background-color:#9DBCBC">
 <center>
 <?php 
 $sfid=$_POST['sfid'];
@@ -104,8 +103,9 @@ else{
     <tr class="danger">
       <th>`</th>
       <th><h2>Student usn</h2></th>
-      <th><h2>status</h2></th>
-      <th><h2>Registered at</h2></th>
+      <th><h2>Status</h2></th>
+      <th><h2>Registration date</h2></th>
+      <th><h2>Registered Courses</h2></th>
      <!--  <th><h2>Host Department</h2></th> -->
     </tr>
   </thead>
@@ -123,25 +123,32 @@ else{
       <td><h4><?php if( $rows["registered"] == 1){echo "<p class=text-success>registered";} else {echo "<p class=text-warning>not registered</p>";} ?></h4></td>
      
 
-      <td><h4><?php 
-$sql23 = "SELECT `timeor` FROM `student` WHERE `USN`='".$rows["USN"]."'";
-$result23=mysql_query($sql23);
- 
- while($rows23=mysql_fetch_assoc($result23)){
- 	echo "<p class=text-info >".$rows23["timeor"]."</p>";
-}
-if($rows23==" "){
-	echo "string";
-}
-// if(count($rows23)>0){
-// 	echo "N/A";
-// }
+      <td><h4><?php        
+      if( $rows["registered"] == 1){
+        $sql23 = "SELECT `timeor` FROM `student` WHERE `USN`='".$rows["USN"]."'";
+        $result23=mysql_query($sql23);
+         
+         while($rows23=mysql_fetch_assoc($result23)){
+          echo "<p class=text-info >".$rows23["timeor"]."</p>";}
+        }
+        else {echo "<p class=text-warning>NULL</p>";}
 
-
- ?></h4></td>
-   
-
-      <!-- <td><h4><?php //echo $rows[Host_Dpt] ?></h4></td> -->
+        //if($rows23==" "){
+        	//echo "string";
+        //}
+        // if(count($rows23)>0){
+        // 	echo "N/A";
+        // }
+      ?></h4></td>
+      <td><h4><?php if( $rows["registered"] == 1)
+        {
+          $sql2="SELECT `Code` FROM `register` WHERE  `USN`='".$rows["USN"]."'";
+          $result2=mysql_query($sql2);
+          while($rows2=mysql_fetch_assoc($result2)){
+            echo "<p class=text-info >".$rows2["Code"]."</p>";}
+        }
+        else {echo "<p class=text-warning>NULL</p>";}
+      ?></h4></td>
    </ol> </tr>
  <?php 
 $rr=$rr+1;
@@ -151,14 +158,11 @@ $rr=$rr+1;
 </table> 
 
  <br></br>
-   
-    
- <br></br>
- <br></br>
- <br></br>
  </div>
+ <hr>
+ <hr>
  <div id="footer">
-    <ul class="breadcrumb">
+    <ul class="breadcrumb" style="background-color: #202020;">
   <li><a href="admin_management.php">Home</a></li>
    <li><a href="amonitor.php">Select Staff</a></li>
   <li class="active">Registration</li>
@@ -167,7 +171,7 @@ $rr=$rr+1;
 </form>  
 </div>
 
-    <div class="progress progress-striped active">
+  <div class="progress progress-striped active">
   <div class="progress-bar progress-bar-danger" style="width: 100%"></div>
 </div>
 </center>

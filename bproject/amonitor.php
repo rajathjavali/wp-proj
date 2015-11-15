@@ -7,10 +7,6 @@ header('Location: /bproject/index.html');
 ?>
 
 
-
-
-
-
  <?php include ('header.php'); ?>
 <?php include ('navbar.php'); ?>
  
@@ -34,26 +30,24 @@ header('Location: /bproject/index.html');
           position: relative;
 
         }
-  div.box{
-    border-radius: 10px;
-    position: relative;
-    background-color: #686868;
-    color:white;
-    width: 600px;
-    height: 270px;
-    margin: auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    padding-left: 20px;
-  }  
-  #footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
- </style>
-</head>
+        div.box{
+          border-radius: 10px;
+          position: relative;
+          background-color: #9DBCBC;
+          width: 600px;
+          margin: auto;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          padding-right: 20px;
+          padding-left: 20px;
+        }  
+        #footer {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+        }
+      </style>
+    </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <div id="page">
@@ -75,7 +69,7 @@ header('Location: /bproject/index.html');
 
           <form class="form-horizontal" id="demo-form" data-parsley-validate method="post" action="amonitor_ret.php">
             <fieldset>
-              <legend style="color:#FFFFFF">Select Student Councillor</legend>
+              <legend>Select Student Councillor</legend>
            <div class="form-group">
               <label for="select" class="col-lg-2 control-label"><h4>Staff ID</h4></label>
                 <div class="col-lg-10">
@@ -134,7 +128,7 @@ header('Location: /bproject/index.html');
 <hr>
   <ul class="breadcrumb" id="footer" style="background-color:#202020">
   <li><a href="admin_management.php">Home</a></li>
-  <li class="active">Registration</li>
+  <li class="active">Select Staff</li>
 </ul>
 </div>
 </div>

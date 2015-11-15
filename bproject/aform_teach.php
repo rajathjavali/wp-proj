@@ -18,62 +18,113 @@ $fname=$staffid=$email=$phno=NULL;
  
  <!DOCTYPE html>
 <html>
- 
+ <head>
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/carousel.css" rel="stylesheet">
+      <script src="js/jquery-1.7.2.min.js"></script>
+      <script src="js/bootstrap.js"></script>
+      <script src="js/jquery.hoverdir.js"></script>
+      <script type="text/javascript" charset="utf-8" language="javascript" src="js/jquery.dataTables.js"></script>
+      <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
+      <script src="jquery-1.9.1.min.js"></script>
+      <style>
+        #topbar
+        {
+          background-color: #686868;
+          padding-top: 70px;
+          padding-bottom: 20px;
+          position: relative;
+
+        }
+        div.box{
+          border-radius: 10px;
+          position: relative;
+          background-color: #9DBCBC;
+          width: 600px;
+          margin: auto;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          padding-right: 20px;
+          padding-left: 20px;
+        }  
+        #footer {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+        }
+ </style>
+</head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <div id="page">
+      <div id="maincontent">
+        <div id="topbar" style="color:#FFFFFF;">
+          <center>
+          <div style="position:relative;">
+          <p style="float: left; "><img src="images/logo1.gif" style="position:absolute; left:340px" height="70px" width="70px" border="1px"></p>
+          </div>
+          <p><h5>Rashtreeya Sikshana Samithi Trust</h5></p>
+          <p><h4><b>R V College of Engineering</b></h4></p>
+          <p><h6>Mysore Road, RV Vidyaniketan Post, Bagalore - 560 059</h6></p>
+          </center>
+        </div>
+        <hr>
+        <div class="box"><center>
+          <form class="form-horizontal" id="demo-form" data-parsley-validate method="post" action="ateach_register.php">
+            <fieldset>
+              <legend>Registration</legend>
+              
 
- 
+          	<div class="form-group">
+                <label for="textArea" class="col-lg-2 control-label" >Full Name</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" id="name" placeholder="First name  Last name " name="name" required value="<?php echo $fname;?>" style="width: 210px;">
+                </div>
+              </div>
 
-<form class="form-horizontal" id="demo-form" data-parsley-validate method="post" action="ateach_register.php">
-  <fieldset>
-    <legend>Registration</legend>
-    
 
-	<div class="form-group">
-      <label for="textArea" class="col-lg-2 control-label" >Full Name</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="name" placeholder="First name  Last name " name="name" required value="<?php echo $fname;?>" style="width: 210px;">
+              <div class="form-group">
+            <!-- USN:  <input type="text" name="usn" required value="<?php// echo $usn;?>"> -->
+                <label for="textArea" class="col-lg-2 control-label" >Staff ID</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" id="staffid" placeholder="unique initials" name="staffid" required value="<?php echo $staffid;?>" style="width: 210px;">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                <div class="col-lg-10">
+                  <input type="email" class="form-control"   placeholder="abcde @ domain .com" name="email"  data-parsley-trigger="change" required  value="<?php echo $email;?>" style="width:210px">
+                </div>
+              </div>
+
+               <div class="form-group">
+                <label for="textArea" class="col-lg-2 control-label" >Phone number</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control"  name="phno" maxlength="10" placeholder="10 digit"  required value="<?php echo $phno;?>" style="width: 130px;">
+                </div>
+              </div>
+
+
+
+              <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                  <button type="reset" class="btn btn-default">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>  
+        </center>
+        </div>
+        <hr>
+        <hr>
+        <ul class="breadcrumb" id="footer" style="background-color: #202020 ">
+        <li><a href="admin_management.php">Home</a></li>
+        <li class="active">Registration</li>
+        </ul>
       </div>
-    </div>
-
-
-    <div class="form-group">
-  <!-- USN:  <input type="text" name="usn" required value="<?php// echo $usn;?>"> -->
-      <label for="textArea" class="col-lg-2 control-label" >Staff ID</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control" id="staffid" placeholder="unique initials" name="staffid" required value="<?php echo $staffid;?>" style="width: 210px;">
-      </div>
-    </div>
-
-
-    <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-      <div class="col-lg-10">
-        <input type="email" class="form-control"   placeholder="abcde @ domain .com" name="email"  data-parsley-trigger="change" required  value="<?php echo $email;?>" style="width:210px">
-      </div>
-    </div>
-
-     <div class="form-group">
-      <label for="textArea" class="col-lg-2 control-label" >Phone number</label>
-      <div class="col-lg-10">
-        <input type="text" class="form-control"  name="phno" maxlength="10" placeholder="10 digit"  required value="<?php echo $phno;?>" style="width: 130px;">
-      </div>
-    </div>
-
-
-
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-
-      <ul class="breadcrumb">
-  <li><a href="admin_management.php">Home</a></li>
-  <li class="active">Registration</li>
-</ul>
-  </fieldset>
-</form>  
-
+  </div>
 </body>
 </html>

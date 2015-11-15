@@ -216,7 +216,7 @@ header('Location: ../bproject/index.html');
           <p class="lead">Mobile Application for attendance and marks management to enable easy access from any mobile device at any time</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src="images/android.jpg" alt="Generic placeholder image">
         </div>
       </div>
 

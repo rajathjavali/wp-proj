@@ -18,6 +18,7 @@ header('Location: /bproject/index.html');
     $staffid = test_input($_POST['staffid']);
  	$phno = test_input($_POST['phno']);
  	$email = test_input($_POST['email']);
+ 	$flag;
 
  	$err="";
 
@@ -51,22 +52,26 @@ header('Location: /bproject/index.html');
 	    // check if row inserted or not
 	    if ($res) 
 	    {
-			
-	        // successfully inserted into database
+			$flag=1;
+	        //successfully inserted into database
 	        $response = "Inserted Successfully<br>"; 
-	        echo $response;
-	        echo "<form action=aform_teach.php><input type=submit value=DONE name=sub></form>";
-	        //header("Location:http://localhost/project/form.php");
+	        echo "<script>confirm('".$response."');</script>";
+	        //echo "<form action=aform_teach.php><input type=submit value=DONE name=sub></form>";
+	        //header("Location:../bproject/aform_teach.php");
 	    } 
 	    else 
 	    {
+	    	$flag=0;
 	        // failed to insert row
-	        // $response = "<script type='text/javascript'>alert('Entry unSuccessful')</script>";
+	        //$response = "<script type='text/javascript'>alert('Entry unSuccessful')</script>";
 	 
-	        echo "Staff id is not unique";
-	        echo "<form action=aform_teach.php><input type=submit value=DONE name=sub></form>";
+	        echo "<script>confirm('staff id not unique');</script>";
+	        //echo "<form action=aform_teach.php><input type=submit value=DONE name=sub></form>";
 	    }
  	}
+ 	header('Location: aform_teach.php');
+	//exit;
+
 
 function test_input($data) {
   $data = trim($data);

@@ -49,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 <div class="alert alert-dismissible alert-success">
   <button type="button" class="close" data-dismiss="alert"></button>
-  <strong>           Student Data found</strong>  
+  <strong>Student Data found</strong>  
 </div>
 
 <div class="list-group">
@@ -71,19 +71,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
  
 
-<form method=post action="approve.php"> 
+<form method=post action="edit_stud.php"> 
 <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-        <button type="submit" class="btn btn-success" value="APPROVE" >APPROVE</button>
-         <input type=hidden name=usn value= <?php echo  $usn ?>> 
-      </div>
+        <button type="submit" class="btn btn-success" value="Edit" >Edit</button>
+         <input type=hidden name=usn value= <?php echo  $usn ?>>
     </div>
 </form>
- 
+        <div class="row-md-2 text-right">
+          <form method=post action="stud_delete.php"> 
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2"> 
+                <button type="submit" class=" btn btn-danger" value="DELETE" >DELETE</button>
+                <input type=hidden name=usn value= <?php echo  $usn ?>> 
+              </div>
+            </div>
+          </div>
+        </form> 
+      </div>
+
+
 
 <br></br>
-
-
 
 <!--<form method=post action="stud_update.php"> 
 <div class="form-group">
@@ -96,21 +105,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
  
 <br></br>
 !-->
-<div class="row-md-2 text-right">
-   <form method=post action="stud_delete.php"> 
-<div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2"> 
-        <button type="submit" class=" btn btn-danger" value="DELETE" >DELETE</button>
-         <input type=hidden name=usn value= <?php echo  $usn ?>> 
-      </div>
-    </div>
-</div>
-</form>
- 
-
-
-
-
 
 <br></br>
  <?php  
@@ -133,7 +127,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <br></br>
 <ul class="breadcrumb">
   <li><a href="admin_management.php">Home</a></li>
-  <li><a href="asretrieve.php">Student Information</a></li>
+  <li><a href="asretrieve.php">view Student Information</a></li>
   <li class="active">Data</li>
 </ul>
 </div>

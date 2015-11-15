@@ -4,7 +4,12 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/carousel.css" rel="stylesheet">
   </head>
-
+  <style>
+  #fd1 {
+    position: fixed;
+    top: 0.1em;
+}
+  </style>
  <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="content/js/bootstrap.min.js"></script>
@@ -13,7 +18,7 @@
         $('.dropdown-toggle').dropdown();
     });
 </script>
-    <div class="navbar-wrapper">
+    <div class="navbar-wrapper" id="fd1">
       <div class="container">
 
         <nav class="navbar navbar-inverse navbar-static-top">
@@ -33,8 +38,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registration <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="amonitor.php">Approve Student Registration</a></li>
-                    <li><a href="#">View Student Registration</a></li>
+                    <li><a href="amonitor.php">View Student Registration</a></li>
                     <li><a href="add_syllabus.php">Add Syllabus</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="aform_teach.php">Add staff details</a></li>
