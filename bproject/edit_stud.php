@@ -82,7 +82,9 @@ header('Location: /bproject/index.html');
 				    	while($row=mysql_fetch_array($res))
 				    	{
 				 		?>
-				 		<text style="padding-right:82px"><strong>Name</strong></text><input type="text" id="name" size="50" value="<?php echo $row['Name']; ?>"><br>
+				 		<text style="padding-right:45px"><strong>First Name</strong></text><input type="text" id="fname" size="50" value="<?php echo $row['FName']; ?>"><br>
+				 		<text style="padding-right:32px"><strong>Middle Name</strong></text><input type="text" id="mname" size="50" value="<?php echo $row['Mname']; ?>"><br>
+				 		<text style="padding-right:47px"><strong>Last Name</strong></text><input type="text" id="lname" size="50" value="<?php echo $row['Lname']; ?>"><br>
 				 		<text style="padding-right:20px"><strong>Phone number</strong></text><input type="text" id="phone" size="50" value="<?php echo $row['Phone_No'];?>"><br>
 				    	<text style="padding-right:65px"><strong>Email Id</strong></text><input type="text" id="email" size="50" value="<?php echo $row['Email_ID'];?>"><br>
 				    	<?php
@@ -109,12 +111,14 @@ header('Location: /bproject/index.html');
 		$(document).ready(function(){
 			$("#submit").click(function(){
 			var usn="<?php echo $usn ?>";
-			var name = $("#name").val();
+			var fname = $("#fname").val();
+			var mname = $("#mname").val();
+			var lname = $("#lname").val();
 			var email = $("#email").val();
 			var phone = $("#phone").val();
 			// Returns successful data submission message when the entered information is stored in database.
-			var dataString = '&usn=' + usn+ '&name1='+ name + '&email1='+ email + '&phone1='+ phone;
-			if(name==''||email==''||phone=='')
+			var dataString = '&usn=' + usn+ '&fname1='+ fname + '&mname1='+ mname + '&lname1='+ lname + '&email1='+ email + '&phone1='+ phone;
+			if(fname==''||mname==''||lname==''||email==''||phone=='')
 			{
 			alert("Please Fill All Fields");
 			}

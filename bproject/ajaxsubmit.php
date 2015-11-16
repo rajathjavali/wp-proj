@@ -5,7 +5,9 @@
 if($_SERVER["REQUEST_METHOD"] == "POST")	
 {
 	$usn = $_POST['usn'];
-	$name2=$_POST['name1'];
+	$fname2=$_POST['fname1'];
+	$mname2=$_POST['mname1'];
+	$lname2=$_POST['lname1'];
 	$email2=$_POST['email1'];
 	$phone2=$_POST['phone1'];
 	if(!empty($usn))
@@ -15,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		$db = new DB_CONNECT();
 		if($db)
 		{		
-			$query = mysql_query("UPDATE `student` SET `Name`='$name2',`Phone_No`='$phone2',`Email_ID`='$email2' Where USN = '".$usn."'");
+			$query = mysql_query("UPDATE `student` SET `FName`='$fname2',`Mname`='$mname2',`Lname`='$lname2',`Phone_No`='$phone2',`Email_ID`='$email2' Where USN = '".$usn."'");
 			if($query)
 			echo "Student details edited succesfully";
 			else

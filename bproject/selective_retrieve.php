@@ -11,10 +11,10 @@ header('Location: /bproject/index.html');
 <?php
   
  
- $scode=$sname=$credit=$sem=$scode=$stype=$t=null;
+ $scode=$sname=$credit=$sem=$scode=$stype=$t=$acy=null;
  $usn=$_SESSION['usn'];
  if($_SERVER["REQUEST_METHOD"] == "POST"){
-	 
+	 $acy=$_POST['acy'];
 	 $sem=$_POST['sem'];
 
 	  
@@ -24,7 +24,7 @@ header('Location: /bproject/index.html');
 	    $db = new DB_CONNECT();
 	 	if($db){
 
-	 	$sql1 = "SELECT `Sem` FROM `approve_1` WHERE `USN`='".$usn."'";
+	 	$sql1 = "SELECT `Sem` FROM `approve_1` WHERE `USN`='".$usn."' and `acy`='".$acy."'";
 	 	$resusn=mysql_query($sql1);
 //below code is used to get user's semester based on session's usn number, i.e on who login...
 	 	if($resusn){
@@ -239,7 +239,8 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
       <hr>
     <ul class="breadcrumb" id="footer" style="background-color:#202020">
   <li><a href="staff_management.php">Home</a></li>
-  <li class="active">Registration</li>
+  <li><a href="sretrieve_elective.php">Select sem and year</a></li>
+  <li class="active">Elective list</li>
 </ul>
 </div>
 </div>

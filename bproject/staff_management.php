@@ -1,5 +1,5 @@
 <?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
+<?php include ('navbar1.php'); ?>
 
 
 <?php
@@ -11,7 +11,7 @@ session_start();
 
 // Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /bproject/index.html');
+header('Location: ../bproject/index.html');
 }
 ?>
 
@@ -27,11 +27,11 @@ header('Location: /bproject/index.html');
 	<style>.error {color: #FF0000;}</style>
 </head>
 <body>
-<div class="container">
+<!--div class="container">
 
 	<h1>Registration Management</h1>
 	<h3>Welcome User <?php echo $_SESSION['usn'];?></h3>
-	<!-- <a href="form_stud.php">Register Student</a><br><br> -->
+	<a href="form_stud.php">Register Student</a><br><br> 
 
 
 	<ul class="nav nav-pills nav-stacked">
@@ -46,6 +46,6 @@ header('Location: /bproject/index.html');
     </ul>
   </li>
 </ul>
-</div>
+</div-->
 </body>
 </html>

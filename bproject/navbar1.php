@@ -34,17 +34,15 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li><a href="admin_management.php">Home</a></li>
+                <li><a href="staff_management.php">Home</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registration <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="amonitor.php">View Student Registration</a></li>
-                    <li><a href="add_syllabus.php">Add Subject Details</a></li>
+                    <li><a href="smonitor_ret.php">View Student Registration</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="aform_teach.php">Add Staff Member</a></li>
                     <li><a href="asretrieve.php">View and edit student details</a></li>
                     <li><a href="asretrive_syllabus.php">View core subject list</a></li>
-                    <li><a href="asretrieve_elective.php">View elective subject list</a></li>                                       
+                    <li><a href="aretrieve_elective.php">View elective subject list</a></li>                                       
                   </ul>
                 </li>
                 <li><a href="logout.php">Logout</a></li>

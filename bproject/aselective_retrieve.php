@@ -5,17 +5,16 @@
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /bproject/index.html');
+header('Location: ../bproject/index.html');
 }
 ?>
-<h1>Elective Subject Data data</h1>
 <?php
   
- 
- $scode=$sname=$credit=$sem=$scode=$stype=$t=null;
+ $scode=$sname=$credit=$sem=$scode=$stype=$t=$acy=null;
  $usn=$_SESSION['usn'];
  if($_SERVER["REQUEST_METHOD"] == "POST"){
-	 
+	 $acy=$_POST['acy'];
+   $stype=$_POST['stype'];
 	 $sem=$_POST['sem'];
 
 	  
@@ -25,7 +24,7 @@ header('Location: /bproject/index.html');
 	    $db = new DB_CONNECT();
 	 	if($db){
 
-	 	$sql1 = "SELECT `Sem` FROM `approve_1` WHERE `USN`='".$usn."'";
+	 	$sql1 = "SELECT `Sem` FROM `approve_1` WHERE `USN`='".$usn."' AND `acy`='".$acy."' AND `S_type`='".$stype."'";
 	 	$resusn=mysql_query($sql1);
 //below code is used to get user's semester based on session's usn number, i.e on who login...
 	 	if($resusn){

@@ -9,7 +9,7 @@ header('Location: /bproject/index.html');
 <?php include ('header.php'); ?>
 <?php include ('navbar.php'); ?>
 <?php 
-$scode=$sname=$hdep=$credit=NULL;
+$scode=$sname=$hdep=$credit=$acy=$stype=NULL;
 ?>
 
  
@@ -68,7 +68,7 @@ $scode=$sname=$hdep=$credit=NULL;
         <hr>
         <div class="box"><center>
           <?php $usn=$_SESSION['usn']; ?>
-          <form class="form-horizontal" id="demo-form" data-parsley-validate method="post" action="syllabus_register.php">
+          <form class="form-horizontal" id="demo-form" data-parsley-validate method="post">
             <fieldset>
               <legend>ADD SYLLABUS</legend>
               <div class="form-group">
@@ -96,7 +96,7 @@ $scode=$sname=$hdep=$credit=NULL;
                <div class="form-group">
                 <label for="select" class="col-lg-2 control-label">Credits</label>
                 <div class="col-lg-10">
-                  <select class="form-control" id="usn" required name="credits" value="<?php echo $credit;?>" style="width: 75px;">
+                  <select class="form-control" id="credit" required name="credits" value="<?php echo $credit;?>" style="width: 75px;">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -112,12 +112,20 @@ $scode=$sname=$hdep=$credit=NULL;
           <div class="form-group">
                 <label for="select" class="col-lg-2 control-label">Subject Type</label>
                 <div class="col-lg-10">
-            
-                  course <?php echo " :"; ?><input type="radio" name="stype" required value="<?php echo "course"; ?>"/><br></br>
-                  elective <?php echo " :"; ?><input type="radio" name="stype" required value="<?php echo "elective"; ?>"/>
- 
- <br></br>
-</div>
+                  <select class="form-control" id="stype" required name="stype" value="<?php echo $stype;?>" style="width: 210px;">
+                    <option>core</option>
+                    <option>local</option>
+                    <option>global</option>
+                  </select>
+          <br></br>
+          </div>
+
+          <div class="form-group">
+                <label for="textArea" class="col-lg-2 control-label" >Academic Year</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" id="acy" placeholder="2015" name="sname" required value="<?php echo $acy;?>" style="width: 210px;">
+                </div>
+              </div>
 <br></br>
 
  
@@ -142,7 +150,7 @@ $scode=$sname=$hdep=$credit=NULL;
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
         <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button id="submit" type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </fieldset>
@@ -156,5 +164,38 @@ $scode=$sname=$hdep=$credit=NULL;
 </ul> 
 </div>
 </div>
+ <script>
+    $(document).ready(function(){
+      $("#submit").click(function(){
+      var scode = $("#scode").val();
+      var sname = $("#sname").val();
+      var hdep = $("#hdep").val();
+      var credit= $("#credit").val();
+      var stype= $("#stype").val();
+      var acy= $("#acy").val();
+      var sem= $("#sem").val();
+      // Returns successful data submission message when the entered information is stored in database.
+      var dataString = '&scode1=' + scode + '&sname1='+ sname + '&hdep1='+ hdep + '&credit1='+ credit + '&stype1=' + stype + '&acy1=' + acy + '&sem1=' + sem;
+      if(scode==''||sname==''||hdep==''||credit==''||stype==''||acy==''||sem=='')
+      {
+      alert("Please Fill All Fields");
+      }
+      else
+      {
+      // AJAX Code To Submit Form.
+      $.ajax({
+      type: "POST",
+      url: "syllabus_register.php",
+      data: dataString,
+      cache: false,
+      success: function(result){
+      alert(result);
+      }
+      });
+      }
+      return false;
+      });
+      });
+  </script>
 </body>
 </html>

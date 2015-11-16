@@ -65,7 +65,7 @@ header('Location: /bproject/index.html');
          <?php
           
         echo "<h1>Syllabus data</h1>";
-         $scode=$sname=$credit=$sem=$scode=$stype=$t=$result=null;
+         $scode=$sname=$credit=$sem=$scode=$stype=$t=$result=$acy=null;
          $usn=$_SESSION['usn'];
          if($_SERVER["REQUEST_METHOD"] == "POST"){
         	 $acy=$_POST['acy'];
@@ -91,7 +91,7 @@ header('Location: /bproject/index.html');
                 }
         	 		}
         	 	}
-         		$sql = "SELECT * FROM syllabus WHERE S_type='course' and acy = '".$acy."' and sem= '".$sem."'";
+         		$sql = "SELECT * FROM syllabus WHERE S_type='core' and acy = '".$acy."' and sem= '".$sem."'";
          		$result=mysql_query($sql);
          		$numrows=null;
         		

@@ -7,6 +7,7 @@ session_start();
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
 header('Location: /bproject/index.html');
 }
+$acy=null;
 ?>
 <html>
 <head>
@@ -81,7 +82,10 @@ header('Location: /bproject/index.html');
                        <option>8</option>
                   </select>
                   <br>
-                  
+                </div>
+                <label for="textArea" class="col-lg-2 control-label" >Academic Year</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control" id="acy" placeholder="2015" name="acy" required value="<?php echo $acy;?>" style="width: 210px;">
                 </div>
               </div>
 

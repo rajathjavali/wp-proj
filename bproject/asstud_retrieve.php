@@ -65,7 +65,7 @@ header('Location: /bproject/index.html');
         <div class="box"><center>
           <?php
           echo "<h1>Student Data</h1>";
-          $usn = $name =$phno = $email = null ; 
+          $usn = $name =$phno = $email = $fname=$mname=$lname= null ; 
           if($_SERVER["REQUEST_METHOD"] == "POST")
           {
             
@@ -79,7 +79,7 @@ header('Location: /bproject/index.html');
               if($db)
               {
                  
-                  $sql="select FName,Phone_No,Email_ID from student where USN = '".$usn."'";
+                  $sql="select FName,Mname,Lname,Phone_No,Email_ID from student where USN = '".$usn."'";
                   $res = mysql_query($sql);
                    
                   if ($res) 
@@ -90,7 +90,10 @@ header('Location: /bproject/index.html');
                   //echo count($res2);
                    
                      
-                     { $name=$res2['Name'];
+                     { 
+                      $fname=$res2['FName'];
+                      $mname=$res2['Mname'];
+                      $lname=$res2['Lname'];
                       $phno=$res2['Phone_No'];
                       $email=$res2['Email_ID'];
                        ?>
@@ -111,7 +114,7 @@ header('Location: /bproject/index.html');
 
                        <?php
                       //echo $response."<br>";
-                      echo "<h4 class=list-group-item-heading> Name : ".$res2['Name']."<br></br>Phone No. : ".$res2['Phone_No']."<br></br>Email ID : ".$res2['Email_ID']."</h4><br>";
+                      echo "<h4 class=list-group-item-heading> First Name : ".$res2['FName']."<br></br>Middle Name : ".$res2['Mname']."<br></br> Last Name : ".$res2['Lname']."<br></br>Phone No. : ".$res2['Phone_No']."<br></br>Email ID : ".$res2['Email_ID']."</h4><br>";
                    ?>
               
 
