@@ -1,25 +1,11 @@
-<?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
-
-<?php
-session_start();
-// Check, if username session is NOT set then this page will jump to login page
-if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /bproject/index.html');
-}
-?>
-
-
 <?php
  
 
  
-    $name = test_input($_POST['name']);
-    $staffid = test_input($_POST['staffid']);
- 	$phno = test_input($_POST['phno']);
- 	$email = test_input($_POST['email']);
- 	$flag;
-
+    $name = test_input($_POST['name1']);
+    $staffid = test_input($_POST['staffid1']);
+ 	$phno = test_input($_POST['phone1']);
+ 	$email = test_input($_POST['email1']);
  	$err="";
 
  	if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
@@ -52,27 +38,16 @@ header('Location: /bproject/index.html');
 	    // check if row inserted or not
 	    if ($res) 
 	    {
-			$flag=1;
 	        //successfully inserted into database
-	        $response = "Inserted Successfully<br>"; 
-	        echo "<script>confirm('".$response."');</script>";
+	        echo "Inserted Successfully"; 
 	        //echo "<form action=aform_teach.php><input type=submit value=DONE name=sub></form>";
 	        //header("Location:../bproject/aform_teach.php");
 	    } 
 	    else 
 	    {
-	    	$flag=0;
-	        // failed to insert row
-	        //$response = "<script type='text/javascript'>alert('Entry unSuccessful')</script>";
-	 
-	        echo "<script>confirm('staff id not unique');</script>";
-	        //echo "<form action=aform_teach.php><input type=submit value=DONE name=sub></form>";
+	        echo "staff id not unique";
 	    }
  	}
- 	header('Location: aform_teach.php');
-	//exit;
-
-
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
