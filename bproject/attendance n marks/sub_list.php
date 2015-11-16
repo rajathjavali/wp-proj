@@ -28,7 +28,7 @@
 			    $data .=$res2; 
 			}
 			$data.="</select>";
-			$data.="<br/><br/>Students Data: <br/><button type=submit>Download Marks Excel</button>
+			$data.="<br/><br/>Students Data: <br/><button type=submit>Download Excel</button>
 			<br/><br/>";
 			echo $data;
 

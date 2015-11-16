@@ -11,39 +11,63 @@ $dept = $_POST['dept'];
 $course = $_POST['course'];
 $acy = $_POST['acy'];
 $sub = $_POST['sub'];
-//echo $sem. " ".$etype;
-$query = "SELECT susn,t1,q1,t2,q2,t3,q3,lab,assign FROM marks,syllabus WHERE syllabus.sem='".$sem."' and 
-        (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' and syllabus.S_type='".$course."' and marks.ccode=syllabus.S_code and syllabus.Name='".$sub."'";
-$header = '';
-$data ='';
 
+
+$query = "SELECT distinct cdte,ctme FROM attends,syllabus WHERE syllabus.sem='".$sem."' and 
+        (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' 
+        and syllabus.S_type='".$course."' and attends.ccode=syllabus.S_code and syllabus.Name='".$sub."'";
 $export = mysqli_query($con,$query ) or die(mysqli_error($con));
 
-
-
-while ($fieldinfo=mysqli_fetch_field($export))
+$totalclass=0;
+$datetimeheader="usn\t";
+while( $row = mysqli_fetch_row( $export ) )
 {
-    $header .= $fieldinfo->name."\t";
+    foreach( $row as $value )
+    {            
+        $datetimeheader.=$value." ";
+    
+    }
+    $datetimeheader.="\t";
+    $totalclass=$totalclass+1;
 }
 
+$query = "SELECT susn,cdte,ctme,status FROM attends,syllabus WHERE syllabus.sem='".$sem."' and 
+        (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' 
+        and syllabus.S_type='".$course."' and attends.ccode=syllabus.S_code and syllabus.Name='".$sub."'";
+$export = mysqli_query($con,$query ) or die(mysqli_error($con));
+
+$data ='';
+$count=1;
 while( $row = mysqli_fetch_row( $export ) )
 {
     $line = '';
+    $j=1;
     foreach( $row as $value )
-    {                                            
-        if ( ( !isset( $value ) ) || ( $value == "" ) )
-        {
-            $value = "\t";
-        }
-        else
-        {
+    {    
+        if($count == 1 && $j == 1){
             $value = str_replace( '"' , '""' , $value );
-            $value = '"' . $value . '"' . "\t";
+            $value = '"' . $value . '"';  
+            $line = $value;  
         }
-        $line .= $value;
+
+        if($j == 4){
+            $line .= "\t".$value;
+        }
+        
+        $j=$j+1;
     }
-    $data .= trim( $line ) . "\n";
+    if($count == $totalclass){
+        $data .= $line . "\n";
+        $count = 1;
+    }
+    else{
+        $data.= $line;
+        $count=$count+1;
+    }
+
+    
 }
+
 $data = str_replace( "\r" , "" , $data );
 
 if ( $data == "" )
@@ -54,9 +78,9 @@ if ( $data == "" )
 
 // allow exported file to download forcefully
 header("Content-type: application/octet-stream");
-header("Content-Disposition: attachment; filename=Sem".$sem."_".$sub."_markslist.xls");
+header("Content-Disposition: attachment; filename=Sem".$sem."_".$sub."_attendancelist.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
-print "$header\n$data";
+print "$datetimeheader\n$data";
 }
 ?>
