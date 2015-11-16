@@ -13,7 +13,10 @@ header('Location: /bproject/index.html');
   
  
  $scode=$sname=$credit=$sem=$scode=$stype=$t=null;
- $usn=$_SESSION['usn'];
+  $usn=$_SESSION['usn'];
+  $acy=$_POST['acy'];
+  $section=$_POST['section'];
+   
 if($_SERVER["REQUEST_METHOD"] == "POST")
  {
 	 
@@ -33,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	 			$ti=array($numrows);
     		$ii=0;
 	 			while ($rows = mysql_fetch_assoc($resusn)) 
-        	{  	$ti[$ii]=$rows[Sem];
+        	{  	$ti[$ii]=$rows['Sem'];
      			 $ii=$ii+1;	}
 	 		}
 	 	}
@@ -87,8 +90,8 @@ $sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllab
         	{ 
             	//$scode= $row[S_Code];
      			//echo $scode;
-     		 	$ta[$i]=$row[S_Code];
-     		 	$na[$i]=$row[Name];
+     		 	$ta[$i]=$row['S_Code'];
+     		 	$na[$i]=$row['Name'];
      			 $i=$i+1;
 
      			 //echo "<br></br> <b><li>Subject name </b>:".$row[Name]."  <b>Subject Code </b>:".$row[S_Code]."</li>";
@@ -122,66 +125,38 @@ $ta6=$ta[5];
 
 
 <?php
+  $sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."'";
+ 	$result=mysql_query($sql);
+ 	$numrows=null;
 
+ 	if ($result && mysql_num_rows($result)) 
+ 	{	
+    $numrows = mysql_num_rows($result);
+    print "<br></br>There are $numrows entries in <i>Group $type1</i> elective subject:<br /><br />";
+  	$tb=array($numrows);
+  	$nb=array($numrows);
+  	$i=0;echo"<ol>";
+    while ($row = mysql_fetch_assoc($result)) 
+    { 
+ 		 	$tb[$i]=$row['S_Code'];
+ 		 	$nb[$i]=$row['Name'];
+ 			$i=$i+1;
+  	}
+    echo "</ol>";
+  }
 
+  else
+  {
+    echo "<br><b> Request admin to update syllabus of <i>semester '$sem'</i> ...!!</b></br>";
+  }
 
-
-
-
-
-
-
-
-
-$sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."'";
-//$sql="SELECT S_Code,E_Type, Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and sem='".$sem."'";
-
- 	//	$sql = "SELECT * FROM syllabus WHERE S_type='elective' and sem= '".$sem."'";
- 		$result=mysql_query($sql);
- 		$numrows=null;
-		
- 	 if ($result && mysql_num_rows($result)) 
- 	 {	
- 	 	// $numdat= mysql_fetch_row($resusn);
- 	 	// echo $numdata;
- 	 	// $x=array();
- 	 	// $y=0;
- 	 	//  while ($seme=mysql_fetch_assoc($resusn)) {
- 	 	//  	echo "<>".$seme[Sem]."<>";
- 	 	//  	$x[$y]=$seme[Sem];
- 	 	//  	$y=$y+1;
- 	 	//  }
- 
-
-    	    $numrows = mysql_num_rows($result);
-            print "<br></br>There are $numrows entries in <i>Group $type1</i> elective subject:<br /><br />";
-    		$tb=array($numrows);
-    		$nb=array($numrows);
-    		$i=0;echo"<ol>";
-        	while ($row = mysql_fetch_assoc($result)) 
-        	{ 
-            	//$scode= $row[S_Code];
-     			//echo $scode;
-     		 	$tb[$i]=$row[S_Code];
-     		 	$nb[$i]=$row[Name];
-     			 $i=$i+1;
-
-     			 //echo "<br></br> <b><li>Subject name </b>:".$row[Name]."  <b>Subject Code </b>:".$row[S_Code]."</li>";
-
-      		}echo "</ol>";
-      }   else{
-      	echo "<br><b> Request admin to update syllabus of <i>semester '$sem'</i> ...!!</b></br>";
-      }  
-
-
-
-      $tb2=$tb[1];
-$tb3=$tb[2];
-$tb4=$tb[3];
-$tb5=$tb[4];
-$tb6=$tb[5];
-
+  $tb2=$tb[1];
+  $tb3=$tb[2];
+  $tb4=$tb[3];
+  $tb5=$tb[4];
+  $tb6=$tb[5];
 ?>
+
 <br><h4>Select one of subject from <i>Group <?php echo $type1;?></i>  </h4> <br></br> <fieldset style="width:350px" ><ol>
        <li><?php echo $nb[0]; ?><input type="radio" name="scode2" required value="<?php echo $tb1; ?>"/><br></br></li>
        <li> <?php echo $nb[1];?><input type="radio" name="scode2" required value="<?php echo $tb2; ?>"/><br></br></li>

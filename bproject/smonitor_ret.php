@@ -20,7 +20,7 @@ $sfid=$_SESSION['usn'];
     if($db){
         
  
-$sql1 = "SELECT `USN`,`registered` FROM `user` WHERE `Staff_ID`= '".$sfid."'";
+$sql1 = "SELECT `USN`,`registered` FROM `approve_1` WHERE `Staff_ID`= '".$sfid."'";
 $result1=mysql_query($sql1);
 if ($result1) {
    echo "<h3>Students under  ".$sfid."  </h3>";

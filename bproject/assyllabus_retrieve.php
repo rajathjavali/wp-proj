@@ -20,7 +20,7 @@ echo "<h1>Syllabus data</h1>";
  $scode=$sname=$credit=$sem=$scode=$stype=$t=$result=null;
  $usn=$_SESSION['usn'];
  if($_SERVER["REQUEST_METHOD"] == "POST"){
-	 
+	 $acy=$_POST['acy'];
 	 $sem=$_POST['sem'];
 	 require_once __DIR__ . '/db_connect.php';
 	  
@@ -37,11 +37,11 @@ echo "<h1>Syllabus data</h1>";
 	 			$ti=array($numrows);
     		$ii=0;
 	 			while ($rows = mysql_fetch_assoc($resusn)) 
-        	{  	$ti[$ii]=$rows[Sem];
+        	{  	$ti[$ii]=$rows['Sem'];
      			 $ii=$ii+1;	}
 	 		}
 	 	}
- 		$sql = "SELECT * FROM syllabus WHERE S_type='course' and sem= '".$sem."'";
+ 		$sql = "SELECT * FROM syllabus WHERE S_type='course' and acy = '".$acy."' and sem= '".$sem."'";
  		$result=mysql_query($sql);
  		$numrows=null;
 		

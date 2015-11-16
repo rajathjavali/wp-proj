@@ -42,20 +42,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 				echo "</form>";
 
 
-
+/*
 				echo "<form method=post action=stud_update.php>";
 				echo "<input type=hidden name=usn value=$usn>";
 				echo "<br><br><input type=submit name=submit value=Update>";
-
-				
-
 				echo "</form>";
+
 				
 				echo "<form method=post action=stud_delete.php>";
 				echo "<input type=hidden name=usn value=$usn>";
 				echo "<input type=submit name=submit value=Delete>";
 				echo "</form>";
 				//echo "<form method=post action=stud_delete.php><input type=submit name=submit2 value=Delete></form>";
+*/
 				echo "<form method=post action=retrieve.php><input type=submit name=submit2 value=Done></form>";
 			  }	
 		    } 

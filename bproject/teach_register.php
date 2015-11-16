@@ -46,7 +46,7 @@ header('Location: /bproject/index.html');
  	if($db)
  	{
 	    // mysql inserting a new row
-	    $sql = "insert into staff(Staff_ID,Name,Phone_NO,Email_ID) values('".$staffid."','".$name."' ,'".$phno."','".$email."')";
+	    $sql = "insert into staff(Staff_ID,FName,Phone_NO,Email_ID) values('".$staffid."','".$name."' ,'".$phno."','".$email."')";
     	$res = mysql_query($sql);
 	    // check if row inserted or not
 	    if ($res) 

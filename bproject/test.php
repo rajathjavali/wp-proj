@@ -20,7 +20,7 @@ $sfid=$_POST['sfid'];
     if($db){
         
  
-$sql1 = "SELECT `USN`,`registered` FROM `user` WHERE `Staff_ID`= '".$sfid."'";
+$sql1 = "SELECT `USN`,`registered` FROM `approve_1` WHERE `Staff_ID`= '".$sfid."'";
 $result1=mysql_query($sql1);
 if ($result1) {
    echo "<h3>Students under SF2</h3>";
@@ -70,16 +70,16 @@ else{
   <tbody>
     <tr ><ol>
       <td><h4><?php echo $rr; ?>]</h4> </td>
-      <td><h4><?php echo $rows[USN] ?></h4></td>
-      <td><h4><?php if( $rows[registered] == 1){echo "registered";} else {echo "not registered";} ?></h4></td>
+      <td><h4><?php echo $rows['USN'] ?></h4></td>
+      <td><h4><?php if( $rows['registered'] == 1){echo "registered";} else {echo "not registered";} ?></h4></td>
      
 
       <td><h4><?php 
-$sql23 = "SELECT `timeor` FROM `student` WHERE `USN`='".$rows[USN]."'";
+$sql23 = "SELECT `timeor` FROM `student` WHERE `USN`='".$rows['USN']."'";
 $result23=mysql_query($sql23);
  
  while($rows23=mysql_fetch_assoc($result23)){
- 	echo $rows23[timeor];
+ 	echo $rows23['timeor'];
 }
 
 if(count($rows23)){

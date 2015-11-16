@@ -17,13 +17,15 @@ echo "<h1>Details Regarding Course registration</h1>";
  if($_SERVER["REQUEST_METHOD"] == "POST"){
 	 
 	 $sem=$_POST['sem'];
+   $acy=$_POST['acy'];
+   $section=$_POST['section'];
 	 require_once __DIR__ . '/db_connect.php';
 	  
 	    $db = new DB_CONNECT();
 	 	if($db){
 
 
- 		$sql = "SELECT S_Code FROM syllabus WHERE S_type='course' and sem= '".$sem."'";
+ 		$sql = "SELECT S_Code FROM syllabus WHERE S_type='course' and sem= '".$sem."' and acy='".$acy."' and section=";
  		$result=mysql_query($sql);
 		
  	 if ($result && mysql_num_rows($result)) 
@@ -46,35 +48,32 @@ echo "<br></br>".$usn."<>";
 
      if($numrows==6){//to check wether there are actual number of subject entered in syllabus table
 
-        $sql1 = "INSERT INTO register(`USN`, `Code`) VALUES ('".$usn."' ,'".$t[0]."' )";
+        $sql1 = "INSERT INTO studcourse(`USN`, `ccode`,'sem','acy') VALUES ('".$usn."' ,'".$t[0]."','".$sem"','".$acy"' )";
         $result1=mysql_query($sql1);
 
-        $sql2 = "INSERT INTO register(`USN`, `Code`) VALUES ('".$usn."' ,'".$t[1]."' )";
+        $sql2 = "INSERT INTO studcourse(`USN`, `ccode`,'sem','acy') VALUES ('".$usn."' ,'".$t[1]."','".$sem"','".$acy"' )";
         $result2=mysql_query($sql2);
 
-        $sql3 = "INSERT INTO register(`USN`, `Code`) VALUES ('".$usn."' ,'".$t[2]."' )";
+        $sql3 = "INSERT INTO studcourse(`USN`, `ccode`,'sem','acy') VALUES ('".$usn."' ,'".$t[2]."','".$sem"','".$acy"' )";
         $result3=mysql_query($sql3);
 
-        $sql4 = "INSERT INTO register(`USN`, `Code`) VALUES ('".$usn."' ,'".$t[3]."' )";
+        $sql4 = "INSERT INTO studcourse(`USN`, `ccode`,'sem','acy') VALUES ('".$usn."' ,'".$t[3]."','".$sem"','".$acy"' )";
         $result4=mysql_query($sql4);
 
-        $sql5 = "INSERT INTO register(`USN`, `Code`) VALUES ('".$usn."' ,'".$t[4]."' )";
+        $sql5 = "INSERT INTO studcourse(`USN`, `Code`'sem','acy') VALUES ('".$usn."' ,'".$t[4]."','".$sem"','".$acy"' )";
         $result5=mysql_query($sql5);
 
-        $sql6 = "INSERT INTO register(`USN`, `Code`) VALUES ('".$usn."' ,'".$t[5]."' )";
+        $sql6 = "INSERT INTO studcourse(`USN`, `ccode`,'sem','acy') VALUES ('".$usn."' ,'".$t[5]."','".$sem"','".$acy"' )";
         $result6=mysql_query($sql6);
 
+        if($result1&&$result2&&$result3&&$result4&&$result5&&$result6){
 
+          echo "you have registered in following $numrows subject";
+        }
 
-
-                if($result1&&$result2&&$result3&&$result4&&$result5&&$result6){
-
-                    echo "you have registered in following $numrows subject";
-                }
-
-                else {
-                    echo "you have already registered for following subject";
-                }
+        else {
+          echo "you have already registered for following subject";
+        }
 
 
     }
@@ -83,7 +82,7 @@ echo "<br></br>".$usn."<>";
     } 
   
   
-	$sql = "SELECT * FROM register WHERE USN='$usn'";
+	$sql = "SELECT * FROM studcourse WHERE USN='$usn'";
  		$result=mysql_query($sql);
  		$numrows=null;
 		
@@ -100,10 +99,10 @@ echo "<br></br>".$usn."<>";
         	{ 
             	//$scode= $row[S_Code];
      			//echo $scode;
-     		 	$t[$i]=$row[Code];
+     		 	$t[$i]=$row['ccode'];
      			 $i=$i+1;
 
-     			 echo "<br><li> <b>Subject Code :".$row[Code]."</li></b>";
+     			 echo "<br><li> <b>Subject Code :".$row['ccode']."</li></b>";
 
       		}
             echo "</ol>";

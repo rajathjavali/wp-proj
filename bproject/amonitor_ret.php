@@ -77,7 +77,7 @@ $sfid=$_POST['sfid'];
     if($db){
         
  
-$sql1 = "SELECT `USN`,`registered` FROM `user` WHERE `Staff_ID`= '".$sfid."'";
+$sql1 = "SELECT `USN`,`registered` FROM `approve_1` WHERE `Staff_ID`= '".$sfid."'";
 $result1=mysql_query($sql1);
 if ($result1) {
    echo "<h3>Councillor Id: ".$sfid."</h3>";
@@ -142,10 +142,10 @@ else{
       ?></h4></td>
       <td><h4><?php if( $rows["registered"] == 1)
         {
-          $sql2="SELECT `Code` FROM `register` WHERE  `USN`='".$rows["USN"]."'";
+          $sql2="SELECT `ccode` FROM `studcourse` WHERE  `USN`='".$rows["USN"]."'";
           $result2=mysql_query($sql2);
           while($rows2=mysql_fetch_assoc($result2)){
-            echo "<p class=text-info >".$rows2["Code"]."</p>";}
+            echo "<p class=text-info >".$rows2["ccode"]."</p>";}
         }
         else {echo "<p class=text-warning>NULL</p>";}
       ?></h4></td>

@@ -21,14 +21,17 @@ $usn=$_SESSION['usn'];
     if($db){
         $usn=   $_SESSION['usn'];
  
-$sql1 = "SELECT S_Code, Name,Credits,Host_Dpt FROM syllabus, register WHERE register.code = syllabus.S_Code and USN = '".$usn."'";
-$result1=mysql_query($sql1);
-if ($result1) {
+$sql = "SELECT DISTINCT `Name`, `S_Code`,`Credits`,`Host_Dpt`FROM `syllabus`,`studcourse` WHERE `ccode`=`S_Code` and `usn`='".$usn."' ";
+$result1=mysql_query($sql);
+if($result1){
+$sql1 = "SELECT DISTINCT `Name`, `S_Code`,`Credits`,`Host_Dpt`FROM `syllabus`,`studcourse` WHERE `S_Type`=`course` ";
+$result2=mysql_query($sql1);
+if ($result2) {
    echo "<h3>Registered Subject Details of user $usn</h3>";
   echo "<br>";
   
 
-}
+}}
 else{
   echo "try other way";
 }

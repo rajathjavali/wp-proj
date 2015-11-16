@@ -12,7 +12,7 @@ header('Location: /bproject/index.html');
 
 $sname=$_POST['sname'];
  	$hdep=$_POST['hdep'];
- 	$credit=$_POST['credit'];
+ 	$credit=$_POST['credits'];
  	$sem=$_POST['sem'];
  	$scode=$_POST['scode'];
  	$stype=$_POST['stype'];

@@ -17,6 +17,7 @@ echo "<h1>Register For core subject</h1>";
  if($_SERVER["REQUEST_METHOD"] == "POST"){
 	 
 	 $sem=$_POST['sem'];
+     $acy=$_POST['acy'];
 	 require_once __DIR__ . '/db_connect.php';
 	  
 	 //$ac='HSS';
@@ -44,7 +45,7 @@ echo "<h1>Register For core subject</h1>";
      		 	$t[$i]=$row[S_Code];
      			 $i=$i+1;
 
-     			 echo "<br> <b>Subject Code </b>:".$row[S_Code];
+     			 echo "<br> <b>Subject Code </b>:".$row['S_Code'];
 
       		}
       }     
@@ -84,11 +85,11 @@ echo "<b></b><>";
  echo $t[1];echo "<br></br>";
  echo $t[2];echo "<br></br>";
  echo $t[3];
+.
+print_r($valuesArr);'".$sem."',
 
-print_r($valuesArr);
-
- $sql1 = "INSERT INTO register(`USN`, `Code`) VALUES ('".$abs."' ,'".$t[3]."' )";
- $sql2="INSERT INTO register(`USN`, `Code`) VALUES ('".$abs."' ,'".$t[2]."' )";
+ $sql1 = "INSERT INTO studcourse(`USN`, `ccode`,'sem', 'acy') VALUES ('".$abs."' ,'".$t[3]."','".$sem."','".$acy"' )";
+ $sql2="INSERT INTO studcourse(`USN`, `ccode`, 'sem', 'acy') VALUES ('".$abs."' ,'".$t[2]."','".$sem."','".$acy"' )";
  $result1=mysql_query($sql1);
   $result2=mysql_query($sql2);
  if($result1&&$result2){
@@ -101,7 +102,7 @@ print_r($valuesArr);
 
 
 
-	$sql = "SELECT * FROM register WHERE USN='$abs'";
+	$sql = "SELECT * FROM studcourse WHERE USN='$abs'";
  		$result=mysql_query($sql);
  		$numrows=null;
 		
@@ -117,10 +118,10 @@ print_r($valuesArr);
         	{ 
             	//$scode= $row[S_Code];
      			//echo $scode;
-     		 	$t[$i]=$row[Code];
+     		 	$t[$i]=$row['Code'];
      			 $i=$i+1;
 
-     			 echo "<br> <b>Subject Code </b>:".$row[Code];
+     			 echo "<br> <b>Subject Code </b>:".$row['Code'];
 
       		}
       }     

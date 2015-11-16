@@ -17,6 +17,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$ele1=$_POST["scode1"];
 	$ele2=$_POST["scode2"];
 	$usn=$_SESSION['usn'];
+	$sem=$_POST['sem'];
+	$acy=$_POST['acy'];
 
 	 
 
@@ -25,9 +27,9 @@ require_once __DIR__ . '/db_connect.php';
 	 if($db){
 	 	 
 	 	 //$sql= "insert into syllabus(S_Code,Name,Host_Dpt,Credits,S_type,sem) values('".$scode."','".$sname."','".$hdep."','".$credit."','".$stype."','".$sem."')";
-	 	$sql = "INSERT INTO `selects`(`USN`, `Code`) VALUES ('".$usn."','".$ele1."')";
+	 	$sql = "INSERT INTO `selects`(`USN`, `ccode`,'sem','acy') VALUES ('".$usn."','".$ele1."','".$sem."','".$acy."')";
 		$res=mysql_query($sql);
-		$sql1 = "INSERT INTO `selects`(`USN`, `Code`) VALUES ('".$usn."','".$ele2."')";
+		$sql1 = "INSERT INTO `selects`(`USN`, `ccode`,'sem','acy') VALUES ('".$usn."','".$ele2."','".$sem."','".$acy."')";
 		$res1=mysql_query($sql1);
 		 
 	 if($res&&$res1)

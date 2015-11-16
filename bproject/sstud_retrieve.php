@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     if($db)
     {
        
-        $sql="select Name,Phone_No,Email_ID from student where USN = '".$usn."'";
+        $sql="select FName,Phone_No,Email_ID from student where USN = '".$usn."'";
         $res = mysql_query($sql);
          
         if ($res) 
@@ -42,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         //echo count($res2);
          
            
-           { $name=$res2['Name'];
+           { $name=$res2['FName'];
             $phno=$res2['Phone_No'];
             $email=$res2['Email_ID'];
              ?>
@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
              <?php
             //echo $response."<br>";
-            echo "<h4 class=list-group-item-heading> Name : ".$res2['Name']."<br></br>Phone No. : ".$res2['Phone_No']."<br></br>Email ID : ".$res2['Email_ID']."</h4><br>";
+            echo "<h4 class=list-group-item-heading> Name : ".$res2['FName']."<br></br>Phone No. : ".$res2['Phone_No']."<br></br>Email ID : ".$res2['Email_ID']."</h4><br>";
          ?>
  
 
@@ -82,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
  
 
 <br></br>
-
+<!--
 
 
 <form method=post action="stud_update.php"> 
@@ -107,9 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 </div>
 </form>
  
-
-
-
+-->
 
 
 <br></br>

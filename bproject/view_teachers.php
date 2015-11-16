@@ -23,7 +23,7 @@ $usn=$_SESSION['usn'];
     if($db){
         $usn=   $_SESSION['usn'];
          
- $sql = "SELECT `Staff_ID`, `Name`, `Phone_No`, `Email_ID` FROM `staff` WHERE 1 and  `Name` IS NOT NULL  ";
+ $sql = "SELECT `Staff_ID`, `FName`, `Phone_No`, `Email_ID` FROM `staff` WHERE 1 and  `FName` IS NOT NULL  ";
 $result1=mysql_query($sql);
 if ($result1) {
     
@@ -72,7 +72,7 @@ else{
     <tr ><ol>
       <td><h4><?php echo $rr; ?>]</h4> </td>
       <td><h4><?php echo $rows["Staff_ID"] ?></h4></td>
-      <td><h4><?php echo $rows["Name"] ?></h4></td>
+      <td><h4><?php echo $rows["FName"] ?></h4></td>
       <td><h4><?php echo $rows["Phone_No"] ?></h4></td>
       <td><h4><?php echo $rows["Email_ID"] ?></h4></td>
    </ol> </tr>

@@ -32,7 +32,7 @@ $usn = $name =$phno = $email = null ;
        
         $sql="select Name,Phone_No,Email_ID from student where USN = '".$usn."'";
         $res = mysql_query($sql);
-        $sql1="SELECT P_email,P_No from student_address where USN='".$usn."'" ;
+        $sql1="SELECT P_email,P_No from address where USN='".$usn."'" ;
         $res1=mysql_query($sql1);
     
         if ($res) 

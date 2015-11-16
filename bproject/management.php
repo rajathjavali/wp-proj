@@ -120,16 +120,6 @@ header('Location: /bproject/index.html');
 
 
 
-	<!-- <h4><a href="form_stud.php">Register Student</a><br><br>
-	<a href="view_teachers.php">View teachers</a><br><br>
-	<a href="retrieve.php">Get Student Details</a><br><br>
-	<a href="retrive_syllabus.php">Get core subject list</a><br><br>
-	<a href="retrieve_elective.php">Get elective subject list</a><br><br>
-	<a href="registered_subject.php">View Registered Subjects</a><br><br>
-	<a href="registered_elective.php">View Registered Elective</a><br><br></h4></h4>
-	 -->
-
-
 
 
 	</div>

@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 
 
-		$result = mysql_query("SELECT * from suser WHERE username='$usn' and password='$password'");
+		$result = mysql_query("SELECT * from staff WHERE Shortname='$usn' and password='$password'");
 		$count = mysql_num_rows($result);
 		if ($count == 1) 
 		{
@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		    $flag=1;
 		     // Redirecting To Other Page
 		}
-		$result = mysql_query("SELECT * from user WHERE USN='$usn' and password='$password'");
+		$result = mysql_query("SELECT * from student WHERE USN='$usn' and password='$password'");
 		$count = mysql_num_rows($result);
 		if ($count == 1) 
 		{

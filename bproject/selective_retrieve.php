@@ -33,7 +33,7 @@ header('Location: /bproject/index.html');
 	 			$ti=array($numrows);
     		$ii=0;
 	 			while ($rows = mysql_fetch_assoc($resusn)) 
-        	{  	$ti[$ii]=$rows[Sem];
+        	{  	$ti[$ii]=$rows['Sem'];
      			 $ii=$ii+1;	}
 	 		}
 	 	}

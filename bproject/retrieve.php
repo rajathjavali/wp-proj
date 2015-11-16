@@ -15,7 +15,7 @@ header('Location: /bproject/index.html');
 <body>
 	<h1>Retrieve Student Info</h1>
 
-	<form method="POST">
+	<form method="POST" action="stud_retrieve.php">
 		<!-- USN: <input type="text" name="usn"  required value="<?php //echo $usn;?>"> -->
 
 
@@ -72,26 +72,13 @@ else{
 	<div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
         <button type="reset" class="btn btn-default">Cancel</button>
-        <button onClick="goAjax()" type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
 
 <div id="stud_detail">
 </div>
 <script type="text/javascript">
-function goAjax(){
-	var xmlhttp = new XMLHttpRequest();
-
-		xmlhttp.onreadystatechange = function(){
-		
-			if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
-				document.getElementById('stud_detail').innerHTML = xmlhttp.responseText;
-			
-		}
-		xmlhttp.open('POST','stud_retrieve.php',true);
-		xmlhttp.send();
-}
-</script>
 	<!-- </form>
 	<form action="management.php"><input type="submit" value="Home" name="sub"></form> -->
 

@@ -25,7 +25,7 @@ $usn=$_SESSION['usn'];
     if($db){
         $usn=   $_SESSION['usn'];
  
-$sql1 = "SELECT S_Code, Name,Credits,Host_Dpt FROM syllabus, selects WHERE selects.code = syllabus.S_Code and USN = '".$usn."'";
+$sql1 = "SELECT S_Code, Name,Credits,Host_Dpt FROM syllabus, studcourse WHERE studcourse.ccode = syllabus.S_Code and USN = '".$usn."'";
 $result1=mysql_query($sql1);
 if ($result1) {
    echo "<h3>Registered Subject Details of user $usn</h3>";

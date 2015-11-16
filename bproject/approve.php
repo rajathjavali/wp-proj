@@ -17,6 +17,7 @@ header('Location: /bproject/index.html');
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 	 $usni=$_POST['usn'];
 	 $ssid=$_SESSION['usn'];
+	 $one=1;
 
 	// echo $usn."<>".$ssid;
 
@@ -26,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	    $db = new DB_CONNECT();
 	 	if($db)
 	 	{
-	 		$sql = "INSERT INTO `approve_2` (`Staff_ID`, `approved`) VALUES ('".$ssid."','".$usni."')";
+	 		$sql = "INSERT INTO `approve_1` (`Staff_ID`, `approve`) VALUES ('".$ssid."','".$one."')";
 	 		$res = mysql_query($sql);
 	 		if($res){
 	 			echo "successfully approved<br></br>";
