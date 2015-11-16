@@ -169,11 +169,6 @@ $rr=$rr+1;
 </ul>
   </fieldset>
 </form>  
-</div>
-
-  <div class="progress progress-striped active">
-  <div class="progress-bar progress-bar-danger" style="width: 100%"></div>
-</div>
 </center>
 </div>
 </div>

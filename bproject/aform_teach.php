@@ -70,7 +70,7 @@ $fname=$staffid=$email=$phno=NULL;
         </div>
         <hr>
         <div class="box"><center>
-          <form class="form-horizontal" id="demo-form" data-parsley-validate method="post" action="ateach_register.php">
+          <form class="form-horizontal" id="demo-form" data-parsley-validate method="post">
             <fieldset>
               <legend>Registration</legend>
               
@@ -95,14 +95,14 @@ $fname=$staffid=$email=$phno=NULL;
               <div class="form-group">
                 <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                 <div class="col-lg-10">
-                  <input type="email" class="form-control"   placeholder="abcde @ domain .com" name="email"  data-parsley-trigger="change" required  value="<?php echo $email;?>" style="width:210px">
+                  <input type="email" class="form-control"  id="email" placeholder="abcde @ domain .com" name="email"  data-parsley-trigger="change" required  value="<?php echo $email;?>" style="width:210px">
                 </div>
               </div>
 
                <div class="form-group">
                 <label for="textArea" class="col-lg-2 control-label" >Phone number</label>
                 <div class="col-lg-10">
-                  <input type="text" class="form-control"  name="phno" maxlength="10" placeholder="10 digit"  required value="<?php echo $phno;?>" style="width: 130px;">
+                  <input type="text" class="form-control"  id="phone"name="phno" maxlength="10" placeholder="10 digit"  required value="<?php echo $phno;?>" style="width: 130px;">
                 </div>
               </div>
 
@@ -111,7 +111,7 @@ $fname=$staffid=$email=$phno=NULL;
               <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                   <button type="reset" class="btn btn-default">Cancel</button>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button id="submit" type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </div>
             </fieldset>
@@ -122,9 +122,39 @@ $fname=$staffid=$email=$phno=NULL;
         <hr>
         <ul class="breadcrumb" id="footer" style="background-color: #202020 ">
         <li><a href="admin_management.php">Home</a></li>
-        <li class="active">Registration</li>
+        <li class="active">Add Teacher</li>
         </ul>
       </div>
   </div>
+  <script>
+    $(document).ready(function(){
+      $("#submit").click(function(){
+      var staffid = $("#staffid").val();
+      var name = $("#name").val();
+      var email = $("#email").val();
+      var phone = $("#phone").val();
+      // Returns successful data submission message when the entered information is stored in database.
+      var dataString = '&staffid1=' + staffid + '&name1='+ name + '&email1='+ email + '&phone1='+ phone;
+      if(staffid==''||name==''||email==''||phone=='')
+      {
+      alert("Please Fill All Fields");
+      }
+      else
+      {
+      // AJAX Code To Submit Form.
+      $.ajax({
+      type: "POST",
+      url: "ateach_register.php",
+      data: dataString,
+      cache: false,
+      success: function(result){
+      alert(result);
+      }
+      });
+      }
+      return false;
+      });
+      });
+  </script>
 </body>
 </html>
