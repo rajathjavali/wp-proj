@@ -6,10 +6,14 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-$sem=$_POST['sem'];
-$etype=$_POST['etype'];
+$sem = $_POST['sem'];
+$dept = $_POST['dept'];
+$course = $_POST['course'];
+$acy = $_POST['acy'];
+$sub = $_POST['sub'];
 //echo $sem. " ".$etype;
-$query = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$etype."' ";
+$query = "SELECT susn,t1,q1,t2,q2,t3,q3,lab,assign FROM marks,syllabus WHERE syllabus.sem='".$sem."' and 
+        (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' and syllabus.S_type='".$course."' and marks.ccode=syllabus.S_code and syllabus.Name='".$sub."'";
 $header = '';
 $data ='';
 
@@ -50,7 +54,7 @@ if ( $data == "" )
 
 // allow exported file to download forcefully
 header("Content-type: application/octet-stream");
-header("Content-Disposition: attachment; filename=Sem".$sem."_elective".$etype."_list.xls");
+header("Content-Disposition: attachment; filename=Sem".$sem."_".$sub."_markslist.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
 print "$header\n$data";

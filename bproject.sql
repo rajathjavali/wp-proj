@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2015 at 05:49 AM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: Nov 16, 2015 at 10:07 AM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -33,8 +33,7 @@ CREATE TABLE IF NOT EXISTS `address` (
   `state` varchar(20) DEFAULT NULL,
   `pincode` varchar(10) NOT NULL DEFAULT '',
   `P_email` varchar(20) NOT NULL,
-  `P_no` varchar(10) NOT NULL,
-  PRIMARY KEY (`USN`,`pincode`)
+  `P_no` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -54,8 +53,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `username` varchar(10) NOT NULL,
   `password` varchar(10) DEFAULT NULL,
   `RegDeadline` datetime DEFAULT NULL,
-  `eleDeadline` datetime DEFAULT NULL,
-  PRIMARY KEY (`username`)
+  `eleDeadline` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -77,8 +75,7 @@ CREATE TABLE IF NOT EXISTS `approve_1` (
   `sgpa` float DEFAULT NULL,
   `approve` int(11) NOT NULL,
   `staff_ID` varchar(3) NOT NULL,
-  `registered` int(11) NOT NULL,
-  PRIMARY KEY (`USN`,`Sem`)
+  `registered` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -111,8 +108,7 @@ CREATE TABLE IF NOT EXISTS `attends` (
   `ccode` varchar(10) NOT NULL DEFAULT '',
   `acy` year(4) NOT NULL,
   `sem` int(11) NOT NULL DEFAULT '0',
-  `status` char(1) DEFAULT NULL,
-  PRIMARY KEY (`susn`,`cdte`,`ctme`)
+  `status` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -266,9 +262,7 @@ INSERT INTO `attends` (`susn`, `cdte`, `ctme`, `ccode`, `acy`, `sem`, `status`) 
 
 CREATE TABLE IF NOT EXISTS `checks` (
   `USN` varchar(10) NOT NULL DEFAULT '',
-  `nsno` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`USN`,`nsno`),
-  KEY `nsno` (`nsno`)
+  `nsno` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -298,8 +292,7 @@ CREATE TABLE IF NOT EXISTS `class` (
   `tme` varchar(8) NOT NULL,
   `roomno` varchar(6) DEFAULT NULL,
   `acy` year(4) NOT NULL,
-  `sem` int(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ccode`,`dte`,`tme`,`acy`,`sem`)
+  `sem` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -360,8 +353,7 @@ CREATE TABLE IF NOT EXISTS `handles` (
   `ccode` varchar(7) NOT NULL DEFAULT '',
   `acy` year(4) NOT NULL DEFAULT '0000',
   `sem` int(11) NOT NULL DEFAULT '0',
-  `section` varchar(2) NOT NULL DEFAULT '',
-  PRIMARY KEY (`lid`,`ccode`,`acy`,`sem`,`section`)
+  `section` varchar(2) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -396,9 +388,7 @@ CREATE TABLE IF NOT EXISTS `marks` (
   `ccode` varchar(7) NOT NULL DEFAULT '',
   `susn` varchar(10) NOT NULL DEFAULT '',
   `acy` year(4) NOT NULL,
-  `sem` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`lab`,`t1`,`q1`,`t2`,`q2`,`t3`,`q3`,`assign`,`ccode`,`susn`,`acy`,`sem`),
-  KEY `marks_ibfk_1` (`susn`)
+  `sem` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -431,15 +421,13 @@ INSERT INTO `marks` (`lab`, `t1`, `q1`, `t2`, `q2`, `t3`, `q3`, `assign`, `ccode
 --
 
 CREATE TABLE IF NOT EXISTS `notices` (
-  `serialno` int(11) NOT NULL AUTO_INCREMENT,
+`serialno` int(11) NOT NULL,
   `info` varchar(1000) DEFAULT NULL,
   `dte` varchar(12) DEFAULT NULL,
   `tme` varchar(5) DEFAULT NULL,
   `type` varchar(20) DEFAULT NULL,
-  `id` varchar(10) NOT NULL DEFAULT '',
-  PRIMARY KEY (`serialno`,`id`),
-  KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `id` varchar(10) NOT NULL DEFAULT ''
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `notices`
@@ -470,8 +458,7 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `Phone_No` bigint(10) DEFAULT NULL,
   `Email_ID` varchar(40) DEFAULT NULL,
   `Shortname` varchar(10) DEFAULT NULL,
-  `password` varchar(20) NOT NULL,
-  PRIMARY KEY (`Staff_ID`)
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -497,8 +484,7 @@ INSERT INTO `staff` (`Staff_ID`, `FName`, `Mname`, `Lname`, `Phone_No`, `Email_I
 
 CREATE TABLE IF NOT EXISTS `state` (
   `stateno` int(11) NOT NULL,
-  `state` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`stateno`)
+  `state` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -554,8 +540,7 @@ CREATE TABLE IF NOT EXISTS `studcourse` (
   `ccode` varchar(7) NOT NULL DEFAULT '',
   `acy` year(4) NOT NULL DEFAULT '0000',
   `sem` varchar(2) NOT NULL DEFAULT '0',
-  `section` varchar(2) NOT NULL,
-  PRIMARY KEY (`USN`,`ccode`,`acy`,`sem`,`section`)
+  `section` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -642,8 +627,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `Phone_No` bigint(10) DEFAULT NULL,
   `Email_ID` varchar(40) DEFAULT NULL,
   `password` varchar(20) NOT NULL,
-  `timeor` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`USN`,`timeor`)
+  `timeor` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -675,8 +659,7 @@ CREATE TABLE IF NOT EXISTS `syllabus` (
   `Credits` int(11) DEFAULT NULL,
   `acy` year(4) NOT NULL,
   `sem` int(11) NOT NULL DEFAULT '0',
-  `S_type` varchar(10) NOT NULL,
-  PRIMARY KEY (`S_Code`,`acy`,`sem`)
+  `S_type` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -684,69 +667,156 @@ CREATE TABLE IF NOT EXISTS `syllabus` (
 --
 
 INSERT INTO `syllabus` (`Name`, `Host_Dpt`, `S_Code`, `Credits`, `acy`, `sem`, `S_type`) VALUES
-('Environmental Science and Biology for Engineers', 'Sc', '12EB42', 4, 0000, 4, 'course'),
-('Engineering Materials', 'ME', '12EM32', 3, 0000, 3, 'course'),
-('Legal Studies & Professional Ethics for Engineers', 'HSS', '12HSC73', 2, 0000, 7, 'course'),
-('Intellectual Property and Entrepreneurship', 'HSS', '12HSI51', 3, 0000, 5, 'course'),
-('Management and Organization Bheaviour', 'HSS', '12HSM61', 3, 0000, 6, 'course'),
-('Management and Organizational Behavior', '', '12HSM61', 3, 2014, 6, 'course'),
-('Innovation and Social Skills', 'HSS', '12HSS', 1, 0000, 4, 'course'),
-('Innovation and Soft Skills', 'HSS', '12HSS83', 1, 0000, 8, 'course'),
-('Data Structure in C', 'ISE', '12IS33', 5, 0000, 3, 'course'),
-('Digital Logic Design', 'TE', '12IS34', 5, 0000, 3, 'course'),
-('Object Oriented Programming', 'ISE', '12IS35', 5, 0000, 3, 'course'),
-('Discrete Mathematical Structures', 'CSE', '12IS36', 5, 0000, 3, 'course'),
-('Theroy of Computation', 'ISE', '12iS43', 4, 0000, 4, 'course'),
-('Computer Organization and Architecture', 'ISE', '12IS44', 5, 0000, 4, 'course'),
-('Design and Analysis of Algorithms', 'CSE', '12IS45', 5, 0000, 4, 'course'),
-('Operating System', 'ISE', '12IS46', 3, 0000, 4, 'course'),
-('Unix System Programming', 'ISE', '12IS49', 5, 0000, 4, 'course'),
-('System Software', 'ISE', '12IS52', 5, 0000, 5, 'course'),
-('Microprocessors and Multicore Programming', 'ISE', '12IS53', 5, 0000, 5, 'course'),
-('Computer Network', 'ISE', '12IS54', 5, 0000, 5, 'course'),
-('Advanced Algorithm', 'ISE', '12IS5A1', 4, 0000, 5, 'elective'),
-('Soft Computing', 'ISE', '12IS5A2', 4, 0000, 5, 'elective'),
-('Compiler Design', 'ISE', '12IS5A3', 4, 0000, 5, 'elective'),
-('File Structure', 'ISE', '12IS5A4', 4, 0000, 5, 'elective'),
-('Management Information System', 'ISE', '12IS5A5', 4, 0000, 5, 'elective'),
-('Computer Graphics', 'ISE', '12IS5A6', 4, 0000, 5, 'elective'),
-('Graph Theory and Application', 'Sc', '12IS5B1', 3, 0000, 5, 'elective'),
-('Information Coding Theory', 'ISe', '12IS5B2', 3, 0000, 5, 'elective'),
-('Advanced Concept in Operating System', 'ISE', '12IS5B3', 3, 0000, 5, 'elective'),
-('Network Programming', 'ISE', '12IS5B4', 3, 0000, 5, 'elective'),
-('Java & J2EE', 'ISE', '12IS5B5', 3, 0000, 5, 'elective'),
-('Natural Language Processing with Python', 'ISE', '12IS5B6', 3, 0000, 5, 'elective'),
-('Software Engineering', 'ISE', '12IS62', 4, 0000, 6, 'course'),
-('Software Engineering', '', '12IS62', 4, 2014, 6, 'course'),
-('Computer Networks and Security', 'ISE', '12IS63', 5, 0000, 6, 'course'),
-('Computer Networks and Security', '', '12IS63', 5, 2014, 6, ''),
-('Database Management Systems', 'ISE', '12IS64', 5, 0000, 6, 'course'),
-('Database Management Systems', '', '12IS64', 5, 2014, 6, ''),
-('Emerging Technologies', 'ISE', '12IS65', 2, 0000, 6, 'course'),
-('Emerging technologies', '', '12IS65', 2, 2014, 6, ''),
-('Information Security', 'ISE', '12IS6C1', 4, 0000, 6, 'elective'),
-('Information Security', '', '12IS6C1', 4, 2014, 6, ''),
-('Computer System Performance & Analysis', 'ISE', '12IS6C2', 4, 0000, 6, 'elective'),
-('High Performance Computing', 'ISE', '12IS6C3', 4, 0000, 6, 'elective'),
-('High Performance Computing', '', '12IS6C3', 4, 2014, 6, ''),
-('Image Processing and Computer Vision', 'ISE', '12IS6C4', 4, 0000, 6, 'elective'),
-('Image Processing and Computer Vision', '', '12IS6C4', 4, 2014, 6, ''),
-('Software Architecture', 'ISE', '12IS6C5', 4, 0000, 6, 'elective'),
-('Information System Management', 'ISE', '12IS6D1', 3, 0000, 6, 'elective'),
-('Network Management', 'ISE', '12IS6D2', 3, 0000, 6, 'elective'),
-('Patern Recognition', 'ISE', '12IS6D3', 3, 0000, 6, 'elective'),
-('Pattern Recognition', '', '12IS6D3', 4, 2014, 6, ''),
-('Mobile Application Development', 'ISE', '12IS6D4', 3, 0000, 6, 'elective'),
-('Mobile Application Development', '', '12IS6D4', 4, 2014, 6, ''),
-('Enterprise Information Systems', 'ISE', '12IS6D5', 3, 0000, 6, 'elective'),
-('Web Programming', 'ISE', '12IS71', 5, 0000, 7, 'course'),
-('Software Testing', 'ISE', '12IS72', 5, 0000, 7, 'course'),
-('Human Computer Interaction', 'ISE', '12IS74', 3, 0000, 7, 'course'),
-('Project Work', 'ISE', '12IS81', 18, 0000, 8, 'course'),
-('Technical Seminar', 'ISE', '12IS82', 1, 0000, 8, 'course'),
-('Applied Mathematics-III', 'Sc', '12MA31', 4, 0000, 3, 'course'),
-('Applied Mathematics IV', 'Sc', '12MA41', 4, 0000, 4, 'course');
+('Environmental Science and Biology for Engineers', 'Sc', '12EB42', 4, 2014, 4, 'core'),
+('Engineering Materials', 'ME', '12EM32', 3, 2014, 3, 'core'),
+('Legal Studies & Professional Ethics for Engineers', 'HSS', '12HSC73', 2, 2014, 7, 'core'),
+('Intellectual Property and Entrepreneurship', 'HSS', '12HSI51', 3, 2014, 5, 'core'),
+('Management and Organizational Behavior', 'HSS', '12HSM61', 3, 2014, 6, 'core'),
+('Innovation and Social Skills', 'HSS', '12HSS', 1, 2014, 4, 'core'),
+('Innovation and Soft Skills', 'HSS', '12HSS83', 1, 2014, 8, 'core'),
+('Data Structure in C', 'ISE', '12IS33', 5, 2014, 3, 'core'),
+('Digital Logic Design', 'ISE', '12IS34', 5, 2014, 3, 'core'),
+('Object Oriented Programming', 'ISE', '12IS35', 5, 2014, 3, 'core'),
+('Discrete Mathematical Structures', 'CSE', '12IS36', 5, 2014, 3, 'core'),
+('Theroy of Computation', 'ISE', '12iS43', 4, 2014, 4, 'core'),
+('Computer Organization and Architecture', 'ISE', '12IS44', 5, 2014, 4, 'core'),
+('Design and Analysis of Algorithms', 'CSE', '12IS45', 5, 2014, 4, 'core'),
+('Operating System', 'ISE', '12IS46', 3, 2014, 4, 'core'),
+('Unix System Programming', 'ISE', '12IS49', 5, 2014, 4, 'core'),
+('System Software', 'ISE', '12IS52', 5, 2014, 5, 'core'),
+('Microprocessors and Multicore Programming', 'ISE', '12IS53', 5, 2014, 5, 'core'),
+('Computer Network', 'ISE', '12IS54', 5, 2014, 5, 'core'),
+('Advanced Algorithm', 'ISE', '12IS5A1', 4, 2014, 5, 'local'),
+('Soft Computing', 'ISE', '12IS5A2', 4, 2014, 5, 'local'),
+('Compiler Design', 'ISE', '12IS5A3', 4, 2014, 5, 'local'),
+('File Structure', 'ISE', '12IS5A4', 4, 2014, 5, 'local'),
+('Management Information System', 'ISE', '12IS5A5', 4, 2014, 5, 'local'),
+('Computer Graphics', 'ISE', '12IS5A6', 4, 0000, 5, 'local'),
+('Graph Theory and Application', 'Sc', '12IS5B1', 3, 2014, 5, 'local'),
+('Information Coding Theory', 'ISe', '12IS5B2', 3, 2014, 5, 'local'),
+('Advanced Concept in Operating System', 'ISE', '12IS5B3', 3, 2014, 5, 'local'),
+('Network Programming', 'ISE', '12IS5B4', 3, 2014, 5, 'local'),
+('Java & J2EE', 'ISE', '12IS5B5', 3, 2014, 5, 'local'),
+('Natural Language Processing with Python', 'ISE', '12IS5B6', 3, 2014, 5, 'local'),
+('Software Engineering', 'ISE', '12IS62', 4, 2014, 6, 'core'),
+('Computer Networks and Security', 'ISE', '12IS63', 5, 2014, 6, 'core'),
+('Database Management Systems', 'ISE', '12IS64', 5, 2014, 6, 'core'),
+('Emerging Technologies', 'ISE', '12IS65', 2, 2014, 6, 'core'),
+('Information Security', 'ISE', '12IS6C1', 4, 2014, 6, 'local'),
+('Computer System Performance & Analysis', 'ISE', '12IS6C2', 4, 2014, 6, 'local'),
+('High Performance Computing', 'ISE', '12IS6C3', 4, 2014, 6, 'local'),
+('Image Processing and Computer Vision', 'ISE', '12IS6C4', 4, 2014, 6, 'local'),
+('Software Architecture', 'ISE', '12IS6C5', 4, 2014, 6, 'local'),
+('Information System Management', 'ISE', '12IS6D1', 3, 2014, 6, 'local'),
+('Network Management', 'ISE', '12IS6D2', 3, 2014, 6, 'local'),
+('Patern Recognition', 'ISE', '12IS6D3', 3, 2014, 6, 'local'),
+('Mobile Application Development', 'ISE', '12IS6D4', 3, 2014, 6, 'local'),
+('Enterprise Information Systems', 'ISE', '12IS6D5', 3, 2014, 6, 'local'),
+('Web Programming', 'ISE', '12IS71', 5, 2014, 7, 'core'),
+('Software Testing', 'ISE', '12IS72', 5, 2014, 7, 'core'),
+('Human Computer Interaction', 'ISE', '12IS74', 3, 2014, 7, 'core'),
+('Project Work', 'ISE', '12IS81', 18, 2014, 8, 'core'),
+('Technical Seminar', 'ISE', '12IS82', 1, 2014, 8, 'core'),
+('Applied Mathematics-III', 'Sc', '12MA31', 4, 2014, 3, 'core'),
+('Applied Mathematics IV', 'Sc', '12MA41', 4, 2014, 4, 'core');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `address`
+--
+ALTER TABLE `address`
+ ADD PRIMARY KEY (`USN`,`pincode`);
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+ ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `approve_1`
+--
+ALTER TABLE `approve_1`
+ ADD PRIMARY KEY (`USN`,`Sem`);
+
+--
+-- Indexes for table `attends`
+--
+ALTER TABLE `attends`
+ ADD PRIMARY KEY (`susn`,`cdte`,`ctme`);
+
+--
+-- Indexes for table `checks`
+--
+ALTER TABLE `checks`
+ ADD PRIMARY KEY (`USN`,`nsno`), ADD KEY `nsno` (`nsno`);
+
+--
+-- Indexes for table `class`
+--
+ALTER TABLE `class`
+ ADD PRIMARY KEY (`ccode`,`dte`,`tme`,`acy`,`sem`);
+
+--
+-- Indexes for table `handles`
+--
+ALTER TABLE `handles`
+ ADD PRIMARY KEY (`lid`,`ccode`,`acy`,`sem`,`section`);
+
+--
+-- Indexes for table `marks`
+--
+ALTER TABLE `marks`
+ ADD PRIMARY KEY (`lab`,`t1`,`q1`,`t2`,`q2`,`t3`,`q3`,`assign`,`ccode`,`susn`,`acy`,`sem`), ADD KEY `marks_ibfk_1` (`susn`);
+
+--
+-- Indexes for table `notices`
+--
+ALTER TABLE `notices`
+ ADD PRIMARY KEY (`serialno`,`id`), ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
+ ADD PRIMARY KEY (`Staff_ID`);
+
+--
+-- Indexes for table `state`
+--
+ALTER TABLE `state`
+ ADD PRIMARY KEY (`stateno`);
+
+--
+-- Indexes for table `studcourse`
+--
+ALTER TABLE `studcourse`
+ ADD PRIMARY KEY (`USN`,`ccode`,`acy`,`sem`,`section`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+ ADD PRIMARY KEY (`USN`,`timeor`);
+
+--
+-- Indexes for table `syllabus`
+--
+ALTER TABLE `syllabus`
+ ADD PRIMARY KEY (`S_Code`,`acy`,`sem`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `notices`
+--
+ALTER TABLE `notices`
+MODIFY `serialno` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- Constraints for dumped tables
 --
@@ -755,37 +825,37 @@ INSERT INTO `syllabus` (`Name`, `Host_Dpt`, `S_Code`, `Credits`, `acy`, `sem`, `
 -- Constraints for table `address`
 --
 ALTER TABLE `address`
-  ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`USN`) REFERENCES `student` (`USN`) ON DELETE CASCADE;
+ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`USN`) REFERENCES `student` (`USN`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `attends`
 --
 ALTER TABLE `attends`
-  ADD CONSTRAINT `attends_ibfk_1` FOREIGN KEY (`susn`) REFERENCES `student` (`USN`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `attends_ibfk_1` FOREIGN KEY (`susn`) REFERENCES `student` (`USN`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `handles`
 --
 ALTER TABLE `handles`
-  ADD CONSTRAINT `handles_ibfk_1` FOREIGN KEY (`lid`) REFERENCES `staff` (`Staff_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `handles_ibfk_1` FOREIGN KEY (`lid`) REFERENCES `staff` (`Staff_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `marks`
 --
 ALTER TABLE `marks`
-  ADD CONSTRAINT `marks_ibfk_1` FOREIGN KEY (`susn`) REFERENCES `student` (`USN`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `marks_ibfk_1` FOREIGN KEY (`susn`) REFERENCES `student` (`USN`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `notices`
 --
 ALTER TABLE `notices`
-  ADD CONSTRAINT `notices_ibfk_1` FOREIGN KEY (`id`) REFERENCES `staff` (`Staff_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `notices_ibfk_1` FOREIGN KEY (`id`) REFERENCES `staff` (`Staff_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `studcourse`
 --
 ALTER TABLE `studcourse`
-  ADD CONSTRAINT `studcourse_ibfk_1` FOREIGN KEY (`USN`) REFERENCES `student` (`USN`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `studcourse_ibfk_1` FOREIGN KEY (`USN`) REFERENCES `student` (`USN`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

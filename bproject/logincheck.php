@@ -33,7 +33,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		{
 		    $_SESSION['usn']=$usn; // Initializing Session
 		   	$_SESSION['password']=$password;
-		    header("location:../bproject/staff_management.php");
+
+		    header("location: ../bproject/staff_management.php");
+
 		    $flag=1;
 		     // Redirecting To Other Page
 		}
