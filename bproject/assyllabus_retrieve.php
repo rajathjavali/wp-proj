@@ -77,7 +77,7 @@ header('Location: /bproject/index.html');
         	    $db = new DB_CONNECT();
         	 	if($db){
 
-        	 	$sql1 = "SELECT `Sem` FROM `approve_1` WHERE `USN`='".$usn."'";
+        	 /*	$sql1 = "SELECT `Sem` FROM `approve_1` WHERE `USN`='".$usn."'";
         	 	$resusn=mysql_query($sql1);
 
         	 	if($resusn){
@@ -90,7 +90,7 @@ header('Location: /bproject/index.html');
              			 $ii=$ii+1;	
                 }
         	 		}
-        	 	}
+        	 	}*/
          		$sql = "SELECT * FROM syllabus WHERE S_type='core' and acy = '".$acy."' and sem= '".$sem."'";
          		$result=mysql_query($sql);
          		$numrows=null;

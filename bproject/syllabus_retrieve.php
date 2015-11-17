@@ -5,7 +5,7 @@
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /bproject/index.html');
+header('Location: ../bproject/index.html');
 }
 ?>
 <!DOCTYPE html>
@@ -21,43 +21,42 @@ echo "<h1>Syllabus data</h1>";
  $usn=$_SESSION['usn'];
  if($_SERVER["REQUEST_METHOD"] == "POST"){
 	 
-	 $sem=$_POST['sem'];
-	 require_once __DIR__ . '/db_connect.php';
-	$numrows=NULL;
-	 //$ac='HSS';
-	    // connecting to db
-	    $db = new DB_CONNECT();
-	 	if($db){
+	  $sem=$_POST['sem'];
+    $acy=$_POST['acy'];
+	  require_once __DIR__ . '/db_connect.php';
+	  $numrows=NULL;
+	  //$ac='HSS';
+	  // connecting to db
+	  $db = new DB_CONNECT();
+   	if($db){
 
-	 	$sql1 = "SELECT `Sem` FROM `approve_1` WHERE `USN`='".$usn."'";
-	 	$resusn=mysql_query($sql1);
+  	$sql1 = "SELECT `Sem` FROM `approve_1` WHERE `USN`='".$usn."'";
+   	$resusn=mysql_query($sql1);
 
-	 	if($resusn){
-	 		if(mysql_num_rows($resusn)){
-	 			 
-	 			$ti=array($numrows);
+   	if($resusn){
+   		if(mysql_num_rows($resusn)){
+   			 
+   			$ti=array($numrows);
     		$ii=0;
-	 			while ($rows = mysql_fetch_assoc($resusn)) 
+   			while ($rows = mysql_fetch_assoc($resusn)) 
         	{  	$ti[$ii]=$rows["Sem"];
      			 $ii=$ii+1;	}
-	 		}
-	 	}
- 		$sql = "SELECT * FROM syllabus WHERE S_type='course' and sem= '".$sem."'";
+   		}
+   	}
+ 		$sql = "SELECT * FROM syllabus WHERE S_type='core' and sem= '".$sem."' and acy ='".$acy."'";
  		$result=mysql_query($sql);
  		$numrows=null;
 		
- 	 if ($result && mysql_num_rows($result)) 
- 	 {	 
- 	  $numrows = mysql_num_rows($result);
-            print "<h2>There are $numrows entries in core subject:<br ></h2>";
-    		$t=array($numrows);
-    		$i=0;
-        
-      }   else{
-      	echo "<br><b> Request admin to update syllabus of <i>semester '$sem'</i> ...!!</b></br>";
-      }  
+ 	  if ($result && mysql_num_rows($result)){
 
- 
+ 	    $numrows = mysql_num_rows($result);
+      print "<h2>There are $numrows entries in core subject:<br ></h2>";
+    	$t=array($numrows);
+    	$i=0;        
+    } 
+    else
+      echo "<br><b> Request admin to update syllabus of <i>semester '$sem'</i> ...!!</b></br>";
+
 $i=0;
 
 }
@@ -69,10 +68,6 @@ $i=0;
 }
  
 ?>
-
-
-
-
 
 
 <table class="table table-striped table-hover ">
@@ -136,49 +131,45 @@ switch ($sem) {
 
 
 
- <form method=post action=<?php echo $abc ?>> 
+<form method="post" action="<?php echo $abc ?>"> 
 				 <!-- <input type=hidden name=sem value= <?php //echo $sem ?>>  -->
-<div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-
-
-<?php
-       $today= Date("Y-m-d H:i:s");
-    $qry="SELECT RegDeadline FROM admin where username='root'";
-    $res=mysql_query($qry);
-    $row = mysql_fetch_row($res);
-    $Dealine= $row[0];
-if($ti[0]==$sem && strtotime($today)<strtotime($Dealine)){
-    echo '
-        <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary" value="Register" >Register</button>
-         <input type=hidden name=sem value= <?php echo $sem ?>> ';} ?>
-      </div>
+  <div class="form-group">
+    <div class="col-lg-10 col-lg-offset-2">
+      <?php
+        $today= Date("Y-m-d H:i:s");
+        $qry="SELECT RegDeadline FROM admin where username='root'";
+        $res=mysql_query($qry);
+        $row = mysql_fetch_row($res);
+        $Deadline= $row[0];
+        if($ti[0]==$sem && strtotime($today)<strtotime($Deadline)){
+          echo '
+            <button type="reset" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary" value="Register" >Register</button>
+             <input type=hidden name=sem value= <?php echo $sem ?>> ';
+        } 
+      ?>
     </div>
+  </div>
 
-<?php echo "<script>alert('Registration is closed now');</script>";
-      //header('Location:/bproject/management.php');
-      echo "<script>
-window.location = '/bproject/management.php';
-</script>"
-     ?>
+  <?php echo "<script>alert('Registration is closed now');</script>";
+        //header('Location:/bproject/management.php');
+        //echo "<script>window.location = '../bproject/management.php';</script>"
+       ?>
 
 
-				<!--  <br><br><input type=submit name=submit value=Register>  -->
-<?php }else{ ?>
-	 <br><b>You cannot register for this semester now</b></br> 
-<?php } ?>
+  				<!--  <br><br><input type=submit name=submit value=Register>  -->
+  <?php }else{ ?>
+  	 <br><b>You cannot register for this semester now</b></br> 
+  <?php } ?>
 
- <br></br>
-  
+   <br></br>
+    
 
- 
-
-    <ul class="breadcrumb">
-  <li><a href="management.php">Home</a></li>
-  <li class="active">Registration</li>
-</ul>
-  </fieldset>
+   <ul class="breadcrumb">
+    <li><a href="management.php">Home</a></li>
+    <li class="active">Registration</li>
+  </ul>
+    </fieldset>
 </form>  
 </div>
 

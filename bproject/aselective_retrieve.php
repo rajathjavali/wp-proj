@@ -13,18 +13,16 @@ header('Location: ../bproject/index.html');
  $scode=$sname=$credit=$sem=$scode=$stype=$t=$acy=null;
  $usn=$_SESSION['usn'];
  if($_SERVER["REQUEST_METHOD"] == "POST"){
-	 $acy=$_POST['acy'];
-   $stype=$_POST['stype'];
-	 $sem=$_POST['sem'];
+	  $acy=$_POST['acy'];
+    $stype=$_POST['stype'];
+	  $sem=$_POST['sem'];
 
 	  
-	 require_once __DIR__ . '/db_connect.php';
-	  
-	  
-	    $db = new DB_CONNECT();
+    require_once __DIR__ . '/db_connect.php';
+    $db = new DB_CONNECT();
 	 	if($db){
 
-	 	$sql1 = "SELECT `Sem` FROM `approve_1` WHERE `USN`='".$usn."' AND `acy`='".$acy."' AND `S_type`='".$stype."'";
+/*	 	$sql1 = "SELECT `Sem` FROM `approve_1` WHERE `USN`='".$usn."' AND `acy`='".$acy."' AND `S_type`='".$stype."'";
 	 	$resusn=mysql_query($sql1);
 //below code is used to get user's semester based on session's usn number, i.e on who login...
 	 	if($resusn){
@@ -35,7 +33,7 @@ header('Location: ../bproject/index.html');
         	{  	$ti[$ii]=$rows["Sem"];
      			 $ii=$ii+1;	}
 	 		}
-	 	}
+	 	}*/
 
  
 $type1=$type2=null;
@@ -163,9 +161,20 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
  <?php 
 $rr=$rr+1;
  } ?>    
+<br>
 
+        
 
  <table class="table table-striped table-hover ">
+  <form method="post" action="excel_elective_list.php">
+          <div class="col-lg-50" align="right">
+            <input type="hidden" id="sem" required name="sem" value="<?php echo $sem;?>">
+            <input type="hidden" id="etype" required name="etype" value="<?php echo $type1;?>">
+
+            <button type="submit" class="btn btn-primary">Download as Excel</button>
+          </div>
+        </form>
+        <br/><br/>
   <thead><h1>There are <?php echo $numrows; ?> entries in <i>Group <?php echo $type2."  "; ?></i> elective subject:<br /><br /></h1>
     <tr class="danger">
       <th>`</th>
@@ -198,15 +207,21 @@ $rr=$rr+1;
 </table> 
 
  <br></br>
- 
+ <form method="post" action="excel_elective_list.php">
+    <div class="col-lg-50" align="right">
+      <input type="hidden" id="sem" required name="sem" value="<?php echo $sem;?>">
+      <input type="hidden" id="etype" required name="etype" value="<?php echo $type2;?>">
 
- <br></br>
-  
+      <button type="submit" class="btn btn-primary">Download as Excel</button>
+    </div>
+  </form>
+  <br/><br/>
+  <div>
     <ul class="breadcrumb">
-  <li><a href="admin_management.php">Home</a></li>
-  <li class="active">Registration</li>
-</ul>
-
+      <li><a href="admin_management.php">Home</a></li>
+      <li class="active">Registration</li>
+    </ul>
+  </div>
 
 
 

@@ -3,6 +3,7 @@
 
 <?php
 session_start();
+$sem=$acy=NULL;
 // Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
 header('Location: /bproject/index.html');
@@ -37,12 +38,16 @@ header('Location: /bproject/index.html');
             <option>7</option>
              <option>8</option>
         </select>
-        <br>
-        
-      </div>
-    </div>
+        </div>
+        <br/><br/><br/>
+       <label for="textArea" class="col-lg-2 control-label" >Academic Year</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="acy" placeholder="2015" name="acy" 
+          required value="<?php echo $acy;?>" style="width: 210px;">
+        </div>
+        </div>
 
-     
+     <br/>
 
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
