@@ -61,7 +61,7 @@ header('Location: /bproject/index.html');
           </center>
         </div>
         <hr>
-        <div class="box"><center>
+        <div class="box" id="box"><center>
         	<h4>Edit in the form below</h4>
 			<form action="submit" id="Edit_form" title="Edit">
 			<?php
@@ -131,7 +131,9 @@ header('Location: /bproject/index.html');
 			data: dataString,
 			cache: false,
 			success: function(result){
-			alert(result);
+			//alert(result);
+			//document.getElementById("box").innerHTML="<input type=hidden name=usn value=<?php echo $usn;?>";
+			window.location='../bproject/asretrieve.php';
 			}
 			});
 			}

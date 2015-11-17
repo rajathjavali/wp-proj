@@ -145,15 +145,18 @@ switch ($sem) {
           echo '
             <button type="reset" class="btn btn-default">Cancel</button>
             <button type="submit" class="btn btn-primary" value="Register" >Register</button>
-             <input type=hidden name=sem value= <?php echo $sem ?>> ';
-        } 
-      ?>
-    </div>
-  </div>
+             <input type=hidden name=sem value= <?php echo $sem ?> 
+             <input type=hidden name=acy value =<?php echo $acy ?>';
+      
+    
+       echo '</div>
+              </div>';
+            }
 
-  <?php echo "<script>alert('Registration is closed now');</script>";
+   else { echo "<script>alert('Registration is closed now');</script>";
         //header('Location:/bproject/management.php');
-        //echo "<script>window.location = '../bproject/management.php';</script>"
+        echo "<script>window.location = '../bproject/management.php';</script>";
+      }
        ?>
 
 

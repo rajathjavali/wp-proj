@@ -19,7 +19,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		{		
 			$query = mysql_query("UPDATE `student` SET `FName`='$fname2',`Mname`='$mname2',`Lname`='$lname2',`Phone_No`='$phone2',`Email_ID`='$email2' Where USN = '".$usn."'");
 			if($query)
-			echo "Student details edited succesfully";
+			{
+				echo "Student details edited succesfully";
+				//echo '<script>window.location="../bproject/asstud_retrieve.php";</script>';
+			}
 			else
 			echo "Student detail editing unsucessful";
 		}

@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	 
 	 $sem=$_POST['sem'];
      $acy=$_POST['acy'];
-  $section=$_POST['section'];
+ // $section=$_POST['section'];
 
 	 require_once __DIR__ . '/db_connect.php';
 	  
@@ -32,7 +32,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	 	$resusn=mysql_query($sql1);
 //below code is used to get user's semester based on session's usn number, i.e on who login...
 	 	if($resusn){
-	 		if(mysql_num_rows($resusn)){
+	 		if(mysql_num_rows($resusn))
+      {
+        $numrows=mysql_num_rows($resusn);
 	 			$ti=array($numrows);
     		$ii=0;
 	 			while ($rows = mysql_fetch_assoc($resusn)) 
@@ -106,7 +108,7 @@ $ta2=$ta[1];
 $ta3=$ta[2];
 $ta4=$ta[3];
 $ta5=$ta[4];
-$ta6=$ta[5];
+//$ta6=$ta[5];
 
 
 ?>
@@ -180,7 +182,7 @@ $tb2=$tb[1];
 $tb3=$tb[2];
 $tb4=$tb[3];
 $tb5=$tb[4];
-$tb6=$tb[5];
+//$tb6=$tb[5];
 
 ?>
 <br><h4>Select one of subject from <i>Group <?php echo $type1;?></i>  </h4> <br></br> 
@@ -206,20 +208,22 @@ print "<br />";
 $i=0;
 
   
-        
-if($ti[0]==$sem){
+    
+ //echo $sem;   
+
 
 echo " ";
-				echo "<input type=hidden name=sem value=$sem>";
+				echo "<input type=hidden name=sem value=<?php echo $sem; ?>";
+        echo "<input type=hidden name=acy value=<?php echo $acy; ?>";
 				echo "<br><br><input type=submit name=submit value=Register>";
-				echo "</form>";}
-else{
-	echo "<br><b>You cannot register for this semester now</b></br>";
-}
+				echo "</form>";
 
 //echo "<form method=post action=course_register.php><input type=submit name=submit2 value=Register></form>";		
 
-echo "<form method=post action=retrieve_elective.php><input type=submit name=submit2 value=Done></form>";		
+
+                 
+          // echo "<script>window.location = '../bproject/management.php';</script>";
+       
 
 
 }

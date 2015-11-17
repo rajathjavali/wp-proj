@@ -24,7 +24,7 @@ echo "<h1>Details Regarding Course registration</h1>";
 	    $db = new DB_CONNECT();
 	 	if($db){
 
-    $sql = "SELECT S_Code FROM syllabus WHERE S_type='course' and sem= '".$sem."' and acy='".$acy"' ";
+    $sql = "SELECT S_Code FROM syllabus WHERE S_type='course' and sem= '".$sem."'  ";
  		$result=mysql_query($sql);
 		
  	 if ($result && mysql_num_rows($result)) 
@@ -41,11 +41,11 @@ echo "<h1>Details Regarding Course registration</h1>";
       		}
       }     
     $usn=	  $_SESSION['usn'];
-echo "<br></br>".$usn."<>";
+//echo "<br></br>".$usn."<>";
  
 
 
-     if($numrows==4){//to check wether there are actual number of subject entered in syllabus table
+     //to check wether there are actual number of subject entered in syllabus table
 
          $sql1 = "INSERT INTO studcourse(`USN`, `ccode`,'sem','acy') VALUES ('".$usn."' ,'".$t[0]."','".$sem"','".$acy"' )";
         $result1=mysql_query($sql1);
@@ -64,21 +64,19 @@ echo "<br></br>".$usn."<>";
 
                 if($result1&&$result2&&$result3&&$result4 ){
 
-                    echo "you have registered in following $numrows subject";
-                }
+                    
+                    echo "<script>alert('Successfully Registered')</script>";
+           echo "<script>window.location = '../bproject/management.php';</script>";
+        }
 
-                else {
-                    echo "you have already registered for following subject ";
-                }
+        else {
+          echo "<script>window.location = '../bproject/management.php';</script>";
+        }
 
 
-    }
-    else{
-        echo  "Ask Administrator to update all core subject of <i>$sem rd Semester</i> ...!";
-    }
   
   
-	$sql = "SELECT * FROM register WHERE USN='$usn'";
+	$sql = "SELECT * FROM register WHERE USN='".$usn."'";
  		$result=mysql_query($sql);
  		$numrows=null;
 		

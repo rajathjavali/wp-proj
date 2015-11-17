@@ -26,10 +26,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		    // check if row inserted or not
 		    if ($res) 
 		    {
-				 echo "<br><br>deleted";
-				 echo "<br><br>";
-		    echo "<form method=post action=asretrieve.php><input type=submit name=submit2 value=Done></form>";
-		    
+				 echo "<script>alert('deleted');</script>";
+				 
+		echo '<script> window.location="../bproject/asretrieve.php" ;</script>';
 		    }
 		}
 	}

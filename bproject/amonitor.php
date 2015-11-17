@@ -71,9 +71,9 @@ header('Location: /bproject/index.html');
             <fieldset>
               <legend>Select Student Councillor</legend>
            <div class="form-group">
-              <label for="select" class="col-lg-2 control-label"><h4>Staff ID</h4></label>
+              <label for="select" class="col-lg-2 control-label"><h4>Semester</h4></label>
                 <div class="col-lg-10">
-                  <select class="form-control" id="sfid" name="sfid" style="width: 150px;">
+                  <select class="form-control" id="sem" name="sem" style="width: 150px;">
 
                       <?php
                         require_once __DIR__ . '/db_connect.php';
@@ -81,7 +81,7 @@ header('Location: /bproject/index.html');
 
                        if ($db) 
                         {
-                          $sql = "SELECT `Staff_ID` FROM `staff` WHERE 1 ";
+                          $sql = "SELECT DISTINCT `Sem` FROM `approve_1` WHERE 1 ";
                           $result = mysql_query($sql);
                           $a=mysql_fetch_row($result);
                         	if ( $a != 0) 
@@ -89,8 +89,8 @@ header('Location: /bproject/index.html');
                         		// output data of each row
                         		while($row = mysql_fetch_array($result)) 
                             {
-                        			$sfid = $row["Staff_ID"];
-                        			echo "<option>$sfid</option>";
+                        			$sem = $row["Sem"];
+                        			echo "<option>$sem</option>";
                         		}
                         			
                         	} 
@@ -128,7 +128,7 @@ header('Location: /bproject/index.html');
 <hr>
   <ul class="breadcrumb" id="footer" style="background-color:#202020">
   <li><a href="admin_management.php">Home</a></li>
-  <li class="active">Select Staff</li>
+  <li class="active">Select Semester</li>
 </ul>
 </div>
 </div>

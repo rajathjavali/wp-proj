@@ -18,7 +18,7 @@
 	 if($res)
 	 {
 	        echo "Inserted Successfully";
-	        //echo "<form action=add_syllabus.php><input type=submit value=DONE name=sub></form>";
+	       
 	        	 }
 		 else{
 			   // failed to insert row

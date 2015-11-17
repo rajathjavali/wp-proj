@@ -69,7 +69,7 @@ $usn=NULL;
 <div class="container" style="background-color:#9DBCBC">
 <center>
 <?php 
-$sfid=$_POST['sfid'];
+$sem=$_POST['sem'];
  
    require_once __DIR__ . '/db_connect.php';
     
@@ -77,10 +77,10 @@ $sfid=$_POST['sfid'];
     if($db){
         
  
-$sql1 = "SELECT `USN`,`registered` FROM `approve_1` WHERE `Staff_ID`= '".$sfid."'";
+$sql1 = "SELECT `USN`,`registered` FROM `approve_1` WHERE `Sem`= '".$sem."'";
 $result1=mysql_query($sql1);
 if ($result1) {
-   echo "<h3>Councillor Id: ".$sfid."</h3>";
+   echo "<h3>Semester: ".$sem."</h3>";
   echo "<br>";
   
 

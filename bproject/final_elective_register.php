@@ -27,9 +27,9 @@ require_once __DIR__ . '/db_connect.php';
 	 if($db){
 	 	 
 	 	 //$sql= "insert into syllabus(S_Code,Name,Host_Dpt,Credits,S_type,sem) values('".$scode."','".$sname."','".$hdep."','".$credit."','".$stype."','".$sem."')";
-	 	$sql = "INSERT INTO `selects`(`USN`, `ccode`,'sem','acy') VALUES ('".$usn."','".$ele1."','".$sem."','".$acy."')";
+	 	$sql = "INSERT INTO studcourse(`USN`, `ccode`,'sem','acy') VALUES ('".$usn."','".$ele1."','".$sem."','".$acy."')";
 		$res=mysql_query($sql);
-		$sql1 = "INSERT INTO `selects`(`USN`, `ccode`,'sem','acy') VALUES ('".$usn."','".$ele2."','".$sem."','".$acy."')";
+		$sql1 = "INSERT INTO studcourse(`USN`, `ccode`,'sem','acy') VALUES ('".$usn."','".$ele2."','".$sem."','".$acy."')";
 		$res1=mysql_query($sql1);
 		 
 	 if($res&&$res1)
@@ -60,3 +60,5 @@ require_once __DIR__ . '/db_connect.php';
 }
 
 ?>
+
+

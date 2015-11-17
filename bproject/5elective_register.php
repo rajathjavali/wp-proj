@@ -15,7 +15,7 @@ header('Location: /bproject/index.html');
  $scode=$sname=$credit=$sem=$scode=$stype=$t=null;
   $usn=$_SESSION['usn'];
   $acy=$_POST['acy'];
-  $section=$_POST['section'];
+  //$section=$_POST['section'];
    
 if($_SERVER["REQUEST_METHOD"] == "POST")
  {
@@ -107,7 +107,7 @@ $ta2=$ta[1];
 $ta3=$ta[2];
 $ta4=$ta[3];
 $ta5=$ta[4];
-$ta6=$ta[5];
+//$ta6=$ta[5];
 
 ?>
 
@@ -154,7 +154,7 @@ $ta6=$ta[5];
   $tb3=$tb[2];
   $tb4=$tb[3];
   $tb5=$tb[4];
-  $tb6=$tb[5];
+ // $tb6=$tb[5];
 ?>
 
 <br><h4>Select one of subject from <i>Group <?php echo $type1;?></i>  </h4> <br></br> <fieldset style="width:350px" ><ol>
@@ -177,7 +177,8 @@ print "<br />";
 $i=0;
 
 echo " ";
-				echo "<input type=hidden name=sem value=$sem>";
+				echo "<input type=hidden name=sem value=<?php echo $sem; ?>";
+        echo "<input type=hidden name=acy value=<?php echo $acy; ?>";
 				echo "<br><br><input type=submit name=submit value=Register>";
 				echo "</form>";
 else{
@@ -186,8 +187,12 @@ else{
 
 //echo "<form method=post action=course_register.php><input type=submit name=submit2 value=Register></form>";		
 
-echo "<form method=post action=retrieve_elective.php><input type=submit name=submit2 value=Done></form>";		
+//echo "<form method=post action=retrieve_elective.php><input type=submit name=submit2 value=Done></form>";		
 
+
+                    
+           echo "<script>window.location = '../bproject/management.php';</script>";
+       
 
 }
 			
