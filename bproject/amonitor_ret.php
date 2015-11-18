@@ -1,6 +1,3 @@
- <?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
-
 <?php
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
@@ -9,7 +6,8 @@ header('Location: ../bproject/index.html');
 }
 $usn=NULL;
 ?>
-
+ <?php include ('header.php'); ?>
+<?php include ('navbar.php'); ?>
  
 <!DOCTYPE html>
 <html>
@@ -164,7 +162,7 @@ $rr=$rr+1;
  <div id="footer">
     <ul class="breadcrumb" style="background-color: #202020;">
   <li><a href="admin_management.php">Home</a></li>
-   <li><a href="amonitor.php">Select Staff</a></li>
+   <li><a href="amonitor.php">Select semester</a></li>
   <li class="active">Registration</li>
 </ul>
   </fieldset>

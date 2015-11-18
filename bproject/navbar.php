@@ -39,14 +39,30 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registration <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="amonitor.php">View Student Registration</a></li>
-                    <li><a href="add_syllabus.php">Add Subject Details</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="aform_teach.php">Add Staff Member</a></li>
                     <li><a href="asretrieve.php">View and edit student details</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="add_syllabus.php">Add Subject Details</a></li>
                     <li><a href="asretrive_syllabus.php">View core subject list</a></li>
-                    <li><a href="asretrieve_elective.php">View elective subject list</a></li>                                       
+                    <li><a href="asretrieve_elective.php">View elective subject list</a></li>       
+                    <li role="separator" class="divider"></li>
+                    <li><a href="aform_teach.php">Add Staff Member</a></li>                               
                   </ul>
                 </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Attendance <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="subject_students_attendance.php">View attendance</a></li>
+                    <li><a href="#">Upload attendance</a></li>                             
+                  </ul>
+                </li>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Marks <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="subject_students_marks.php">View marks</a></li>
+                    <li><a href="#">Upload marks</a></li>                             
+                  </ul>
+                </li>
+
                 <li><a href="logout.php">Logout</a></li>
               </ul>
             </div>

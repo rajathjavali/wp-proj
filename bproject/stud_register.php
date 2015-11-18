@@ -1,24 +1,13 @@
-<?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
-
-<?php
-session_start();
-// Check, if username session is NOT set then this page will jump to login page
-if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /bproject/index.html');
-}
-?>
-
 <?php
  
 
  
     //$name = $_POST['name'];
-    $usn = $_SESSION['usn'];
+    $usn = $_POST['usn1'];
  	//$phno = $_POST['phno'];
  	//$email = $_POST['email'];
- 	$sem=$_POST['sem'];
- 	$sgpa=$_POST['sgpa'];
+ 	$sem=$_POST['sem1'];
+ 	$sgpa=$_POST['sgpa1'];
 
  	$err="";
 
@@ -70,31 +59,18 @@ header('Location: /bproject/index.html');
 	    {
 			if($res3){
 	        // successfully inserted into database
-	        $response = "Inserted Successfully<br>"; 
-	        echo $response;
-	        echo "<form action=form_stud.php><input type=submit value=DONE name=sub></form>";
+	        echo "Inserted Successfully"; 
 	        //header("Location:http://localhost/project/form.php");
 	    	}
 	    } 
 	    else 
 	    {
 	        // failed to insert row
-	        $response = "<script type='text/javascript'>alert('Entry unSuccessful')</script>";
-	 		echo $err;
-	        echo "Insertion Problem";
+	        echo "You have already registered for this sem";
 	        if(!$res3){
-	        	echo "update error";
+	        	echo "You have already registered for this sem";
 	        }
 	     }
-	
-?>
-	         <ul class="breadcrumb">
-  <li><a href="management.php">Home</a></li>
-  <li class="active">Registration</li>
-</ul>
-
-<?php
-
 	    }
  	
 

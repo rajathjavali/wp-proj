@@ -1,0 +1,28 @@
+                      <php 
+                        require_once __DIR__ . '/db_connect.php';
+                        $db = new DB_CONNECT();
+                        if($db)
+                        {
+                      ?>
+                        <script type="text/javascript">
+                            function change(){
+                             document.getElementById("reg").style.display = "none";}
+                        </script>
+
+              
+                         <?php 
+                       
+                         $today= Date("Y-m-d H:i:s");
+                         $qry="SELECT RegDeadline FROM admin where username='root'";
+                         $res=mysql_query($qry);
+                          $row = mysql_fetch_row($res);
+                          $Dealine= $row[0];
+                        
+                              
+                             //if(strtotime($today)<strtotime($Dealine)) {?>
+                                  <li><a id="reg" href="form_stud.php">Register for current semester</a></li>
+                            <?php
+                        }
+                       }
+                      ?>
+                      

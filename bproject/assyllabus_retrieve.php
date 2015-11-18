@@ -1,13 +1,13 @@
- <?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
- 
- <?php
+<?php
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
 header('Location: /bproject/index.html');
 }
 ?>
+ <?php include ('header.php'); ?>
+<?php include ('navbar.php'); ?>
+ 
 <!DOCTYPE html>
 <html>
 <head>

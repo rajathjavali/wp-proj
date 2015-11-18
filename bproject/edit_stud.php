@@ -118,7 +118,7 @@ header('Location: /bproject/index.html');
 			var phone = $("#phone").val();
 			// Returns successful data submission message when the entered information is stored in database.
 			var dataString = '&usn=' + usn+ '&fname1='+ fname + '&mname1='+ mname + '&lname1='+ lname + '&email1='+ email + '&phone1='+ phone;
-			if(fname==''||mname==''||lname==''||email==''||phone=='')
+			if(fname==''||email==''||phone=='')
 			{
 			alert("Please Fill All Fields");
 			}
