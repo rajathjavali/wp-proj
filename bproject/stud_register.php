@@ -8,7 +8,8 @@
  	//$email = $_POST['email'];
  	$sem=$_POST['sem1'];
  	$sgpa=$_POST['sgpa1'];
-
+ 	$acy=$_POST['acy1'];
+ 	$staff_ID=$_POST['staff_ID1'];
  	$err="";
 
  	/*if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
@@ -43,7 +44,7 @@
  			//This is to update the profile
 	    /*$sql = "insert into student(USN,Name,Phone_NO,Email_ID) values('".$usn."','".$name."' ,'".$phno."','".$email."')";
     	$res = mysql_query($sql); */
-    	$sql1 = "INSERT INTO `approve_1` (`USN`, `Sem`,`sgpa`) VALUES ('".$usn."', '".$sem."','".$sgpa."')";
+    	$sql1 = "INSERT INTO `approve_1` (`USN`, `Sem`,`sgpa`,`acy`,`staff_ID`) VALUES ('".$usn."', '".$sem."','".$sgpa."','".$acy."','".$staff_ID."')";
     	$res2 = mysql_query($sql1);
     	$sql2= "UPDATE `approve_1` SET `registered`='".$one."' WHERE `USN`='".$usn."'";
 	    $res3=mysql_query($sql2);

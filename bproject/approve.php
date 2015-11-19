@@ -1,55 +1,30 @@
-<?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
- <?php
-session_start();
-// Check, if username session is NOT set then this page will jump to login page
-if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /bproject/index.html');
-}
-?>
-
-
 <?php 
-
- 
-
-
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-	 $usni=$_POST['usn'];
-	 $ssid=$_SESSION['usn'];
-	 $one=1;
-
-	// echo $usn."<>".$ssid;
-
+	 $usn=$_POST['usn1'];
+	 $sem=$_POST['sem1'];
+	 $acy= date("Y");
+	echo $usn;
+	echo $sem;
+	echo $acy;
 	 require_once __DIR__ . '/db_connect.php';
 	 
 	    // connecting to db
 	    $db = new DB_CONNECT();
 	 	if($db)
 	 	{
-	 		$sql = "INSERT INTO `approve_1` (`Staff_ID`, `approve`) VALUES ('".$ssid."','".$one."')";
+	 		$sql = "UPDATE `approve_1` SET `approve`='1' WHERE USN='".$usn."' and Sem='".$sem."' and acy='".$acy."'";
 	 		$res = mysql_query($sql);
 	 		if($res){
-	 			echo "successfully approved<br></br>";
+	 			echo "successfully approved";
 	 		}
 	 		else{
 	 			echo "error in approving";
 	 		}
 	 	}
-
-
-
-
-
-
-
-}
-else{
+		}
+		else{
 	echo "problem";
-}
-
-
-echo "<form method=post action=sretrieve.php><input type=submit name=submit2 value=Done></form>";
+		}
 
 
  ?>

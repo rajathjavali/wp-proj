@@ -126,6 +126,23 @@ require_once __DIR__ . '/db_connect.php';
         
       </div>
     </div>
+     <div class="form-group">
+      <label for="select" class="col-lg-2 control-label">Semester</label>
+      <div class="col-lg-10">
+        <select class="form-control" id="staff_ID" required name="staff_ID" value="<?php echo $staff_ID;?>" style="width: 75px;">
+        <?php
+          $qry2="SELECT Shortname from staff WHERE 1";
+          $res2=mysql_query($qry2);
+
+          $num=mysql_num_rows($res2);
+          while($row3=mysql_fetch_row($res2))
+            echo '<option>'.$row3[0].'</option>';
+           
+        ?>
+    </select>
+    <br>
+    </div>
+    </div>
 
      <div class="form-group">
       <label for="textArea" class="col-lg-2 control-label" >SGPA</label>
@@ -161,9 +178,11 @@ require_once __DIR__ . '/db_connect.php';
       var usn = $("#usn").val();
       var sem = $("#sem").val();
       var sgpa = $("#sgpa").val();
+      var acy = new Date().getFullYear();
+      var staff_ID= $("#staff_ID").val();
       // Returns successful data submission message when the entered information is stored in database.
-      var dataString = '&usn1=' + usn + '&sem1='+ sem + '&sgpa1='+ sgpa;
-      if(usn==''||sem==''||sgpa=='')
+      var dataString = '&usn1=' + usn + '&sem1='+ sem + '&sgpa1='+ sgpa + '&acy1=' + acy + '&staff_ID1=' + staff_ID ;
+      if(usn==''||sem==''||sgpa==''||staff_ID=='')
       {
       alert("Please Fill All Fields");
       }
