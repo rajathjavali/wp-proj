@@ -6,7 +6,7 @@
 </head>
 </head>
 <body>
-<h1>Retrieve Attendance</h1>
+<h1>Attendance Uploader</h1>
 	<form method="post" action="excel_attendance_uploader.php">
 		<div>
 			Semester:

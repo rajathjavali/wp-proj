@@ -52,14 +52,14 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Attendance <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="subject_students_attendance.php">View attendance</a></li>
-                    <li><a href="#">Upload attendance</a></li>                             
+                    <li><a href="excel uploader/attendance_uploader.php">Upload attendance</a></li>                             
                   </ul>
                 </li>
                <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Marks <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="subject_students_marks.php">View marks</a></li>
-                    <li><a href="#">Upload marks</a></li>                             
+                    <li><a href="excel uploader/marks_uploader.php">Upload marks</a></li>                             
                   </ul>
                 </li>
 
