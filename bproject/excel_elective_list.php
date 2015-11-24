@@ -1,6 +1,6 @@
 <?php
 
-$con=mysqli_connect('localhost','root','','bproject');
+$con=mysqli_connect('localhost','root','root','bproject');
 
 if (mysqli_connect_errno()) { 
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -38,7 +38,7 @@ while( $row = mysqli_fetch_row( $export ) )
         }
         $line .= $value;
     }
-    $data .= trim( $line ) . "\n";
+    $data .=  $line  . "\n";
 }
 $data = str_replace( "\r" , "" , $data );
 

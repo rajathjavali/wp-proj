@@ -1,5 +1,3 @@
-<?php include ('navbar.php'); ?>
-
 <?php
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
@@ -7,7 +5,7 @@ if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
 header('Location: ../bproject/index.html');
 }
 ?>
-
+<?php include ('navbar.php'); ?>
 
 <!DOCTYPE html>
   <head>
@@ -37,14 +35,34 @@ header('Location: ../bproject/index.html');
       <script src="jquery-1.9.1.min.js"></script>
 
       <style>
-        #topbar
+      .banner { background-color: #686868; }
+      #topbar
         {
           background-color: #686868;
-          padding-top: 70px;
-          padding-bottom: 20px;
-          position: relative;
-
+          padding-top: 80px;
+          padding-bottom: 40px;
         }
+      .wrapper { 
+        width: 30%;
+        margin: 0 auto; 
+      }
+      .banner p {
+        text-align: center;
+        margin-top: -10px;
+        display: block;
+      }
+      .banner img {
+        float: left; 
+        margin: 5px;
+      }
+      .banner span {
+        padding-top: 50px;
+        vertical-align:top;
+      }
+      .banner .ban2 span {
+        padding-top: 50px;
+      vertical-align:top;
+      }
         #slider .item img
         {
             display: block;
@@ -76,18 +94,17 @@ header('Location: ../bproject/index.html');
     <script src="js/owl.carousel.min.js"></script>
     <div id="page">
       <div id="maincontent">
-        <div id="topbar" style="color:#FFFFFF;">
-          <center>
-            <div style="position:relative;">
-              <p style="float: left; "><img src="images/logo1.gif" style="position:absolute; left:340px" height="70px" width="70px" border="1px"></p>
-            </div>
-            <p><h5>Rashtreeya Sikshana Samithi Trust</h5></p>
-            <p><h4><b>R V College of Engineering</b></h4></p>
-            <p><h6>Mysore Road, RV Vidyaniketan Post, Bagalore - 560 059</h6></p>
-          </center>
-        </div>   
+          <div class="banner" id="topbar" style="color:#FFFFFF;">
+            <div class="banner">
+                <div class="wrapper">
+            <p style="color: #fff;"><img src="images/logo1.gif" style="width:80px; height:80px"><span style=""><h5>Rashtreeya Sikshana Samithi Trust</h5></span>
+                     <span class="ban2"><h4><b>R V College of Engineering</b></h4></span>
+                     <span class="ban2"><h6>Mysore Road,RV Vidyaniketan Post,Bangalore-560 059</h6></span></p>        
+                </div>
+            </div> 
+          </div> 
 
-        <div id="owl-demo" style="padding-left: 30px; padding-right: 30px">
+        <div id="owl-demo" style="padding-left: 30px; padding-right: 30px; background-color:#FFFFFF">
 
           <div class="owl-item grayscale" style="width: 293px;">
           <img src="images/reg.png" alt="Owl Image">
@@ -143,17 +160,6 @@ header('Location: ../bproject/index.html');
         </script>
 
       </div>
-      <!--div id="menuleftcontent" class="container">
-        <ul id="menu" style="line-height:2%; " >
-         <li><h3><strong>Welcome <?php echo $_SESSION['usn']; ?></strong></h3></li><hr>
-         <li><a href="aform_teach.php"><h5> <p class="text-info">Add Staff Details</p> </h5></a></li><hr>
-         <li><a href="asretrieve.php"><h5> <p class="text-info"> Get Student Details </p> </h5></a></li><hr>
-         <li><a href="amonitor.php"><h5> <p class="text-info"> Monitor Registered Student </p> </h5></a></li><hr>
-         <li><a href="asretrive_syllabus.php"><h5> <p class="text-info"> Get core subject list  </p> </h5></a></li><hr>
-         <li><a href="sretrieve_elective.php"><h5> <p class="text-info"> Get elective subject list  </p> </h5></a></li><hr>
-         <li><a href="add_syllabus.php"><h5> <p class="text-info"> Add syllabus  </p> </h5></a></li><hr>
-        </ul>
-        </div-->
     </div>
     <script>
       $("#owl-example").owlCarousel();
@@ -167,19 +173,19 @@ header('Location: ../bproject/index.html');
           <img class="img-circle" src="images/r.png" alt="Generic placeholder image" width="140" height="140">
           <h2>Registration</h2>
           <p>Provides a hassle-free, fully automated, online registration process with efficient information storage for future use</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="amonitor.php" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="images/a.png" alt="Generic placeholder image" width="140" height="140">
           <h2>Attendance Management</h2>
           <p>Paper-free solution to maintaining attendance with a provision of updation and downloading data through excel spreadsheets</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="attendance_uploader.php" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="images/m.png" alt="Generic placeholder image" width="140" height="140">
           <h2>Marks Management</h2>
           <p>Aggregation of marks of students for the complete semester in one place to enable easy access when needed</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="marks_uploader.php" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div>
     </div>

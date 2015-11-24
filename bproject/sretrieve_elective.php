@@ -1,5 +1,3 @@
- <?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
 
 <?php
 session_start();
@@ -9,6 +7,8 @@ header('Location: /bproject/index.html');
 }
 $acy=null;
 ?>
+ <?php include ('header.php'); ?>
+<?php include ('navbar2.php'); ?>
 <html>
  <head>
       <link href="css/bootstrap.min.css" rel="stylesheet">

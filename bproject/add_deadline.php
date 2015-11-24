@@ -6,7 +6,7 @@
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /bproject/index.html');
+header('Location: ../bproject/index.html');
 }
 ?>
 
@@ -41,7 +41,7 @@ header('Location: /bproject/index.html');
 			else
 				echo "Unsuccesull";
 		*/
-		 header("Location: ../bproject/admin_management.php");
+		 echo "<script> window.location='../bproject/admin_management.php';</script>";
 	}
 	
 ?>

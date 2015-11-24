@@ -1,6 +1,6 @@
 <?php
 
-$con=mysqli_connect('localhost','root','','bproject');
+$con=mysqli_connect('localhost','root','root','bproject');
 
 if (mysqli_connect_errno()) { 
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -8,7 +8,7 @@ if (mysqli_connect_errno()) {
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 $sem=$_POST['sem'];
 echo $sem;
-$query = "SELECT * FROM syllabus WHERE S_type='course' and sem= '".$sem."'";
+$query = "SELECT * FROM syllabus WHERE S_type='core' and sem= '".$sem."'";
 $header = '';
 $data ='';
 

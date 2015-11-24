@@ -127,7 +127,7 @@ require_once __DIR__ . '/db_connect.php';
       </div>
     </div>
      <div class="form-group">
-      <label for="select" class="col-lg-2 control-label">Semester</label>
+      <label for="select" class="col-lg-2 control-label">Staff </label>
       <div class="col-lg-10">
         <select class="form-control" id="staff_ID" required name="staff_ID" value="<?php echo $staff_ID;?>" style="width: 75px;">
         <?php

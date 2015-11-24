@@ -1,7 +1,7 @@
 <?php
 	// Fetching Values From URL
 	
-	$connection = mysql_connect("localhost", "root", ""); // Establishing Connection with Server..
+	$connection = mysql_connect("localhost", "root", "root"); // Establishing Connection with Server..
 	$db = mysql_select_db("bproject", $connection); // Selecting Database
 	if (isset($_POST['sem1'])) {
 		$sem = $_POST['sem1'];
@@ -19,9 +19,10 @@
 		(Host_Dpt='".$dept."' or Host_Dpt='HSS') and acy='".$acy."' and S_type='".$course."'"); 
 		
 		$rows = mysql_num_rows($query);
-		$data="<select id='sub' required name='sub'>";
+		$data="<label >Subjects:</label><select id='sub' required name='sub'>";
 		if($query){
-			
+			$a=mysql_num_rows($query);
+			if($a>0){
 			while($res=mysql_fetch_array($query))
 			{
 				$res2 = "<option>".$res['Name']."</option>";
@@ -29,7 +30,9 @@
 			}
 			$data.="</select>";
 			$data.="<br/><br/>Students Data: <br/><button type=submit>Download Excel</button>
-			<br/><br/>";
+			<br/><br/>";}
+			else
+				$data  = 'no subjects registered';
 			echo $data;
 
 

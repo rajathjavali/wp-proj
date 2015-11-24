@@ -1,7 +1,3 @@
-<?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
-
-
 <?php
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
@@ -26,9 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		    // check if row inserted or not
 		    if ($res) 
 		    {
-				 echo "<script>alert('deleted');</script>";
-				 
-		echo '<script> window.location="../bproject/asretrieve.php" ;</script>';
+				 echo "Record successfully deleted";
 		    }
 		}
 	}

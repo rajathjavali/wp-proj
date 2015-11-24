@@ -2,13 +2,14 @@
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location:../bproject/index.html');
+header('Location: /bproject/index.html');
 }
 ?>
-<?php include ('header.php'); ?>
+ <?php include ('header.php'); ?>
 <?php include ('navbar2.php'); ?>
+
 <html>
-<head>
+ <head>
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <link href="css/carousel.css" rel="stylesheet">
       <script src="js/jquery-1.7.2.min.js"></script>
@@ -30,7 +31,7 @@ header('Location:../bproject/index.html');
           border-radius: 10px;
           position: relative;
           background-color: #9DBCBC;
-          width: 1200px;
+          width: 600px;
           margin: auto;
           padding-top: 20px;
           padding-bottom: 20px;
@@ -43,6 +44,7 @@ header('Location:../bproject/index.html');
           width: 100%;
         }
  </style>
+</head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <div id="page">
@@ -58,12 +60,11 @@ header('Location:../bproject/index.html');
           </center>
         </div>
         <hr>
-
         <div class="box"><center>
-	<h1>Retrieve Student Info</h1>
+  <h1>Retrieve Student Info</h1>
 
-	<form method="post" action="sstud_retrieve.php">
-		<!-- USN: <input type="text" name="usn"  required value="<?php //echo $usn;?>"> -->
+  <form method="post" action="sstud_retrieve1.php">
+    <!-- USN: <input type="text" name="usn"  required value="<?php //echo $usn;?>"> -->
 
 
 <!-- <select name="usn"> -->
@@ -71,42 +72,77 @@ header('Location:../bproject/index.html');
     <div class="form-group">
       <label for="select" class="col-lg-2 control-label"><h4>Select USN</h4></label>
       <div class="col-lg-10">
-        <select class="form-control" id="sem" name="sem" style="width: 150px;">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-    </select>
-    <br>
-    </div>
+        <select class="form-control" id="usnum" name="usnum" style="width: 150px;">
+
+
+
+<?php
+require_once __DIR__ . '/db_connect.php';
+ $db = new DB_CONNECT();
+
+ if ($db) {
+  # code...
+ 
+$sql = "SELECT USN FROM student where 1";
+      $result = mysql_query($sql);
+$a=mysql_fetch_row($result);
+
+      if ( $a != 0) {
+        // output data of each row
+        while($row = mysql_fetch_array($result)) {
+          $usnum = $row["USN"];
+          echo "<option>$usnum</option>";
+        }
+      
+      } else {
+        echo "0 results";
+      }
+
+}
+
+else{
+  echo "no connection";
+}
+?>
+
+ </select>
+        <br>
+        
+      </div>
     </div>
 
-	<br><br>
-		<!-- <input type="submit" name="submit" value="Find" > -->
-	<div class="form-group">
+
+
+
+</select>
+  <br><br>
+    <!-- <input type="submit" name="submit" value="Find" > -->
+  <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
         <button type="reset" class="btn btn-default">Cancel</button>
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
-
-</form><br/><br/>
-
-	<!-- </form>
-	<form action="management.php"><input type="submit" value="Home" name="sub"></form> -->
-
+</form>
+<br/><br/>
+<form method="post" action="excel_stud_retrieve.php">
+  <div class="form-group">
+      <label for="select" class="col-lg-2 control-label"><h4>All Students Details</h4></label>
+      <div class="col-lg-10">
+      <button type="submit" class="btn btn-primary">Download Excel</button>
+      </div>
+  </div>
+</form>
 <br/><br/><br/>
+  <!-- </form>
+  <form action="management.php"><input type="submit" value="Home" name="sub"></form> -->
 </center>
 </div>
-<ul class="breadcrumb" id="footer" style="background-color:#202020">
-  <li><a href="staff_management.php">Home</a></li>
-  <li class="active">Student information</li>
-</ul>
 </div>
+<ul class="breadcrumb" id="footer" style="background-color: #202020">
+  <li><a href="admin_management.php">Home</a></li>
+  <li class="active">View student information</li>
+</ul>
 </div>
 </body>
 </html>

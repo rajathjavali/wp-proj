@@ -1,5 +1,5 @@
 <?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
+<?php include ('navbar1.php'); ?>
  
  <?php
 session_start();
@@ -8,7 +8,6 @@ if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
 header('Location: ../bproject/index.html');
 }
 ?>
-<h1>Elective Subject Data data</h1>
 <?php
   
  
@@ -100,10 +99,59 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
 
 <!DOCTYPE html>
 <html>
- 
-<body>
-<div class="container">
+<head>
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/carousel.css" rel="stylesheet">
+      <script src="js/jquery-1.7.2.min.js"></script>
+      <script src="js/bootstrap.js"></script>
+      <script src="js/jquery.hoverdir.js"></script>
+      <script type="text/javascript" charset="utf-8" language="javascript" src="js/jquery.dataTables.js"></script>
+      <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
+      <script src="jquery-1.9.1.min.js"></script>
+      <style>
+        #topbar
+        {
+          background-color: #686868;
+          padding-top: 70px;
+          padding-bottom: 20px;
+          position: relative;
 
+        }
+        div.box{
+          border-radius: 10px;
+          position: relative;
+          background-color: #9DBCBC;
+          width: 1100px;
+          margin: auto;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          padding-right: 20px;
+          padding-left: 20px;
+        }  
+        #footer {
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+        }
+ </style>
+</head>
+<body>
+    <div id="page">
+      <div id="maincontent">
+        <div id="topbar" style="color:#FFFFFF;">
+          <center>
+          <div style="position:relative;">
+          <p style="float: left; "><img src="images/logo1.gif" style="position:absolute; left:340px" height="70px" width="70px" border="1px"></p>
+          </div>
+          <p><h5>Rashtreeya Sikshana Samithi Trust</h5></p>
+          <p><h4><b>R V College of Engineering</b></h4></p>
+          <p><h6>Mysore Road, RV Vidyaniketan Post, Bangalore - 560 059</h6></p>
+          </center>
+        </div>
+        <hr>
+
+        <div class="box"><center>
+<h1>Elective Subject Data data</h1>
 <h1>There are <?php echo $numrows; ?> entries in <i>Group <?php echo $type1."  "; ?></i> elective subject:<br /><br /></h1>
 
 <table class="table table-striped table-hover ">
@@ -232,22 +280,17 @@ if($ti[0]==$sem && strtotime($today)<strtotime($Dealine)){
 <?php } ?>
 
  <br></br>
-  
+</fieldset>
+</form>
+</center> 
+</div>
+</div>
+
     <ul class="breadcrumb">
   <li><a href="management.php">Home</a></li>
   <li class="active">Registration</li>
 </ul>
 
-
-
-
-
-
-  </fieldset>
-</form>  
 </div>
-
-    <div class="progress progress-striped active">
-  <div class="progress-bar progress-bar-danger" style="width: 100%"></div>
 </body>
 </html>

@@ -127,7 +127,6 @@ header('Location: ../bproject/index.html');
               <th><h2>Subject Name</h2></th>
               <th><h2>Credits</h2></th>
               <th><h2>Host Department</h2></th>
-              <th><h2>Register</h2></th>
             </tr>
           </thead>
           
@@ -144,7 +143,7 @@ header('Location: ../bproject/index.html');
               <td><h4><?php echo $rows["Name"] ?></h4></td>
               <td><h4><?php echo $rows["Credits"] ?></h4></td>
               <td><h4><?php echo $rows["Host_Dpt"] ?></h4></td>
-              <td><button class="btn btn-primary">Register</button></td>
+              
            </ol> </tr>
          <?php 
         $rr=$rr+1;
@@ -195,7 +194,7 @@ header('Location: ../bproject/index.html');
                 if($ti[0]==$sem && strtotime($today)<strtotime($Deadline)){
                   echo '
                     <button type="reset" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-primary" value="Register" >Register all</button>
+                    <button type="submit" class="btn btn-primary" value="Register" >Register</button>
                      <input type=hidden name=sem value= <?php echo $sem ?> 
                      <input type=hidden name=acy value =<?php echo $acy ?>';
               

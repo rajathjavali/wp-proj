@@ -84,7 +84,8 @@ if ($result1) {
 
 }
 else{
-  echo "try other way";
+  echo "<script>alert('No registered Students');</script>";
+  echo "<script>window.location='../bproject/staff_management.php';</script>";
 }
  
   }

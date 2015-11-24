@@ -1,12 +1,36 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
+header('Location:../bproject/index.html');
+}
+?> 
+
+
+
+ <?php include ('../header.php'); ?>
+<?php include ('../navbar2.php'); ?>
+
 <html>
 <head>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="excel_uploader_sublist.js"></script>
-</head>
-</head>
-<body>
-<h1>Attendance Uploader</h1>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <div id="page">
+      <div id="maincontent">
+        <div id="topbar" style="color:#FFFFFF;">
+          <center>
+          <div style="position:relative;">
+          <p style="float: left; "><img src="images/logo1.gif" style="position:absolute; left:340px" height="70px" width="70px" border="1px"></p>
+          </div>
+          <p><h5>Rashtreeya Sikshana Samithi Trust</h5></p>
+          <p><h4><b>R V College of Engineering</b></h4></p>
+          <p><h6>Mysore Road, RV Vidyaniketan Post, Bagalore - 560 059</h6></p>
+          </center>
+        </div>
+        <hr>
+
+        <div class="box"><center>
+<h1>Retrieve Attendance</h1>
+
 	<form method="post" action="excel_attendance_uploader.php">
 		<div>
 			Semester:
@@ -54,6 +78,11 @@
 		</div>
 		<input id="submit" onclick="retrieveSub()" type="button" value="Submit">
 	</form>
-	
+	</center>
+	</div>
+<ul class="breadcrumb" id="footer" style="background-color:#202020">
+  <li><a href="staff_management.php">Home</a></li>
+  <li class="active">Select sem and course</li>
+</ul>	
 </body>
 </html>
