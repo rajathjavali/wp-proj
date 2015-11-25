@@ -84,7 +84,7 @@ header('Location: ../bproject/index.html');
         <hr>
         <div class="box"><center>
 			<h1>Retrieve Attendance</h1><hr>
-				<form method="post" action="display_attendance.php">
+				<form method="post" action="display_attendance_staff.php">
 	          	<div class="form-group">
 	                <label for="textArea" class="col-lg-3 control-label" style="text-align:left">Semester</label>
 	                <div class="col-lg-9">

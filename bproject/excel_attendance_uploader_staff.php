@@ -128,7 +128,7 @@ echo '<h1>Attendance successfully updated</h1>';
 	</div>
 <ul class="breadcrumb" id="footer" style="background-color:#202020">
   <li><a href="staff_management.php">Home</a></li>
-  <li><a href="attendance_uploader.php">Select sem and course</a></li>
+  <li><a href="attendance_uploader_staff.php">Select sem and course</a></li>
   <li class="active">Status</li>
 </ul>	
 </body>

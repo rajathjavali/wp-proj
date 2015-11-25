@@ -1,6 +1,3 @@
-<?php include ('header.php'); ?>
-<?php include ('navbar1.php'); ?>
- 
 <?php
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
@@ -8,7 +5,9 @@ if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
 header('Location: ../bproject/index.html');
 }
 ?>
-
+<?php include ('header.php'); ?>
+<?php include ('navbar1.php'); ?>
+ 
 <!DOCTYPE html>
 <html>
  <head>
@@ -21,13 +20,33 @@ header('Location: ../bproject/index.html');
       <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
       <script src="jquery-1.9.1.min.js"></script>
       <style>
+        .banner { background-color: #686868; }
         #topbar
-        {
-          background-color: #686868;
-          padding-top: 70px;
-          padding-bottom: 20px;
-          position: relative;
-
+          {
+            background-color: #686868;
+            padding-top: 80px;
+            padding-bottom: 40px;
+          }
+        .wrapper { 
+          width: 30%;
+          margin: 0 auto; 
+        }
+        .banner p {
+          text-align: center;
+          margin-top: -10px;
+          display: block;
+        }
+        .banner img {
+          float: left; 
+          margin: 5px;
+        }
+        .banner span {
+          padding-top: 50px;
+          vertical-align:top;
+        }
+        .banner .ban2 span {
+          padding-top: 50px;
+        vertical-align:top;
         }
         div.box{
           border-radius: 10px;
@@ -50,29 +69,29 @@ header('Location: ../bproject/index.html');
 <body><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <div id="page">
       <div id="maincontent">
-        <div id="topbar" style="color:#FFFFFF;">
-          <center>
-          <div style="position:relative;">
-          <p style="float: left; "><img src="images/logo1.gif" style="position:absolute; left:340px" height="70px" width="70px" border="1px"></p>
-          </div>
-          <p><h5>Rashtreeya Sikshana Samithi Trust</h5></p>
-          <p><h4><b>R V College of Engineering</b></h4></p>
-          <p><h6>Mysore Road, RV Vidyaniketan Post, Bangalore - 560 059</h6></p>
-          </center>
-        </div>
+          <div class="banner" id="topbar" style="color:#FFFFFF;">
+            <div class="banner">
+                <div class="wrapper">
+            <p style="color: #fff;"><img src="images/logo1.gif" style="width:80px; height:80px"><span style=""><h5>Rashtreeya Sikshana Samithi Trust</h5></span>
+                     <span class="ban2"><h4><b>R V College of Engineering</b></h4></span>
+                     <span class="ban2"><h6>Mysore Road,RV Vidyaniketan Post,Bangalore-560 059</h6></span></p>        
+                </div>
+            </div> 
+          </div> 
         <hr>
 
         <div class="box"><center>
          <?php
           
         echo "<h1>Syllabus data</h1>";
-         $scode=$sname=$credit=$sem=$scode=$stype=$t=$result=null;
+         $scode=$sname=$credit=$sem=$scode=$stype=$t=$result=$host_dpt=null;
          $usn=$_SESSION['usn'];
          if($_SERVER["REQUEST_METHOD"] == "POST"){
         	 
         	  $sem=$_POST['sem'];
             $acy=$_POST['acy'];
-        	  require_once __DIR__ . '/db_connect.php';
+            $host_dpt=$_POST['host_dpt'];
+            require_once __DIR__ . '/db_connect.php';
         	  $numrows=NULL;
         	  //$ac='HSS';
         	  // connecting to db
@@ -92,7 +111,7 @@ header('Location: ../bproject/index.html');
              			 $ii=$ii+1;	}
            		}
            	}
-         		$sql = "SELECT * FROM syllabus WHERE S_type='core' and sem= '".$sem."' and acy ='".$acy."'";
+         		$sql = "SELECT * FROM syllabus WHERE S_type='core' and sem= '".$sem."' and acy ='".$acy."' and Host_Dpt='".$host_dpt."'";
          		$result=mysql_query($sql);
          		$numrows=null;
         		
@@ -156,32 +175,14 @@ header('Location: ../bproject/index.html');
         <?php if( $ti[0]==$sem ){ ?>
 
 
-        <?php 
-
-        switch ($sem) {
-        	case '3':
-        		$abc = '3course_register.php';
-        		break;
-        	case '4':
-        		$abc = '4course_register.php';
-        		break;
-        	case '5':
-        		$abc = '5course_register.php';
-        		break;
-        	
-        	 case '6':
-        	 	$abc = '6course_register.php';
-        	 	break;
-        }
-
-         ?>
+        
 
 
 
 
 
 
-        <form method="post" action="<?php echo $abc ?>"> 
+        <form method="post" action='core_course_register.php'> 
         				 <!-- <input type=hidden name=sem value= <?php //echo $sem ?>>  -->
           <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
@@ -192,16 +193,17 @@ header('Location: ../bproject/index.html');
                 $row = mysql_fetch_row($res);
                 $Deadline= $row[0];
                 if($ti[0]==$sem && strtotime($today)<strtotime($Deadline)){
-                  echo '
+                ?>
                     <button type="reset" class="btn btn-default">Cancel</button>
                     <button type="submit" class="btn btn-primary" value="Register" >Register</button>
-                     <input type=hidden name=sem value= <?php echo $sem ?> 
-                     <input type=hidden name=acy value =<?php echo $acy ?>';
-              
+                     <input type="hidden" name="sem" value= "<?php echo $sem ?>" >
+                     <input type="hidden" name="acy" value ="<?php echo $acy ?> ">
+                     <input type="hidden" name="host_dpt" value ="<?php echo $host_dpt ?> ">
+
             
-               echo '</div>
-                      </div>';
-                    }
+               </div>
+                      </div>
+                  <?php  }
 
            else { echo "<script>alert('Registration is closed now');</script>";
                 //header('Location:/bproject/management.php');
@@ -222,10 +224,11 @@ header('Location: ../bproject/index.html');
       </center>
     </div> 
 
-   <ul class="breadcrumb">
-    <li><a href="management.php">Home</a></li>
-    <li class="active">Core Subject list</li>
-  </ul>
+    <ul class="breadcrumb" id="footer" style="background-color:#202020">
+      <li><a href="management.php">Home</a></li>
+      <li><a href="retrive_syllabus.php">Semester and Dept</a></li>
+      <li class="active">Core subject details</li>
+    </ul>
 </div>
 </body>
 </html>

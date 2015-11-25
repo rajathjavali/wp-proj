@@ -2,17 +2,16 @@
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /bproject/index.html');
+header('Location: ../bproject/index.html');
 }
 ?>
- <?php include ('header.php'); ?>
+<?php include ('header.php'); ?>
 <?php include ('navbar1.php'); ?>
 
-<?php
-$acy=NULL;
-?>
+ 
+<!DOCTYPE html>
 <html>
-<head>
+ <head>
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <link href="css/carousel.css" rel="stylesheet">
       <script src="js/jquery-1.7.2.min.js"></script>
@@ -54,7 +53,7 @@ $acy=NULL;
           border-radius: 10px;
           position: relative;
           background-color: #9DBCBC;
-          width: 600px;
+          width: 1100px;
           margin: auto;
           padding-top: 20px;
           padding-bottom: 20px;
@@ -68,8 +67,7 @@ $acy=NULL;
         }
  </style>
 </head>
-<body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<body><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <div id="page">
       <div id="maincontent">
           <div class="banner" id="topbar" style="color:#FFFFFF;">
@@ -82,40 +80,86 @@ $acy=NULL;
             </div> 
           </div> 
         <hr>
-    <div class="box"><center>
-     <div class="form-group">
-      <label for="select" class="col-lg-3 control-label" align="left">Semester</label>
-      <div class="col-lg-9">
-        <select class="form-control" id="sem" required name="sem" value="<?php echo $sem;?>" style="width: 210px;">
-           <option>5</option>
-           <option>6</option>
-            <option>7</option> 
-        </select>
-        <br>
-        <label for="textArea" class="col-lg-3 control-label" align="left">Academic Year</label>
-        <div class="col-lg-10">
-          <input type="text" class="form-control" id="acy" placeholder="2015" name="acy" 
-          required value="<?php echo $acy;?>" style="width: 210px;">
-      </div>
-    </div>
 
-     
+        <div class="box"><center>
 
-    <div class="form-group">
-      <div class="col-lg-8 col-lg-offset-2">
-        <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-    </div>
-    </center>
-    </div>
-    </div>
-    <ul class="breadcrumb" id="footer" style="background-color:#202020">
-  <li><a href="management.php">Home</a></li>
-  <li class="active">Elective subject details</li>
-</ul>
+
+ <?php
+  
+
+ $scode=$sname=$credit=$scode=$stype=$t=$numrows=null;
+ if($_SERVER["REQUEST_METHOD"] == "POST"){
+	 
+	 $sem=$_POST['sem'];
+   $acy=$_POST['acy'];
+   $host_dpt=$_POST['host_dpt'];
+    //echo $sem;
+    //echo $acy;
+   //$section=$_POST['section'];
+  
+	 require_once __DIR__ . '/db_connect.php';
+	  
+	    $db = new DB_CONNECT();
+	 	if($db){
+
+
+ 		$sql = "SELECT S_Code FROM syllabus WHERE S_type='core' and sem= '".$sem."' and Host_Dpt='".$host_dpt."'";
+   // echo $sql;
+    $result=mysql_query($sql);
+		    $usn=   $_SESSION['usn'];
+        $query="INSERT INTO studcourse(`USN`, `ccode`,`acy`,`sem`) VALUES " ;
+ 	 if ($result && mysql_num_rows($result)) 
+ 	 {
+    	
+
+    	    $numrows = mysql_num_rows($result);
+           	$t=array($numrows);
+    		$i=0;
+        	while ($row = mysql_fetch_assoc($result)) 
+        	{    $query .="(";
+            	$t[$i]=$row['S_Code'];
+     			    $i=$i+1;
+              $query .= "'".$usn."','".$row['S_Code']."','".$acy."','".$sem."' )";
+              if($i< $numrows)
+                 $query.=",";
+      		}
+         
+      }     
+
+echo "<br></br>";
+ //echo $query;
+
+      //echo $numrows;
+     //to check wether there are actual number of subject entered in syllabus table
+       $result1=mysql_query($query);
+
+                if($result1){ ?>
+
+                    <script type="text/javascript">
+                    alert("Successfully Registered");
+                    window.location="../bproject/management.php";
+                    </script>
+                <?php    
+                }
+
+                else {
+                    echo "<h1>You have already registered for following subject</h1>";
+                }
+
+
+   
+}
+//echo "<form method=post action=management.php><input type=submit name=submit value=Home></form>";
+ }
+?>
+</center>
+</div>
+</div>
+   <ul class="breadcrumb" id="footer" style="background-color:#202020">
+    <li><a href="management.php">Home</a></li>
+    <li><a href="retrive_syllabus.php">Core subject list</a></li>    
+    <li class="active">Core Subject Registration</li>
+  </ul>
 </div>
 </body>
 </html>
-

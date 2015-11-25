@@ -7,8 +7,9 @@ header('Location: ../bproject/index.html');
 ?>
 
 <?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
+<?php include ('navbar1.php'); ?>
  
+<!DOCTYPE html>
 <html>
 <head>
       <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -64,8 +65,8 @@ header('Location: ../bproject/index.html');
         </div>
         <hr>
         <div class="box"><center>
-			<h1>Retrieve Attendance</h1><hr>
-				<form method="post" action="excel_students_sub_attendance.php">
+			<h1>Retreive Marks</h1><br>
+				<form method="post" action="excel_studmarks.php">
 					<div>
 						Semester:
 						<select id="sem" required name="sem">
@@ -114,13 +115,13 @@ header('Location: ../bproject/index.html');
 				</form>
 			</center>
 		</div>
-			<hr>
+				<hr>
 			  <ul class="breadcrumb" id="footer" style="background-color:#202020">
 			  <li><a href="admin_management.php">Home</a></li>
 			  <li class="active">Select Semester</li>
 			</ul>
 		</div>
-		</div>
+	</div>
 	
 </body>
 </html>

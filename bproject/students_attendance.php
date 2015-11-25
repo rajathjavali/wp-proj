@@ -7,9 +7,8 @@ header('Location: ../bproject/index.html');
 ?>
 
 <?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
+<?php include ('navbar1.php'); ?>
  
-<!DOCTYPE html>
 <html>
 <head>
       <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -65,10 +64,10 @@ header('Location: ../bproject/index.html');
         </div>
         <hr>
         <div class="box"><center>
-			<h1>Retreive Marks</h1><br>
-				<form method="post" action="excel_students_sub_marks.php">
-					<div>
-						Semester:
+			<h1>Retrieve Attendance</h1><hr>
+				<form method="post" action="display_attendance_stud.php">
+				    <label for="select" class="col-lg-3 control-label" align="left">Semester</label>
+				    <div class="col-lg-9">
 						<select id="sem" required name="sem">
 							<option>1</option>
 							<option>2</option>
@@ -79,11 +78,10 @@ header('Location: ../bproject/index.html');
 							<option>7</option>
 							<option>8</option>
 						</select> 
-						
 					</div>
 					<br/><br/>
-					<div>
-						Department:
+				    <label for="select" class="col-lg-3 control-label" align="left">Department</label>
+				    <div class="col-lg-9">
 						<select id="dept" required name="dept">
 							<option>ECE</option>
 							<option>CSE</option>
@@ -94,8 +92,8 @@ header('Location: ../bproject/index.html');
 						</select>
 					</div>
 					<br/><br/>
-					<div>
-						Course Type:
+				    <label for="select" class="col-lg-3 control-label" align="left">Course type</label>
+				    <div class="col-lg-9">
 						<select id="course" required name="course">
 							<option>CORE</option>
 							<option>LOCAL ELECTIVE</option>
@@ -103,8 +101,8 @@ header('Location: ../bproject/index.html');
 						</select>
 					</div>
 					<br/><br/>
-					<div>
-						Academic Year:
+				    <label for="select" class="col-lg-3 control-label" align="left">Academic year</label>
+				    <div class="col-lg-9">
 						<input type="number" name="acy" id="acy" min="2013" max="2025" value="2014">
 					</div>
 					<br/><br/>
@@ -115,13 +113,13 @@ header('Location: ../bproject/index.html');
 				</form>
 			</center>
 		</div>
-				<hr>
+			<hr>
 			  <ul class="breadcrumb" id="footer" style="background-color:#202020">
 			  <li><a href="admin_management.php">Home</a></li>
 			  <li class="active">Select Semester</li>
 			</ul>
 		</div>
-	</div>
+		</div>
 	
 </body>
 </html>

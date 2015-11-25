@@ -85,7 +85,7 @@ header('Location: ../bproject/index.html');
         <hr>
         <div class="box"><center>
 			<h1>Retreive Marks</h1><br>
-				<form method="post" action="display_marks.php">
+				<form method="post" action="display_marks_staff.php">
 	          	<div class="form-group">
 	                <label for="textArea" class="col-lg-3 control-label" style="text-align:left">Semester</label>
 	                <div class="col-lg-9">

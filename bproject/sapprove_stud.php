@@ -18,13 +18,33 @@ header('Location:../bproject/index.html');
       <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
       <script src="jquery-1.9.1.min.js"></script>
       <style>
+        .banner { background-color: #686868; }
         #topbar
-        {
-          background-color: #686868;
-          padding-top: 70px;
-          padding-bottom: 20px;
-          position: relative;
-
+          {
+            background-color: #686868;
+            padding-top: 80px;
+            padding-bottom: 40px;
+          }
+        .wrapper { 
+          width: 30%;
+          margin: 0 auto; 
+        }
+        .banner p {
+          text-align: center;
+          margin-top: -10px;
+          display: block;
+        }
+        .banner img {
+          float: left; 
+          margin: 5px;
+        }
+        .banner span {
+          padding-top: 50px;
+          vertical-align:top;
+        }
+        .banner .ban2 span {
+          padding-top: 50px;
+        vertical-align:top;
         }
         div.box{
           border-radius: 10px;
@@ -47,31 +67,30 @@ header('Location:../bproject/index.html');
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <div id="page">
       <div id="maincontent">
-        <div id="topbar" style="color:#FFFFFF;">
-          <center>
-          <div style="position:relative;">
-          <p style="float: left; "><img src="images/logo1.gif" style="position:absolute; left:340px" height="70px" width="70px" border="1px"></p>
-          </div>
-          <p><h5>Rashtreeya Sikshana Samithi Trust</h5></p>
-          <p><h4><b>R V College of Engineering</b></h4></p>
-          <p><h6>Mysore Road, RV Vidyaniketan Post, Bagalore - 560 059</h6></p>
-          </center>
-        </div>
+          <div class="banner" id="topbar" style="color:#FFFFFF;">
+            <div class="banner">
+                <div class="wrapper">
+            <p style="color: #fff;"><img src="images/logo1.gif" style="width:80px; height:80px"><span style=""><h5>Rashtreeya Sikshana Samithi Trust</h5></span>
+                     <span class="ban2"><h4><b>R V College of Engineering</b></h4></span>
+                     <span class="ban2"><h6>Mysore Road,RV Vidyaniketan Post,Bangalore-560 059</h6></span></p>        
+                </div>
+            </div> 
+          </div> 
         <hr>
 
         <div class="box"><center>
   <h1>Retrieve Student Info</h1>
 
-  <form method="post" action="sstud_retrieve.php">
+  <form method="post" action="sstud_ret_reg.php">
     <!-- USN: <input type="text" name="usn"  required value="<?php //echo $usn;?>"> -->
 
 
 <!-- <select name="usn"> -->
  
     <div class="form-group">
-      <label for="select" class="col-lg-2 control-label"><h4>Select Sem</h4></label>
-      <div class="col-lg-10">
-        <select class="form-control" id="sem" name="sem" style="width: 150px;">
+      <label for="select" class="col-lg-3 control-label"><h4>Select Sem</h4></label>
+      <div class="col-lg-9">
+        <select class="form-control" id="sem" name="sem" style="width: 210px;">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -104,7 +123,7 @@ header('Location:../bproject/index.html');
 </div>
 <ul class="breadcrumb" id="footer" style="background-color:#202020">
   <li><a href="staff_management.php">Home</a></li>
-  <li class="active">Student information</li>
+  <li class="active">Select semester</li>
 </ul>
 </div>
 </div>

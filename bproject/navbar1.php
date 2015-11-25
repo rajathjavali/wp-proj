@@ -65,13 +65,13 @@
                       <li><a id="reg" href="form_stud.php">Register for current semester</a></li>
                     <li role="separator" class="divider"></li>
                      <li><a href="view_teachers.php">View staff details</a></li>
-                     <li><a href="retrive_syllabus.php">View core subject list</a></li>
+                     <li><a href="retrive_syllabus.php">Register for subject</a></li>
                      <li><a id="ele" href="retrieve_elective.php">View elective subject list</a></li>
-                     <li><a href="registered_subject.php">View registred core subject list</a></li>
-                     <li><a href="registered_elective.php">View registered elective subject list</a></li>
-                                                  
+                     <li><a href="registered_subject.php">View registered subject list</a></li>                                        
                   </ul>
                 </li>
+                <li><a href="students_attendance.php">View Attendance</a></li>
+                <li><a href="students_marks.php">View Marks</a></li>
                 <li><a href="logout.php">Logout</a></li>
               </ul>
             </div>

@@ -1,16 +1,15 @@
-<?php
+ <?php
 session_start();
-// Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /bproject/index.html');
+header('Location:../bproject/index.html');
 }
-?>
- <?php include ('header.php'); ?>
-<?php include ('navbar1.php'); ?>
+?> 
 
-<?php
-$acy=NULL;
-?>
+
+
+ <?php include ('header.php'); ?>
+<?php include ('navbar2.php'); ?>
+
 <html>
 <head>
       <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +53,7 @@ $acy=NULL;
           border-radius: 10px;
           position: relative;
           background-color: #9DBCBC;
-          width: 600px;
+          width: 500px;
           margin: auto;
           padding-top: 20px;
           padding-bottom: 20px;
@@ -67,7 +66,6 @@ $acy=NULL;
           width: 100%;
         }
  </style>
-</head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <div id="page">
@@ -82,40 +80,95 @@ $acy=NULL;
             </div> 
           </div> 
         <hr>
-    <div class="box"><center>
-     <div class="form-group">
-      <label for="select" class="col-lg-3 control-label" align="left">Semester</label>
-      <div class="col-lg-9">
-        <select class="form-control" id="sem" required name="sem" value="<?php echo $sem;?>" style="width: 210px;">
-           <option>5</option>
-           <option>6</option>
-            <option>7</option> 
-        </select>
-        <br>
-        <label for="textArea" class="col-lg-3 control-label" align="left">Academic Year</label>
-        <div class="col-lg-10">
-          <input type="text" class="form-control" id="acy" placeholder="2015" name="acy" 
-          required value="<?php echo $acy;?>" style="width: 210px;">
-      </div>
-    </div>
 
-     
+        <div class="box"><center>
 
-    <div class="form-group">
-      <div class="col-lg-8 col-lg-offset-2">
-        <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-    </div>
-    </center>
-    </div>
-    </div>
-    <ul class="breadcrumb" id="footer" style="background-color:#202020">
-  <li><a href="management.php">Home</a></li>
-  <li class="active">Elective subject details</li>
+<?php
+   require_once __DIR__ . '/db_connect.php';
+    
+      $db = new DB_CONNECT();
+    if($db){
+$usn = $name =$phno = $email = null ; 
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+  
+  $sem = $_POST['sem'];
+  $staff=$_SESSION['usn'];
+  $acy= date("Y");
+  $qry="SELECT USN FROM approve_1 WHERE Sem='".$sem."' and staff_ID='".$staff."' and acy='".$acy."' and approve='0'";
+  $res= mysql_query($qry);
+  if($res && mysql_num_rows($res))
+  {
+    echo"<h1>Student List for approval</h1>";
+    ?>
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr class="danger">
+          <th style="text-align:center"><h2>USN</h2></th>
+        </tr>
+      </thead>
+      
+      <?php
+      $data='';$i=1;  
+      $data .= "num=".mysql_num_rows($res);
+      while($rows=mysql_fetch_assoc($res)){?>
+
+      <tr style="text-align:center; background-color:#FFFFFF">
+      <td><h4><?php echo $rows["USN"]?></h4></td>
+      </tr>
+      <?php $data .='&usn'.$i."=".$rows['USN']."&sem".$i."=".$sem; 
+      $i=$i+1; 
+    }
+  
+
+?>
+</table>
+      <button id="submit" type="submit">Approve All</button>
+
+<?php
+}
+else
+  {
+    echo "<h2>No unapproved student registration for this sem</h2>";
+  }
+  
+}}
+
+?>
+<script>
+    $(document).ready(function(){
+      $("#submit").click(function(){
+      // var usn = "<?php echo $rows["USN"]?>";
+      // var sem= "<?php echo $sem?>";
+
+      // Returns successful data submission message when the entered information is stored in database.
+      var dataString ="<?php echo $data?>";//= '&usn1=' + usn + '&sem1=' + sem;
+      // AJAX Code To Submit Form.
+      //alert(dataString);
+      $.ajax({
+      type: "POST",
+      url: "approve.php",
+      data: dataString,
+      cache: false,
+      success: function(result){
+      alert(result);
+      }
+      });
+      return false;
+      });
+      });
+  </script>
+</div>
+</center>
+</div>
+
+<br></br>
+<ul class="breadcrumb" id="footer" style="background-color:#202020">
+  <li><a href="staff_management.php">Home</a></li>
+  <li><a href="sapprove_stud.php">Mentee Registration</a></li>
+  <li class="active">Data</li>
 </ul>
+</div>
 </div>
 </body>
 </html>
-

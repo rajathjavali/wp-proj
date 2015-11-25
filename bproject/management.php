@@ -1,5 +1,3 @@
-<?php include ('navbar1.php'); ?>
-
 <?php
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
@@ -7,6 +5,7 @@ if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
 header('Location: ../bproject/index.html');
 }
 ?>
+<?php include ('navbar1.php'); ?>
 
 
 <!DOCTYPE html>
@@ -87,7 +86,7 @@ header('Location: ../bproject/index.html');
           </center>
         </div>   
 
-        <div id="owl-demo" style="padding-left: 30px; padding-right: 30px">
+        <div id="owl-demo" style="padding-left: 30px; padding-right: 30px; background-color:#FFFFFF">
 
           <div class="owl-item grayscale" style="width: 293px;">
           <img src="images/reg.png" alt="Owl Image">

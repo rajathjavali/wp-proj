@@ -161,17 +161,6 @@ header('Location: ../bproject/index.html');
         </script>
 
       </div>
-      <!--div id="menuleftcontent" class="container">
-        <ul id="menu" style="line-height:2%; " >
-         <li><h3><strong>Welcome <?php echo $_SESSION['usn']; ?></strong></h3></li><hr>
-         <li><a href="aform_teach.php"><h5> <p class="text-info">Add Staff Details</p> </h5></a></li><hr>
-         <li><a href="asretrieve.php"><h5> <p class="text-info"> Get Student Details </p> </h5></a></li><hr>
-         <li><a href="amonitor.php"><h5> <p class="text-info"> Monitor Registered Student </p> </h5></a></li><hr>
-         <li><a href="asretrive_syllabus.php"><h5> <p class="text-info"> Get core subject list  </p> </h5></a></li><hr>
-         <li><a href="sretrieve_elective.php"><h5> <p class="text-info"> Get elective subject list  </p> </h5></a></li><hr>
-         <li><a href="add_syllabus.php"><h5> <p class="text-info"> Add syllabus  </p> </h5></a></li><hr>
-        </ul>
-        </div-->
     </div>
     <script>
       $("#owl-example").owlCarousel();
@@ -185,19 +174,19 @@ header('Location: ../bproject/index.html');
           <img class="img-circle" src="images/r.png" alt="Generic placeholder image" width="140" height="140">
           <h2>Registration</h2>
           <p>Provides a hassle-free, fully automated, online registration process with efficient information storage for future use</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="smonitor_ret.php" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="images/a.png" alt="Generic placeholder image" width="140" height="140">
           <h2>Attendance Management</h2>
           <p>Paper-free solution to maintaining attendance with a provision of updation and downloading data through excel spreadsheets</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="attendance_uploader_staff.php" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="images/m.png" alt="Generic placeholder image" width="140" height="140">
           <h2>Marks Management</h2>
           <p>Aggregation of marks of students for the complete semester in one place to enable easy access when needed</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="marks_uploader_staff.php" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div>
     </div>

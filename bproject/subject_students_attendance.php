@@ -137,9 +137,8 @@ header('Location: ../bproject/index.html');
 						</div>
 					</div>
 					<br>
-		            <div class="form-group" id="b">
+		            <div id="b">
 		            </div>
-		            <div class="col-lg-4 control-label">
 					<input id="submit" onclick="retrieveSub()" type="button" value="Submit">
 					</div>
 			</center>

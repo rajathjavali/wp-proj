@@ -74,7 +74,7 @@ $row = $data->rowcount($sheet_index=0);
 $col = $data->colcount($sheet_index=0);
 //echo $row." ".$col;
 
-$connection = mysql_connect("localhost", "root", ""); // Establishing Connection with Server..
+$connection = mysql_connect("localhost", "root", "root"); // Establishing Connection with Server..
 $db = mysql_select_db("bproject", $connection); // Selecting Database
 
 $acy=$_POST['acy'];
@@ -112,16 +112,16 @@ while($i<=$row){
 }
 $result=mysql_query($query);
 if($result)
-echo "Successful";
+echo "<h1>Marks successfully uploaded</h1>";
 else
-echo "Successful";
+echo "<h1>Marks successfully uploaded</h1>";
 ?>
 </center>
 </div>
 </div>
 <ul class="breadcrumb" id="footer" style="background-color:#202020">
   <li><a href="staff_management.php">Home</a></li>
-  <li><a href="sretrieve.php">Student Information</a></li>
+  <li><a href="marks_uploader_staff.php">Semester and Course</a></li>
   <li class="active">Data</li>
 </ul>
 </div>	

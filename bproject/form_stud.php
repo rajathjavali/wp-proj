@@ -26,13 +26,33 @@ require_once __DIR__ . '/db_connect.php';
       <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
       <script src="jquery-1.9.1.min.js"></script>
       <style>
+        .banner { background-color: #686868; }
         #topbar
-        {
-          background-color: #686868;
-          padding-top: 70px;
-          padding-bottom: 20px;
-          position: relative;
-
+          {
+            background-color: #686868;
+            padding-top: 80px;
+            padding-bottom: 40px;
+          }
+        .wrapper { 
+          width: 30%;
+          margin: 0 auto; 
+        }
+        .banner p {
+          text-align: center;
+          margin-top: -10px;
+          display: block;
+        }
+        .banner img {
+          float: left; 
+          margin: 5px;
+        }
+        .banner span {
+          padding-top: 50px;
+          vertical-align:top;
+        }
+        .banner .ban2 span {
+          padding-top: 50px;
+        vertical-align:top;
         }
         div.box{
           border-radius: 10px;
@@ -57,16 +77,15 @@ require_once __DIR__ . '/db_connect.php';
 <?php $flag=$usn=$fname=$sem=$sgpa=$email=$phno=$i=NULL ?>
     <div id="page">
       <div id="maincontent">
-        <div id="topbar" style="color:#FFFFFF;">
-          <center>
-          <div style="position:relative;">
-          <p style="float: left; "><img src="images/logo1.gif" style="position:absolute; left:340px" height="70px" width="70px" border="1px"></p>
-          </div>
-          <p><h5>Rashtreeya Sikshana Samithi Trust</h5></p>
-          <p><h4><b>R V College of Engineering</b></h4></p>
-          <p><h6>Mysore Road, RV Vidyaniketan Post, Bangalore - 560 059</h6></p>
-          </center>
-        </div>
+          <div class="banner" id="topbar" style="color:#FFFFFF;">
+            <div class="banner">
+                <div class="wrapper">
+            <p style="color: #fff;"><img src="images/logo1.gif" style="width:80px; height:80px"><span style=""><h5>Rashtreeya Sikshana Samithi Trust</h5></span>
+                     <span class="ban2"><h4><b>R V College of Engineering</b></h4></span>
+                     <span class="ban2"><h6>Mysore Road,RV Vidyaniketan Post,Bangalore-560 059</h6></span></p>        
+                </div>
+            </div> 
+          </div> 
         <hr>
 
         <div class="box"><center>
@@ -74,11 +93,10 @@ require_once __DIR__ . '/db_connect.php';
           <form class="form-horizontal" id="demo-form" data-parsley-validate method="post">
             <fieldset>
               <legend>Registration</legend>
-
-<script type="text/javascript">
-                            function change(){
-                             document.getElementById("reg").style.display = "none";}
-                        </script>
+              <script type="text/javascript">
+                function change(){
+                document.getElementById("reg").style.display = "none";}
+              </script>
 
                          <?php 
                        
@@ -92,8 +110,8 @@ require_once __DIR__ . '/db_connect.php';
                             if(strtotime($today)<strtotime($Dealine)){?>
 
     <div class="form-group">
-       <label for="textArea" class="col-lg-2 control-label" >USN</label>
-      <div class="col-lg-10">
+       <label for="textArea" class="col-lg-3 control-label" align="left" >USN</label>
+      <div class="col-lg-9">
         <input type="text" class="form-control" id="usn" placeholder="<?php echo $usn; ?>" name="usn"  disabled required value="<?php echo $usn;?>" style="width: 210px;">
       </div>
     </div>
@@ -106,9 +124,9 @@ require_once __DIR__ . '/db_connect.php';
        ?>
 
      <div class="form-group">
-      <label for="select" class="col-lg-2 control-label">Semester</label>
-      <div class="col-lg-10">
-        <select class="form-control" id="sem" required name="sem" value="<?php echo $sem;?>" style="width: 75px;">
+      <label for="select" class="col-lg-3 control-label" align="left" >Semester</label>
+      <div class="col-lg-9">
+        <select class="form-control" id="sem" required name="sem" value="<?php echo $sem;?>" style="width: 210px;">
 
           <?php
         //This code will give the options for only higher semesters. So registering again for the same semester is discarded.
@@ -127,9 +145,9 @@ require_once __DIR__ . '/db_connect.php';
       </div>
     </div>
      <div class="form-group">
-      <label for="select" class="col-lg-2 control-label">Staff </label>
-      <div class="col-lg-10">
-        <select class="form-control" id="staff_ID" required name="staff_ID" value="<?php echo $staff_ID;?>" style="width: 75px;">
+      <label for="select" class="col-lg-3 control-label" align="left" >Staff </label>
+      <div class="col-lg-9">
+        <select class="form-control" id="staff_ID" required name="staff_ID" value="<?php echo $staff_ID;?>" style="width: 210px;">
         <?php
           $qry2="SELECT Shortname from staff WHERE 1";
           $res2=mysql_query($qry2);
@@ -145,14 +163,14 @@ require_once __DIR__ . '/db_connect.php';
     </div>
 
      <div class="form-group">
-      <label for="textArea" class="col-lg-2 control-label" >SGPA</label>
-      <div class="col-lg-10">
-        <input type="float" class="form-control" id="sgpa" name="sgpa" placeholder="x.yy" required value="<?php echo $sgpa;?>" style="width: 70px;">
+      <label for="textArea" class="col-lg-3 control-label" align="left"  >SGPA</label>
+      <div class="col-lg-9">
+        <input type="float" class="form-control" id="sgpa" name="sgpa" placeholder="x.yy" required value="<?php echo $sgpa;?>" style="width: 210px;">
       </div>
     </div>
 
     <div class="form-group">
-      <div id = "deadline" class="col-lg-10 col-lg-offset-2" 
+      <div id = "deadline" class="col-lg-8 col-lg-offset-2" 
       
         >
         <button type="reset" class="btn btn-default">Cancel</button>

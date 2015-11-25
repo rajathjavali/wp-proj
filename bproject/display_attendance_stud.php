@@ -1,11 +1,20 @@
 <?php
+session_start();
+// Check, if username session is NOT set then this page will jump to login page
+if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
+header('Location: ../bproject/index.html');
+}
+?>
+<?php
 
 $con=mysqli_connect('localhost','root','root','bproject');
 
 if (mysqli_connect_errno()) { 
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
+$usn=$_SESSION['usn'];
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+
 $sem = $_POST['sem'];
 $dept = $_POST['dept'];
 $course = $_POST['course'];
@@ -14,7 +23,7 @@ $sub = $_POST['sub'];
 
 ?>
 <?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
+<?php include ('navbar1.php'); ?>
 <html>
 <head>
       <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -87,45 +96,80 @@ $sub = $_POST['sub'];
           </div> 
         <hr>
         <div class="box"><center>
-<form method="post" action="excel_students_sub_marks.php">
+<h1>Attendance Retrieval</h1>
+<!-- <form method="post" action="excel_students_sub_attendance.php">
+ -->
 <?php
-$query = "SELECT susn,ccode,t1,q1,t2,q2,t3,q3,lab,assign FROM marks,syllabus WHERE syllabus.sem='".$sem."' and 
-        (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' and 
-        syllabus.S_type='".$course."' and marks.ccode=syllabus.S_code 
-        and syllabus.Name='".$sub."'";
-
-$htmldata="<tr>";
-
+$query = "SELECT distinct cdte,ctme FROM attends,syllabus WHERE syllabus.sem='".$sem."' and 
+        (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' 
+        and syllabus.S_type='".$course."' and attends.ccode=syllabus.S_code and syllabus.Name='".$sub."' 
+        and attends.susn='".$usn."'";
 $export = mysqli_query($con,$query ) or die(mysqli_error($con));
 
-
-
-while ($fieldinfo=mysqli_fetch_field($export))
-{
-    $htmldata .= "<th align='center'>".$fieldinfo->name."</th>";
-}
-$htmldata.="</tr>";
-
+$tablerows = '<tr><th align="center">USN</th>';
+$totalclass = 0;
 while( $row = mysqli_fetch_row( $export ) )
 {
-    $htmldata .= "<tr>";
+    $tablerows .= "<th align='center'>";
+    $i = 0;
     foreach( $row as $value )
-    {                                            
-        if ( ( !isset( $value ) ) || ( $value == "" ) )
-        {
-            $htmldata .= "<td></td>";
+    {   
+        if($i==1){
+            $tablerows .="/";
+            $tablerows .= substr($value,0,5);
         }
-        else
-        {
-            $htmldata .= "<td align='center'>".$value."</td>";
+        else{
+            $i=($i+1)%2;
+            $tablerows .= $value;         
         }
+        
     }
-    $htmldata .= "</tr>";
+    $tablerows .= "</th>";
+    $totalclass = $totalclass + 1;
+}
+$tablerows .= '</tr>';
+echo "<script>alert('".$tablerows."')</script>";
+
+$query = "SELECT susn,cdte,ctme,status FROM attends,syllabus WHERE syllabus.sem='".$sem."' and 
+        (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' 
+        and syllabus.S_type='".$course."' and attends.ccode=syllabus.S_code 
+        and syllabus.Name='".$sub."'";
+$export = mysqli_query($con,$query ) or die(mysqli_error($con));
+
+$count=1;
+$tablerows .= "<tr>";
+while( $row = mysqli_fetch_row( $export ) )
+{
+   
+    $j=1;
+    foreach( $row as $value )
+    {    
+        
+        if($count == 1 && $j == 1){
+            $tablerows .= "<td align='center'>".$value."</td>";
+        }
+
+        if($j == 4){
+            $tablerows .= "<td align='center'>".$value."</td>";
+        }
+        
+        $j=$j+1;
+    }
+    if($count == $totalclass){
+        $tablerows .= "</tr><tr>";
+        $count = 1;
+    }
+    else{
+        $count=$count+1;
+    }
+    
+    
 }
 
+$htmldata = $tablerows;
 if ( $htmldata == "" )
 {
-    $htmldata = "\nNo Record(s) Found!\n";                        
+    $htmldata = "\nNo Record(s) Found!\n";                     
 }
 
 
@@ -136,15 +180,16 @@ echo "<table align='center' border='1' style='width: 100%;height=100%;'>".$htmld
 
 }
 ?>
+<br>
 <button type="submit" name="submit">Download Excel</button>
-</form>
+<!-- </form> -->
 </center>
 </div>
 </div>
     <ul class="breadcrumb" id="footer" style="background-color: #202020">
         <li><a href="admin_management.php">Home</a></li>
-        <li><a href="subject_students_marks.php">Semester and Course</a></li>
-        <li class="active">Marks details</li>
+        <li><a href="subject_students_attendance.php">Semester and Course</a></li>
+        <li class="active">Attendance details</li>
     </ul>
 </div>
 </body>

@@ -1,31 +1,20 @@
-<?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
-
-<?php
-session_start();
-// Check, if username session is NOT set then this page will jump to login page
-if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /bproject/index.html');
-}
-?>
-
-
 <?php
  
 
  
-    $name = test_input($_POST['name']);
-    $staffid = test_input($_POST['staffid']);
- 	$phno = test_input($_POST['phno']);
- 	$email = test_input($_POST['email']);
-
+    $fname = test_input($_POST['fname1']);
+    $mname = test_input($_POST['mname1']);
+    $lname = test_input($_POST['lname1']);
+ 	$phno = test_input($_POST['phone1']);
+ 	$email = test_input($_POST['email1']);
+ 	$staffid= $_POST['staffid1'];
  	$err="";
 
- 	if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+ 	if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
  	  $err .= "Only letters and white space allowed in First Name"; 
 	}
 
-	if (!preg_match("/^[0-9]*$/",$phno)) {
+	if (!preg_match("/^[0-9]*$/",$phno) && strlen($phno!=10)) {
  	  $err.= "Invalid Phone Number"; 
 	}
 
@@ -46,28 +35,21 @@ header('Location: /bproject/index.html');
  	if($db)
  	{
 	    // mysql inserting a new row
-	    $sql = "insert into staff(Staff_ID,FName,Phone_NO,Email_ID) values('".$staffid."','".$name."' ,'".$phno."','".$email."')";
+	    $sql ="UPDATE `staff` SET `FName`='".$fname."',`Mname`='".$mname."',`Lname`='".$lname."',`Phone_No`='".$phno."',`Email_ID`='".$email."' WHERE `Shortname`='".$staffid."'";
     	$res = mysql_query($sql);
 	    // check if row inserted or not
 	    if ($res) 
 	    {
-			
-	        // successfully inserted into database
-	        $response = "Inserted Successfully<br>"; 
-	        echo $response;
-	        echo "<form action=form_teach.php><input type=submit value=DONE name=sub></form>";
-	        //header("Location:http://localhost/project/form.php");
+	        //successfully inserted into database
+	        echo "Updated Successfully"; 
+	        //echo "<form action=aform_teach.php><input type=submit value=DONE name=sub></form>";
+	        //header("Location:../bproject/aform_teach.php");
 	    } 
 	    else 
 	    {
-	        // failed to insert row
-	        // $response = "<script type='text/javascript'>alert('Entry unSuccessful')</script>";
-	 
-	        echo "Staff id is not unique";
-	        echo "<form action=form_teach.php><input type=submit value=DONE name=sub></form>";
+	        echo "staff id not unique";
 	    }
  	}
-
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
