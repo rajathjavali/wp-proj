@@ -97,8 +97,8 @@ $sub = $_POST['sub'];
         <hr>
         <div class="box"><center>
 <h1>Attendance Retrieval</h1>
-<!-- <form method="post" action="excel_students_sub_attendance.php">
- -->
+<form method="post" action="excel_students_sub_attendance.php">
+
 <?php
 $query = "SELECT distinct cdte,ctme FROM attends,syllabus WHERE syllabus.sem='".$sem."' and 
         (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' 
@@ -128,12 +128,13 @@ while( $row = mysqli_fetch_row( $export ) )
     $totalclass = $totalclass + 1;
 }
 $tablerows .= '</tr>';
-echo "<script>alert('".$tablerows."')</script>";
+//echo $tablerows;
+//echo "<script>alert('".$tablerows."')</script>";
 
 $query = "SELECT susn,cdte,ctme,status FROM attends,syllabus WHERE syllabus.sem='".$sem."' and 
         (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' 
         and syllabus.S_type='".$course."' and attends.ccode=syllabus.S_code 
-        and syllabus.Name='".$sub."'";
+        and syllabus.Name='".$sub."' and attends.susn = '".$usn."'";
 $export = mysqli_query($con,$query ) or die(mysqli_error($con));
 
 $count=1;
@@ -182,7 +183,7 @@ echo "<table align='center' border='1' style='width: 100%;height=100%;'>".$htmld
 ?>
 <br>
 <button type="submit" name="submit">Download Excel</button>
-<!-- </form> -->
+</form>
 </center>
 </div>
 </div>
