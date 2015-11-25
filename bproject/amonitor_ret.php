@@ -97,7 +97,7 @@ $sem=$_POST['sem'];
 $sql1 = "SELECT `USN`,`registered` FROM `approve_1` WHERE `Sem`= '".$sem."'";
 $result1=mysql_query($sql1);
 if ($result1) {
-   echo "<h3>Semester: ".$sem."</h3>";
+   echo "<h1>Semester: ".$sem."</h1>";
   echo "<br>";
   
 

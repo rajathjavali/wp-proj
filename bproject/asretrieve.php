@@ -80,7 +80,7 @@ header('Location: /bproject/index.html');
           </div> 
         <hr>
         <div class="box"><center>
-	<h1>Retrieve Student Info</h1>
+	<h1>Retrieve Student Info</h1><hr>
 
 	<form method="post" action="asstud_retrieve.php">
 		<!-- USN: <input type="text" name="usn"  required value="<?php //echo $usn;?>"> -->

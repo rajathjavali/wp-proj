@@ -8,7 +8,7 @@ header('Location:../bproject/index.html');
 
 
  <?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
+<?php include ('navbar2.php'); ?>
 
 <html>
 <head>

@@ -88,7 +88,7 @@ header('Location: ///bproject/index.html');
 
           <form class="form-horizontal" id="demo-form" data-parsley-validate method="post" action="amonitor_ret.php">
             <fieldset>
-              <legend>Select semester</legend>
+              <h1>Select semester</h1><hr>
            <div class="form-group">
               <label for="select" class="col-lg-2 control-label"><h4>Semester</h4></label>
                 <div class="col-lg-10">

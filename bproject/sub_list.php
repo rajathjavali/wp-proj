@@ -19,7 +19,9 @@
 		(Host_Dpt='".$dept."' or Host_Dpt='HSS') and acy='".$acy."' and S_type='".$course."'"); 
 		
 		$rows = mysql_num_rows($query);
-		$data="<label >Subjects:</label><select id='sub' required name='sub'>";
+		$data="<label for='textArea' class='col-lg-3 control-label' style='text-align:left' >Subjects:</label>
+		 <div class='col-lg-9'>
+		 <select id='sub' required name='sub' style='width:210px'>";
 		if($query){
 			$a=mysql_num_rows($query);
 			if($a>0){
@@ -28,8 +30,8 @@
 				$res2 = "<option>".$res['Name']."</option>";
 			    $data .=$res2; 
 			}
-			$data.="</select>";
-			$data.="<br/><br/>Students Data: <br/><button type=submit>Download Excel</button>
+			$data.="</select></div>";
+			$data.="<br/><br/>Students Data: <br/><button type=submit>Display</button>
 			<br/><br/>";}
 			else
 				$data  = 'no subjects registered';

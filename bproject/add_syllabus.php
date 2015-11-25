@@ -25,13 +25,33 @@ $scode=$sname=$hdep=$credit=$acy=$stype=NULL;
       <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
       <script src="jquery-1.9.1.min.js"></script>
       <style>
+        .banner { background-color: #686868; }
         #topbar
-        {
-          background-color: #686868;
-          padding-top: 70px;
-          padding-bottom: 20px;
-          position: relative;
-
+          {
+            background-color: #686868;
+            padding-top: 80px;
+            padding-bottom: 40px;
+          }
+        .wrapper { 
+          width: 30%;
+          margin: 0 auto; 
+        }
+        .banner p {
+          text-align: center;
+          margin-top: -10px;
+          display: block;
+        }
+        .banner img {
+          float: left; 
+          margin: 5px;
+        }
+        .banner span {
+          padding-top: 50px;
+          vertical-align:top;
+        }
+        .banner .ban2 span {
+          padding-top: 50px;
+        vertical-align:top;
         }
         div.box{
           border-radius: 10px;
@@ -55,22 +75,21 @@ $scode=$sname=$hdep=$credit=$acy=$stype=NULL;
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <div id="page">
       <div id="maincontent">
-        <div id="topbar" style="color:#FFFFFF;">
-          <center>
-        <div style="position:relative;">
-            <p style="float: left; "><img src="images/logo1.gif" style="position:absolute; left:340px" height="70px" width="70px" border="1px"></p>
-            </div>
-            <p><h5>Rashtreeya Sikshana Samithi Trust</h5></p>
-            <p><h4><b>R V College of Engineering</b></h4></p>
-            <p><h6>Mysore Road, RV Vidyaniketan Post, Bagalore - 560 059</h6></p>
-          </center>
-        </div>
+          <div class="banner" id="topbar" style="color:#FFFFFF;">
+            <div class="banner">
+                <div class="wrapper">
+            <p style="color: #fff;"><img src="images/logo1.gif" style="width:80px; height:80px"><span style=""><h5>Rashtreeya Sikshana Samithi Trust</h5></span>
+                     <span class="ban2"><h4><b>R V College of Engineering</b></h4></span>
+                     <span class="ban2"><h6>Mysore Road,RV Vidyaniketan Post,Bangalore-560 059</h6></span></p>        
+                </div>
+            </div> 
+          </div> 
         <hr>
         <div class="box"><center>
           <?php $usn=$_SESSION['usn']; ?>
           <form class="form-horizontal" id="demo-form" data-parsley-validate method="post">
             <fieldset>
-              <legend><center>ADD SYLLABUS</center></legend>
+              <h1><center>Add new subject</center></h1><hr>
               <div class="form-group">
                 <label for="textArea" style=" text-align:left;" style="padding-right:20px;" class="col-lg-3 control-label" >Subject code</label>
                 <div class="col-lg-9" >

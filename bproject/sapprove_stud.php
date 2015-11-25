@@ -1,15 +1,12 @@
 <?php
 session_start();
+// Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
 header('Location:../bproject/index.html');
 }
-?> 
-
-
-
- <?php include ('header.php'); ?>
-<?php include ('navbar.php'); ?>
-
+?>
+<?php include ('header.php'); ?>
+<?php include ('navbar2.php'); ?>
 <html>
 <head>
       <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,8 +17,6 @@ header('Location:../bproject/index.html');
       <script type="text/javascript" charset="utf-8" language="javascript" src="js/jquery.dataTables.js"></script>
       <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
       <script src="jquery-1.9.1.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="excel_uploader_sublist.js"></script>
       <style>
         #topbar
         {
@@ -64,72 +59,54 @@ header('Location:../bproject/index.html');
         </div>
         <hr>
 
-        <div class="box"><center><!DOCTYPE html>
-<?php 
-require_once 'excel_reader2.php';
-$file = $_POST['file'];
-$data = new Spreadsheet_Excel_Reader($file);
-$row = $data->rowcount($sheet_index=0);
-$col = $data->colcount($sheet_index=0);
+        <div class="box"><center>
+  <h1>Retrieve Student Info</h1>
+
+  <form method="post" action="sstud_retrieve.php">
+    <!-- USN: <input type="text" name="usn"  required value="<?php //echo $usn;?>"> -->
 
 
-$connection = mysql_connect("localhost", "root", "root"); // Establishing Connection with Server..
-$db = mysql_select_db("bproject", $connection); // Selecting Database
+<!-- <select name="usn"> -->
+ 
+    <div class="form-group">
+      <label for="select" class="col-lg-2 control-label"><h4>Select Sem</h4></label>
+      <div class="col-lg-10">
+        <select class="form-control" id="sem" name="sem" style="width: 150px;">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+    </select>
+    <br>
+    </div>
+    </div>
 
-$acy=$_POST['acy'];
-$sem=$_POST['sem'];
-$dept=$_POST['dept'];
-$sub=$_POST['sub'];
-$course=$_POST['course'];
+  <br><br>
+    <!-- <input type="submit" name="submit" value="Find" > -->
+  <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
 
-$query = "SELECT S_Code from syllabus where sem='".$sem."' and 
-		(Host_Dpt='".$dept."' or Host_Dpt='HSS') and acy='".$acy."' 
-		and S_type='".$course."' and Name='".$sub."'";
+</form><br/><br/>
 
-$result = mysql_query($query);
-$ccode='';
-while($res=mysql_fetch_array($result))
-{
-	$ccode = $res['S_Code'];
-}
+  <!-- </form>
+  <form action="management.php"><input type="submit" value="Home" name="sub"></form> -->
 
-
-$query = "INSERT INTO `attends`(`susn`, `status`, `cdte`, `ctme`, `ccode`, `acy`, `sem` ) VALUES ";
-$i=2;
-while($i<=$col){
-	$j=2;
-	while($j<=$row){
-		//echo $data->val(1,$i);
-		$datetime = explode(" ", $data->val('1',$i));
-		$date = str_replace('/', '-', $datetime[0]);
-		$date = date('Y-m-d', strtotime($date));
-		//echo $datetime['0']."<br/>".$datetime['1']."<br/>";
-		$query .= "('".$data->val($j,'1')."', '".$data->val($j,$i)."', '".$date."',
-		'".$datetime['1']."','".$ccode."', '".$acy."', '".$sem."')";
-		if($j==$row && $i == $col)
-			$query.=";";
-		else if($j<=$row && $i<=$col)
-			$query .= ", ";
-		$j=$j+1;
-	}
-	$i=$i+1;
-	
-}
-$result=mysql_query($query);
-echo $result;
-if($result)
-echo '<h1>Attendance Successfully updated</h1>';
-else
-echo '<h1>Attendance successfully updated</h1>';
-//header('Location: ../excel uploader/attendance_uploader.php');
-
-?>
-	</center>
-	</div>
+<br/><br/><br/>
+</center>
+</div>
 <ul class="breadcrumb" id="footer" style="background-color:#202020">
   <li><a href="staff_management.php">Home</a></li>
-  <li><a href="attendance_uploader.php">Select sem and course</a></li>
-  <li class="active">Status</li>
-</ul>	
+  <li class="active">Student information</li>
+</ul>
+</div>
+</div>
 </body>
 </html>

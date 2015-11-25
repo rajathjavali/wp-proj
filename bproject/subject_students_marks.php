@@ -23,13 +23,33 @@ header('Location: ../bproject/index.html');
 	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	  <script src="sublist.js"></script>
       <style>
+        .banner { background-color: #686868; }
         #topbar
-        {
-          background-color: #686868;
-          padding-top: 70px;
-          padding-bottom: 20px;
-          position: relative;
-
+          {
+            background-color: #686868;
+            padding-top: 80px;
+            padding-bottom: 40px;
+          }
+        .wrapper { 
+          width: 30%;
+          margin: 0 auto; 
+        }
+        .banner p {
+          text-align: center;
+          margin-top: -10px;
+          display: block;
+        }
+        .banner img {
+          float: left; 
+          margin: 5px;
+        }
+        .banner span {
+          padding-top: 50px;
+          vertical-align:top;
+        }
+        .banner .ban2 span {
+          padding-top: 50px;
+        vertical-align:top;
         }
         div.box{
           border-radius: 10px;
@@ -53,23 +73,23 @@ header('Location: ../bproject/index.html');
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <div id="page">
       <div id="maincontent">
-        <div id="topbar" style="color:#FFFFFF;">
-          <center>
-        <div style="position:relative;">
-            <p style="float: left; "><img src="images/logo1.gif" style="position:absolute; left:340px" height="70px" width="70px" border="1px"></p>
-            </div>
-            <p><h5>Rashtreeya Sikshana Samithi Trust</h5></p>
-            <p><h4><b>R V College of Engineering</b></h4></p>
-            <p><h6>Mysore Road, RV Vidyaniketan Post, Bagalore - 560 059</h6></p>
-          </center>
-        </div>
+          <div class="banner" id="topbar" style="color:#FFFFFF;">
+            <div class="banner">
+                <div class="wrapper">
+            <p style="color: #fff;"><img src="images/logo1.gif" style="width:80px; height:80px"><span style=""><h5>Rashtreeya Sikshana Samithi Trust</h5></span>
+                     <span class="ban2"><h4><b>R V College of Engineering</b></h4></span>
+                     <span class="ban2"><h6>Mysore Road,RV Vidyaniketan Post,Bangalore-560 059</h6></span></p>        
+                </div>
+            </div> 
+          </div> 
         <hr>
         <div class="box"><center>
 			<h1>Retreive Marks</h1><br>
-				<form method="post" action="excel_students_sub_marks.php">
-					<div>
-						Semester:
-						<select id="sem" required name="sem">
+				<form method="post" action="display_marks.php">
+	          	<div class="form-group">
+	                <label for="textArea" class="col-lg-3 control-label" style="text-align:left">Semester</label>
+	                <div class="col-lg-9">
+						<select id="sem" required name="sem" style="width:210px">
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>
@@ -79,12 +99,13 @@ header('Location: ../bproject/index.html');
 							<option>7</option>
 							<option>8</option>
 						</select> 
-						
+					</div>
 					</div>
 					<br/><br/>
-					<div>
-						Department:
-						<select id="dept" required name="dept">
+		          	<div class="form-group">
+		                <label for="textArea" class="col-lg-3 control-label" style="text-align:left">Department</label>
+		                <div class="col-lg-9">
+						<select id="dept" required name="dept" style="width:210px">
 							<option>ECE</option>
 							<option>CSE</option>
 							<option>ISE</option>
@@ -93,22 +114,27 @@ header('Location: ../bproject/index.html');
 							<option>ME</option>
 						</select>
 					</div>
+					</div>
 					<br/><br/>
-					<div>
-						Course Type:
-						<select id="course" required name="course">
+		          	<div class="form-group">
+		                <label for="textArea" class="col-lg-3 control-label" style="text-align:left">Course Type</label>
+		                <div class="col-lg-9">
+						<select id="course" required name="course" style="width:210px">
 							<option>CORE</option>
 							<option>LOCAL ELECTIVE</option>
 							<option>GLOBAL ELECTIVE</option>
 						</select>
 					</div>
-					<br/><br/>
-					<div>
-						Academic Year:
-						<input type="number" name="acy" id="acy" min="2013" max="2025" value="2014">
 					</div>
 					<br/><br/>
-					<div id="b">
+		          	<div class="form-group">
+		                <label for="textArea" class="col-lg-3 control-label" style="text-align:left">Academic year</label>
+		                <div class="col-lg-9">
+						<input type="number" name="acy" id="acy" min="2013" max="2025" value="2014" style="width:210px">
+					</div>
+					</div>
+					<br/><br/>
+					<div class="form-group" id="b">
 
 					</div>
 					<input id="submit" onclick="retrieveSub()" type="button" value="Submit">
