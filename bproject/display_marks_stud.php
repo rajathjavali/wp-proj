@@ -2,15 +2,27 @@
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /bproject/index.html');
+header('Location: ../bproject/index.html');
 }
 ?>
- <?php include ('header.php'); ?>
-<?php include ('navbar1.php'); ?>
-
 <?php
-$acy=NULL;
+
+$con=mysqli_connect('localhost','root','root','bproject');
+
+if (mysqli_connect_errno()) { 
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+$usn = $_SESSION['usn'];
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+$sem = $_POST['sem'];
+$dept = $_POST['dept'];
+$course = $_POST['course'];
+$acy = $_POST['acy'];
+$sub = $_POST['sub'];
+
 ?>
+<?php include ('header.php'); ?>
+<?php include ('navbar1.php'); ?>
 <html>
 <head>
       <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +66,7 @@ $acy=NULL;
           border-radius: 10px;
           position: relative;
           background-color: #9DBCBC;
-          width: 600px;
+          width: 100%;
           margin: auto;
           padding-top: 20px;
           padding-bottom: 20px;
@@ -82,40 +94,68 @@ $acy=NULL;
             </div> 
           </div> 
         <hr>
-    <div class="box"><center>
-<form class="form-horizontal" id="demo-form" data-parsley-validate method="post"  action="elective_retrieve.php">
-  <fieldset>
-    <h1>Retrieve Syllabus Information</h1><hr>
-     <div class="form-group">
-      <label for="select" class="col-lg-3 control-label" align="left">Semester</label>
-      <div class="col-lg-9">
-        <select class="form-control" id="sem" required name="sem" value="<?php echo $sem;?>" style="width: 210px;">
-           <option>5</option>
-           <option>6</option>
-            <option>7</option> 
-        </select>
-        <br>
-        </div>
-        <label for="textArea" class="col-lg-3 control-label" align="left">Academic Year</label>
-        <div class="col-lg-9">
-          <input type="text" class="form-control" id="acy" placeholder="2015" name="acy" 
-          required value="<?php echo $acy;?>" style="width: 210px;">
-      </div>
-      </div>
-      <div class="col-lg-8 col-lg-offset-2">
-        <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-    </fieldset>
-    </form>
-    </center>
-    </div>
-    </div>
-    <ul class="breadcrumb" id="footer" style="background-color:#202020">
-  <li><a href="management.php">Home</a></li>
-  <li class="active">Elective subject details</li>
-</ul>
+        <div class="box"><center>
+<form method="post" action="excel_studmarks.php">
+<?php
+$query = "SELECT susn,ccode,t1,q1,t2,q2,t3,q3,lab,assign FROM marks,syllabus WHERE syllabus.sem='".$sem."' and 
+        (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' and 
+        syllabus.S_type='".$course."' and marks.ccode=syllabus.S_code 
+        and syllabus.Name='".$sub."' and marks.susn='".$usn."'";
+
+$htmldata="<tr>";
+
+$export = mysqli_query($con,$query ) or die(mysqli_error($con));
+
+
+
+while ($fieldinfo=mysqli_fetch_field($export))
+{
+    $htmldata .= "<th align='center'>".$fieldinfo->name."</th>";
+}
+$htmldata.="</tr>";
+
+while( $row = mysqli_fetch_row( $export ) )
+{
+    $htmldata .= "<tr>";
+    foreach( $row as $value )
+    {                                            
+        if ( ( !isset( $value ) ) || ( $value == "" ) )
+        {
+            $htmldata .= "<td></td>";
+        }
+        else
+        {
+            $htmldata .= "<td align='center'>".$value."</td>";
+        }
+    }
+    $htmldata .= "</tr>";
+}
+
+if ( $htmldata == "" )
+{
+    $htmldata = "\nNo Record(s) Found!\n";                        
+}
+
+
+echo "<table align='center' border='1' style='width: 100%;height=100%;'>".$htmldata."</table>
+<input type=hidden name=sem required value='$sem'><input type=hidden name=course required value='$course'>
+<input type=hidden name=dept required value='$dept'><input type=hidden name=acy required value='$acy'>
+<input type=hidden name=sub required value='$sub'>";
+
+}
+?>
+<button type="submit" name="submit">Download Excel</button>
+</form>
+</center>
+</div>
+</div>
+    <ul class="breadcrumb" id="footer" style="background-color: #202020">
+        <li><a href="admin_management.php">Home</a></li>
+        <li><a href="students_marks.php">Semester and Course</a></li>
+        <li class="active">Marks details</li>
+    </ul>
 </div>
 </body>
 </html>
-
+</body>
+</html>

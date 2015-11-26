@@ -97,7 +97,7 @@ $sub = $_POST['sub'];
         <hr>
         <div class="box"><center>
 <h1>Attendance Retrieval</h1>
-<form method="post" action="excel_students_sub_attendance.php">
+<form method="post" action="excel_studattendance.php">
 
 <?php
 $query = "SELECT distinct cdte,ctme FROM attends,syllabus WHERE syllabus.sem='".$sem."' and 
@@ -174,7 +174,7 @@ if ( $htmldata == "" )
 }
 
 
-echo "<table align='center' border='1' style='width: 100%;height=100%;'>".$htmldata."</table>
+echo "<table align='center' border='1' style='width: 75%;height=100%;'>".$htmldata."</table>
 <input type=hidden name=sem required value='$sem'><input type=hidden name=course required value='$course'>
 <input type=hidden name=dept required value='$dept'><input type=hidden name=acy required value='$acy'>
 <input type=hidden name=sub required value='$sub'>";
@@ -189,7 +189,7 @@ echo "<table align='center' border='1' style='width: 100%;height=100%;'>".$htmld
 </div>
     <ul class="breadcrumb" id="footer" style="background-color: #202020">
         <li><a href="admin_management.php">Home</a></li>
-        <li><a href="subject_students_attendance.php">Semester and Course</a></li>
+        <li><a href="students_attendance.php">Semester and Course</a></li>
         <li class="active">Attendance details</li>
     </ul>
 </div>

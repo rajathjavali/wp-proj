@@ -11,7 +11,6 @@ header('Location: ../bproject/index.html');
 
 <html>
 <head>
-<head>
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <link href="css/carousel.css" rel="stylesheet">
       <script src="js/jquery-1.7.2.min.js"></script>
@@ -85,11 +84,6 @@ header('Location: ../bproject/index.html');
 <form class="form-horizontal" id="demo-form" data-parsley-validate method="post"  action="syllabus_retrieve.php">
   <fieldset>
     <h1>Retrieve Syllabus Information</h1><hr>
-    
-
-     
-
-
      <div class="form-group">
       <label for="select" class="col-lg-3 control-label" align="left">Semester</label>
       <div class="col-lg-9">
@@ -104,14 +98,16 @@ header('Location: ../bproject/index.html');
              <option>8</option>
         </select>
         </div>
-        <br/><br/><br/>
+        <br>
+        <br>
+        <br>
        <label for="textArea" class="col-lg-3 control-label" align="left">Academic Year</label>
         <div class="col-lg-9">
           <input type="text" class="form-control" id="acy" placeholder="2015" name="acy" required value="<?php echo $acy;?>" style="width: 210px;">
         </div>
-     <br>
-     <br>
-     <br>
+        <br>
+        <br>
+        <br>
       <label for="select" class="col-lg-3 control-label" align="left">Host Dept</label>
       <div class="col-lg-9">
         <select class="form-control" id="host_dpt" required name="host_dpt" value="<?php echo $host_dpt;?>" style="width: 210px;">
@@ -143,16 +139,12 @@ header('Location: ../bproject/index.html');
 </form>
 </center>
 </div>
+</div>
     <ul class="breadcrumb" id="footer" style="background-color:#202020">
   <li><a href="management.php">Home</a></li>
   <li class="active">Core subject details</li>
 </ul>
 </div>
-</div>
-
-
-
-	 
 </body>
 </html>
 

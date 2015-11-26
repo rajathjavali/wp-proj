@@ -63,10 +63,10 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registration <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                       <li><a id="reg" href="form_stud.php">Register for current semester</a></li>
+                     <li><a href="retrive_syllabus.php">Register for core subject</a></li>
+                     <li><a id="ele" href="retrieve_elective.php">Register for elective subject list</a></li>
                     <li role="separator" class="divider"></li>
                      <li><a href="view_teachers.php">View staff details</a></li>
-                     <li><a href="retrive_syllabus.php">Register for subject</a></li>
-                     <li><a id="ele" href="retrieve_elective.php">View elective subject list</a></li>
                      <li><a href="registered_subject.php">View registered subject list</a></li>                                        
                   </ul>
                 </li>

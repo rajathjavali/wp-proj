@@ -66,10 +66,10 @@ header('Location: ../bproject/index.html');
         <hr>
         <div class="box"><center>
 			<h1>Retreive Marks</h1><br>
-				<form method="post" action="excel_studmarks.php">
-					<div>
-						Semester:
-						<select id="sem" required name="sem">
+				<form method="post" action="display_marks_stud.php">
+				    <label for="select" class="col-lg-3 control-label" align="left">Semester</label>
+				    <div class="col-lg-9">
+						<select id="sem" required name="sem" style="width:210px">
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>
@@ -82,9 +82,9 @@ header('Location: ../bproject/index.html');
 						
 					</div>
 					<br/><br/>
-					<div>
-						Department:
-						<select id="dept" required name="dept">
+				    <label for="select" class="col-lg-3 control-label" align="left">Department</label>
+				    <div class="col-lg-9">
+						<select id="dept" required name="dept" style="width:210px">>
 							<option>ECE</option>
 							<option>CSE</option>
 							<option>ISE</option>
@@ -94,18 +94,18 @@ header('Location: ../bproject/index.html');
 						</select>
 					</div>
 					<br/><br/>
-					<div>
-						Course Type:
-						<select id="course" required name="course">
+				    <label for="select" class="col-lg-3 control-label" align="left">Course type</label>
+				    <div class="col-lg-9">
+						<select id="course" required name="course" style="width:210px">
 							<option>CORE</option>
 							<option>LOCAL ELECTIVE</option>
 							<option>GLOBAL ELECTIVE</option>
 						</select>
 					</div>
 					<br/><br/>
-					<div>
-						Academic Year:
-						<input type="number" name="acy" id="acy" min="2013" max="2025" value="2014">
+				    <label for="select" class="col-lg-3 control-label" align="left">Academic year</label>
+				    <div class="col-lg-9">
+						<input type="number" name="acy" id="acy" min="2013" max="2025" value="2014" style="width:210px">
 					</div>
 					<br/><br/>
 					<div id="b">
@@ -117,7 +117,7 @@ header('Location: ../bproject/index.html');
 		</div>
 				<hr>
 			  <ul class="breadcrumb" id="footer" style="background-color:#202020">
-			  <li><a href="admin_management.php">Home</a></li>
+			  <li><a href="management.php">Home</a></li>
 			  <li class="active">Select Semester</li>
 			</ul>
 		</div>

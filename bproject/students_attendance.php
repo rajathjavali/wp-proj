@@ -23,12 +23,31 @@ header('Location: ../bproject/index.html');
 	  <script src="sublist.js"></script>
       <style>
         #topbar
-        {
-          background-color: #686868;
-          padding-top: 70px;
-          padding-bottom: 20px;
-          position: relative;
-
+          {
+            background-color: #686868;
+            padding-top: 80px;
+            padding-bottom: 40px;
+          }
+        .wrapper { 
+          width: 30%;
+          margin: 0 auto; 
+        }
+        .banner p {
+          text-align: center;
+          margin-top: -10px;
+          display: block;
+        }
+        .banner img {
+          float: left; 
+          margin: 5px;
+        }
+        .banner span {
+          padding-top: 50px;
+          vertical-align:top;
+        }
+        .banner .ban2 span {
+          padding-top: 50px;
+        vertical-align:top;
         }
         div.box{
           border-radius: 10px;
@@ -46,29 +65,28 @@ header('Location: ../bproject/index.html');
           bottom: 0;
           width: 100%;
         }
-      </style>
-    </head>
+ </style>
+</head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <div id="page">
       <div id="maincontent">
-        <div id="topbar" style="color:#FFFFFF;">
-          <center>
-        <div style="position:relative;">
-            <p style="float: left; "><img src="images/logo1.gif" style="position:absolute; left:340px" height="70px" width="70px" border="1px"></p>
-            </div>
-            <p><h5>Rashtreeya Sikshana Samithi Trust</h5></p>
-            <p><h4><b>R V College of Engineering</b></h4></p>
-            <p><h6>Mysore Road, RV Vidyaniketan Post, Bagalore - 560 059</h6></p>
-          </center>
-        </div>
+          <div class="banner" id="topbar" style="color:#FFFFFF;">
+            <div class="banner">
+                <div class="wrapper">
+            <p style="color: #fff;"><img src="images/logo1.gif" style="width:80px; height:80px"><span style=""><h5>Rashtreeya Sikshana Samithi Trust</h5></span>
+                     <span class="ban2"><h4><b>R V College of Engineering</b></h4></span>
+                     <span class="ban2"><h6>Mysore Road,RV Vidyaniketan Post,Bangalore-560 059</h6></span></p>        
+                </div>
+            </div> 
+          </div> 
         <hr>
         <div class="box"><center>
 			<h1>Retrieve Attendance</h1><hr>
 				<form method="post" action="display_attendance_stud.php">
 				    <label for="select" class="col-lg-3 control-label" align="left">Semester</label>
 				    <div class="col-lg-9">
-						<select id="sem" required name="sem">
+						<select id="sem" required name="sem" style="width:210px">
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>
@@ -82,7 +100,7 @@ header('Location: ../bproject/index.html');
 					<br/><br/>
 				    <label for="select" class="col-lg-3 control-label" align="left">Department</label>
 				    <div class="col-lg-9">
-						<select id="dept" required name="dept">
+						<select id="dept" required name="dept" style="width:210px">
 							<option>ECE</option>
 							<option>CSE</option>
 							<option>ISE</option>
@@ -94,7 +112,7 @@ header('Location: ../bproject/index.html');
 					<br/><br/>
 				    <label for="select" class="col-lg-3 control-label" align="left">Course type</label>
 				    <div class="col-lg-9">
-						<select id="course" required name="course">
+						<select id="course" required name="course" style="width:210px">
 							<option>CORE</option>
 							<option>LOCAL ELECTIVE</option>
 							<option>GLOBAL ELECTIVE</option>
@@ -103,22 +121,24 @@ header('Location: ../bproject/index.html');
 					<br/><br/>
 				    <label for="select" class="col-lg-3 control-label" align="left">Academic year</label>
 				    <div class="col-lg-9">
-						<input type="number" name="acy" id="acy" min="2013" max="2025" value="2014">
+						<input type="number" name="acy" id="acy" min="2013" max="2025" value="2014" style="width:210px">
 					</div>
 					<br/><br/>
 					<div id="b">
 
 					</div>
-					<input id="submit" onclick="retrieveSub()" type="button" value="Submit">
+
+					<input align="center" id="submit" onclick="retrieveSub()" type="button" value="Submit">
 				</form>
 			</center>
 		</div>
+		</div>
 			<hr>
 			  <ul class="breadcrumb" id="footer" style="background-color:#202020">
-			  <li><a href="admin_management.php">Home</a></li>
+			  <li><a href="management.php">Home</a></li>
 			  <li class="active">Select Semester</li>
 			</ul>
-		</div>
+
 		</div>
 	
 </body>

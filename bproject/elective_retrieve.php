@@ -1,6 +1,3 @@
-<?php include ('header.php'); ?>
-<?php include ('navbar1.php'); ?>
- 
  <?php
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
@@ -8,6 +5,9 @@ if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
 header('Location: ../bproject/index.html');
 }
 ?>
+<?php include ('header.php'); ?>
+<?php include ('navbar1.php'); ?>
+
 <?php
   
  
@@ -142,7 +142,7 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
           border-radius: 10px;
           position: relative;
           background-color: #9DBCBC;
-          width: 600px;
+          width: 1000px;
           margin: auto;
           padding-top: 20px;
           padding-bottom: 20px;
@@ -172,7 +172,7 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
         <hr>
 
         <div class="box"><center>
-<h1>Elective Subject Data data</h1><hr>
+<h1>Elective Subject Data</h1><hr>
 <h1>There are <?php echo $numrows; ?> entries in <i>Group <?php echo $type1."  "; ?></i> elective subject:<br /><br /></h1>
 
 <table class="table table-striped table-hover ">
@@ -290,7 +290,7 @@ if($ti[0]==$sem && strtotime($today)<strtotime($Dealine)){ ?>
 </div>
 </div>
 
-    <ul class="breadcrumb">
+    <ul class="breadcrumb" id="footer" style="background-color:#202020">
   <li><a href="management.php">Home</a></li>
   <li class="active">Registration</li>
 </ul>
