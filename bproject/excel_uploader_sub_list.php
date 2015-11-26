@@ -1,7 +1,7 @@
 <?php
 	// Fetching Values From URL
 	
-	$connection = mysql_connect("localhost", "root", "root"); // Establishing Connection with Server..
+	$connection = mysql_connect("localhost", "root", ""); // Establishing Connection with Server..
 	$db = mysql_select_db("bproject", $connection); // Selecting Database
 	if (isset($_POST['sem1'])) {
 		$sem = $_POST['sem1'];
@@ -33,6 +33,7 @@
 			<br/><br/><br/>
 			<button type=submit>Submit</button>
 			<br/><br/>";
+			
 		}
 		else
 			$date = "No Subjects Registered";

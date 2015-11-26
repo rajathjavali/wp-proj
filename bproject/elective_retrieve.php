@@ -16,7 +16,8 @@ header('Location: ../bproject/index.html');
  if($_SERVER["REQUEST_METHOD"] == "POST"){
    $acy=$_POST['acy'];
    $sem=$_POST['sem'];
-
+   $type=$_POST['e_type'];
+   $dept=$POST['host_dpt'];
     
    require_once __DIR__ . '/db_connect.php';
     
@@ -40,6 +41,7 @@ header('Location: ../bproject/index.html');
  
 $type1=$type2=null;
 //$ti[0] has got the semester values
+if($e_type=="local") {
 switch ($sem) {
   case '5':
     $type1 ='A';
@@ -50,10 +52,19 @@ switch ($sem) {
     $type1='C';
     $type2='D';
     break;
+  case '7':
+    $type1='E';
+    break;
+}
+}
+else if($type="global")
+{
+  $type1="GG";
+  $type2="GF";
 }
 //echo $ti[0];
-//$type1='C';
-$sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type1."' ";
+//$type1='C';''
+$sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type1."' and acy='".$acy."' and sem='".$sem."' and Host_dpt='".$dept."'";
  
     $result=mysql_query($sql);
     $numrows=null;
@@ -67,8 +78,8 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
       }   else{
         //echo "<br><b> Request admin to update syllabus of <i>semester '$sem'</i> ...!!</b></br>";
       }  
-
-$sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."'";
+if($sem=='7' && $type!="local"){
+$sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."' and acy='".$acy."' and sem='".$sem."' and Host_dpt='".$dept."'";
  
     $result1=mysql_query($sql);
     $numrows=null;
@@ -84,7 +95,7 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
       }  
  
 
-
+}
 
 }
       
@@ -108,6 +119,8 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
       <script type="text/javascript" charset="utf-8" language="javascript" src="js/jquery.dataTables.js"></script>
       <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
       <script src="jquery-1.9.1.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="check_sem.js"></script>
       <style>
 
         .banner { background-color: #686868; }
@@ -157,6 +170,8 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
  </style>
 </head>
 <body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="excel_uploader_sublist.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <div id="page">
       <div id="maincontent">
@@ -203,7 +218,7 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
    </ol> </tr>
  <?php 
 $rr=$rr+1;
- } ?>    
+ } if($sem=='7' && $type!="local"){ ?>    
 
 
  <table class="table table-striped table-hover ">
@@ -242,7 +257,7 @@ $rr=$rr+1;
 
 
 
-<?php if( $ti[0]==$sem ){ ?>
+<?php } if( $ti[0]==$sem ){ ?>
 
 
 
@@ -262,10 +277,12 @@ $rr=$rr+1;
     $Dealine= $row[0];
 if($ti[0]==$sem && strtotime($today)<strtotime($Dealine)){ ?>
    
-     <input type="hidden" name="sem" value = "<?php echo $sem; ?> ">
+         <input type="hidden" name="sem" value = "<?php echo $sem; ?> ">
          <input type="hidden" name="acy" value ="<?php echo $acy; ?>">
-        <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary" value="Register" >Register</button>
+         <input type="hidden" name="e_type" value="<?php echo $e_type;?>" >
+         <input type="hidden" name="dept" value="<?php echo $dept?>" >
+         <button type="reset" class="btn btn-default">Cancel</button>
+         <button type="submit" class="btn btn-primary" value="Register" >Register</button>
         
       </div>
               </div>

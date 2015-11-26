@@ -9,7 +9,7 @@ header('Location: /bproject/index.html');
 <?php include ('navbar1.php'); ?>
 
 <?php
-$acy=NULL;
+$acy=$e_type=$semNULL;
 ?>
 <html>
 <head>
@@ -21,6 +21,7 @@ $acy=NULL;
       <script type="text/javascript" charset="utf-8" language="javascript" src="js/jquery.dataTables.js"></script>
       <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
       <script src="jquery-1.9.1.min.js"></script>
+      <script src="excel_uploader_sublist.js"></script>
       <style>
         .banner { background-color: #686868; }
         #topbar
@@ -84,29 +85,64 @@ $acy=NULL;
         <hr>
     <div class="box"><center>
 <form class="form-horizontal" id="demo-form" data-parsley-validate method="post"  action="elective_retrieve.php">
-  <fieldset>
+
     <h1>Retrieve Syllabus Information</h1><hr>
      <div class="form-group">
       <label for="select" class="col-lg-3 control-label" align="left">Semester</label>
       <div class="col-lg-9">
         <select class="form-control" id="sem" required name="sem" value="<?php echo $sem;?>" style="width: 210px;">
-           <option>5</option>
+          <option>5</option>
            <option>6</option>
-            <option>7</option> 
+            <option>7</option>
+           
         </select>
-        <br>
         </div>
-        <label for="textArea" class="col-lg-3 control-label" align="left">Academic Year</label>
+        <br>
+        <br>
+        <br>
+       <label for="textArea" class="col-lg-3 control-label" align="left">Academic Year</label>
         <div class="col-lg-9">
-          <input type="text" class="form-control" id="acy" placeholder="2015" name="acy" 
-          required value="<?php echo $acy;?>" style="width: 210px;">
-      </div>
-      </div>
+          <input type="text" class="form-control" id="acy" placeholder="2015" name="acy" required value="<?php echo $acy;?>" style="width: 210px;">
+        </div>
+        <br>
+        <br>
+        <br>
+      <label for="select" class="col-lg-3 control-label" align="left">Host Dept</label>
+      <div class="col-lg-9">
+        <select class="form-control" id="host_dpt" required name="host_dpt" value="<?php echo $host_dpt;?>" style="width: 210px;">
+          <!-- <option>1</option>
+          <option>2</option> -->
+          <option>BT</option>
+          <option>CSE</option>
+          <option>EEE</option>
+          <option>ECE</option>
+           <option>ISE</option>
+            <option>IT</option>
+             <option>ME</option>
+             <option>TC</option>
+             <option>HSS</option>
+             <option>Sc</option>
+        </select>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+     <br>
+     <br>
+     <br>
+     <div id="b">
+
+    </div>
+    <input id="submit" onclick="checkSem()" type="button" value="Submit">
+    <!--<div class="form-group">
       <div class="col-lg-8 col-lg-offset-2">
         <button type="reset" class="btn btn-default">Cancel</button>
         <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-    </fieldset>
+      </div>
+    </div>  -->
+ 
+
     </form>
     </center>
     </div>

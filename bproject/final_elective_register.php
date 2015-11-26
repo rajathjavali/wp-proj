@@ -14,6 +14,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$usn=$_SESSION['usn'];
 	$sem=$_POST['sem'];
 	$acy=$_POST['acy'];
+	$type=$_POST['e_type'];
+	$dept=$_POST['dept'];
 
 	 
 
@@ -24,10 +26,10 @@ require_once __DIR__ . '/db_connect.php';
 	 	 //$sql= "insert into syllabus(S_Code,Name,Host_Dpt,Credits,S_type,sem) values('".$scode."','".$sname."','".$hdep."','".$credit."','".$stype."','".$sem."')";
 	 	$sql = "INSERT INTO studcourse(`USN`, `ccode`,`acy`,`sem`) VALUES ('".$usn."','".$ele1."','".$acy."','".$sem."')";
 		$res=mysql_query($sql);
-		
+		if($sem=='7' && $type!="local"){
 		$sql1 = "INSERT INTO studcourse(`USN`, `ccode`,`acy`,`sem`) VALUES ('".$usn."','".$ele2."','".$acy."','".$sem."')";
 		$res1=mysql_query($sql1);
-		 
+		 }
 	 if($res1)
 	 {
 			?>

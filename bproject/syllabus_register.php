@@ -11,7 +11,6 @@
  	require_once __DIR__ . '/db_connect.php';
 	 $db = new DB_CONNECT();
 	 if($db){
-		 
 		$sql= "insert into syllabus(S_Code,Name,Host_Dpt,Credits,S_type,sem,acy) values('".$scode."','".$sname."','".$hdep."','".$credit."','".$stype."','".$sem."','".$acy."')";
 		$res=mysql_query($sql);
 		 
