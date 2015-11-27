@@ -8,7 +8,7 @@ header('Location:../bproject/index.html');
 
 
  <?php include ('header.php'); ?>
-<?php include ('navbar2.php'); ?>
+<?php include ('navbar.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -74,7 +74,7 @@ $row = $data->rowcount($sheet_index=0);
 $col = $data->colcount($sheet_index=0);
 //echo $row." ".$col;
 
-$connection = mysql_connect("localhost", "root", ""); // Establishing Connection with Server..
+$connection = mysql_connect("localhost", "root", "root"); // Establishing Connection with Server..
 $db = mysql_select_db("bproject", $connection); // Selecting Database
 
 $acy=$_POST['acy'];
@@ -112,9 +112,9 @@ while($i<=$row){
 }
 $result=mysql_query($query);
 if($result)
-echo "Successful";
+echo "<h1>Marks successfully uploaded</h1>";
 else
-echo "Successful";
+echo "<h1>Marks successfully uploaded</h1>";
 ?>
 </center>
 </div>

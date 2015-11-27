@@ -53,8 +53,7 @@ $usn=NULL;
     border-radius: 10px;
     position: relative;
     background-color: #9DBCBC;
-    width: 600px;
-    height: 270px;
+    width: 800px;
     margin: auto;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -83,7 +82,7 @@ $usn=NULL;
           </div> 
         <hr>
 
-<div class="container" style="background-color:#9DBCBC">
+<div class="box">
 <center>
 <?php 
 $sem=$_POST['sem'];
@@ -94,7 +93,7 @@ $sem=$_POST['sem'];
     if($db){
         
  
-$sql1 = "SELECT `USN`,`registered` FROM `approve_1` WHERE `Sem`= '".$sem."'";
+$sql1 = "SELECT `USN`,`registered` FROM `approve_1` WHERE `Sem`= '".$sem."' and approve='1'";
 $result1=mysql_query($sql1);
 if ($result1) {
    echo "<h1>Semester: ".$sem."</h1>";
@@ -121,7 +120,7 @@ else{
       <th>`</th>
       <th><h2>Student usn</h2></th>
       <th><h2>Status</h2></th>
-      <th><h2>Registration date</h2></th>
+      <!--th><h2>Registration date</h2></th-->
       <th><h2>Registered Courses</h2></th>
      <!--  <th><h2>Host Department</h2></th> -->
     </tr>
@@ -140,23 +139,23 @@ else{
       <td><h4><?php if( $rows["registered"] == 1){echo "<p class=text-success>registered";} else {echo "<p class=text-warning>not registered</p>";} ?></h4></td>
      
 
-      <td><h4><?php        
-      if( $rows["registered"] == 1){
-        $sql23 = "SELECT `timeor` FROM `student` WHERE `USN`='".$rows["USN"]."'";
-        $result23=mysql_query($sql23);
-         
-         while($rows23=mysql_fetch_assoc($result23)){
-          echo "<p class=text-info >".$rows23["timeor"]."</p>";}
-        }
-        else {echo "<p class=text-warning>NULL</p>";}
+      <!--td><h4><?php        
+        // if( $rows["registered"] == 1){
+        //   $sql23 = "SELECT `timeor` FROM `student` WHERE `USN`='".$rows["USN"]."'";
+        //   $result23=mysql_query($sql23);
+           
+        //    while($rows23=mysql_fetch_assoc($result23)){
+        //     echo "<p class=text-info >".$rows23["timeor"]."</p>";}
+        //   }
+        //   else {echo "<p class=text-warning>NULL</p>";}
 
-        //if($rows23==" "){
-        	//echo "string";
-        //}
-        // if(count($rows23)>0){
-        // 	echo "N/A";
-        // }
-      ?></h4></td>
+        //   //if($rows23==" "){
+        //   	//echo "string";
+        //   //}
+        //   // if(count($rows23)>0){
+        //   // 	echo "N/A";
+        //   // }
+      ?></h4></td-->
       <td><h4><?php if( $rows["registered"] == 1)
         {
           $sql2="SELECT `ccode` FROM `studcourse` WHERE  `USN`='".$rows["USN"]."'";
@@ -175,20 +174,14 @@ $rr=$rr+1;
 </table> 
 
  <br></br>
- </div>
- <hr>
- <hr>
- <div id="footer">
-    <ul class="breadcrumb" style="background-color: #202020;">
+</center>
+</div>
+</div>
+    <ul class="breadcrumb" id="footer"style="background-color: #202020;">
   <li><a href="admin_management.php">Home</a></li>
    <li><a href="amonitor.php">Select semester</a></li>
   <li class="active">Registration</li>
 </ul>
-  </fieldset>
-</form>  
-</center>
-</div>
-</div>
 </div>
 </body>
 </html>

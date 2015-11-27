@@ -140,6 +140,22 @@ $scode=$sname=$hdep=$credit=$acy=$stype=NULL;
           </div>
 
           <div class="form-group">
+                <label for="select" style=" text-align:left;" class="col-lg-3 control-label">Elective Type(only for elective)</label>
+                <div class="col-lg-9">
+                  <select class="form-control"  id="etype" required name="etype" value="<?php echo $etype;?>" style="width: 210px;">
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>D</option>
+                    <option>E</option>
+                    <option>F</option>
+                    <option>G</option>
+                  </select>
+                  </div>
+
+          </div>
+
+          <div class="form-group">
                 <label for="textArea" style=" text-align:left;" class="col-lg-3 control-label">Academic Year</label>
                 <div class="col-lg-9">
                   <input type="text" class="form-control" id="acy" placeholder="2015" name="sname" required value="<?php echo $acy;?>" style="width: 210px;">
@@ -192,8 +208,9 @@ $scode=$sname=$hdep=$credit=$acy=$stype=NULL;
       var stype= $("#stype").val();
       var acy= $("#acy").val();
       var sem= $("#sem").val();
+      var etype=$("#etype").val();
       // Returns successful data submission message when the entered information is stored in database.
-      var dataString = '&scode1=' + scode + '&sname1='+ sname + '&hdep1='+ hdep + '&credit1='+ credit + '&stype1=' + stype + '&acy1=' + acy + '&sem1=' + sem;
+      var dataString = '&scode1=' + scode + '&sname1='+ sname + '&hdep1='+ hdep + '&credit1='+ credit + '&stype1=' + stype + '&acy1=' + acy + '&sem1=' + sem + '&etype1='+ etype;
       if(scode==''||sname==''||hdep==''||credit==''||stype==''||acy==''||sem=='')
       {
       alert("Please Fill All Fields");

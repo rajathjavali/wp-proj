@@ -1,7 +1,7 @@
 <?php
 	// Fetching Values From URL
 	
-	$connection = mysql_connect("localhost", "root", ""); // Establishing Connection with Server..
+	$connection = mysql_connect("localhost", "root", "root"); // Establishing Connection with Server..
 	$db = mysql_select_db("bproject", $connection); // Selecting Database
 	if (isset($_POST['sem1'])) {
 		$sem = $_POST['sem1'];
@@ -20,7 +20,9 @@
 		$a=mysql_num_rows($query);
 		if($a>0){
 		$rows = mysql_num_rows($query);
-		$data="<label>Subject list:</label><select id='sub' required name='sub'>";
+		$data="<label for='textArea' class='col-lg-3 control-label' style='text-align:left' >Subjects:</label>
+		 <div class='col-lg-9'>
+		 <select id='sub' required name='sub' style='width:210px'>";
 		if($query){
 			
 			while($res=mysql_fetch_array($query))

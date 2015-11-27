@@ -125,13 +125,7 @@ $numrows=$type1=null;
           $numrows = mysql_num_rows($result);    
           $t=array($numrows);
           $i=0;
-          echo"<h1><i>Group ".$type1."</i> elective subject:<br /><br /></h1>";
-        }
-        else
-        {
-          echo "<br><b><h1>Request admin to update syllabus of <i>semester '$sem'</i> ...!!</h1></b></br>";
-        }
-        ?>
+          echo"<h1><i>Group ".$type1."</i> elective subject:<br /><br /></h1>";?>
         <table class="table table-striped table-hover ">
           <thead>
             <tr class="danger">
@@ -168,6 +162,13 @@ $numrows=$type1=null;
             </div>
           </form>
           <br/><br/>
+        <?php 
+        }
+        else
+        {
+          echo "<br><b><h1>Request admin to update syllabus of <i>semester '$sem' elective '$type1'</i> ...!!</h1></b></br>";
+        }
+        ?>
         <?php
         $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."' and syllabus.acy='".$acy."'";         
         $result1=mysql_query($sql);
@@ -177,13 +178,8 @@ $numrows=$type1=null;
           $numrows = mysql_num_rows($result1);          
           $t=array($numrows);
           $i=0;
-          echo"<thead><h1><i>Group".$type2."</i> elective subject:<br /><br /></h1>";
-        }
-        else
-        {
-          echo "<br><br><b><h1> Request admin to update syllabus of <i>semester '$sem'</i> ...!! </h1></b></br></br>";
-        }?>
-        <tr class="danger">
+          echo"<thead><h1><i>Group".$type2."</i> elective subject:<br /><br /></h1>";?>
+                <tr class="danger">
           <th>`</th>
           <th><h2>Subject Code</h2></th>
           <th><h2>Subject Name</h2></th>
@@ -218,6 +214,12 @@ $numrows=$type1=null;
           </div>
         </form>
         <br/><br/>
+        <?php 
+        }
+        else
+        {
+          echo "<br><br><b><h1> Request admin to update syllabus of <i>semester '$sem' elective '$type2' </i> ...!! </h1></b></br></br>";
+        }?>
       <?php 
       }
       else if(($sem==5||$sem==6)&&$stype=='global')
@@ -232,15 +234,8 @@ $numrows=$type1=null;
           $numrows = mysql_num_rows($result);    
           $t=array($numrows);
           $i=0;
-          echo"<h1><i>Group ".$type1."</i> elective subject:<br /><br /></h1>";
-        }
-        else
-        {
-          echo "<br><b><h1>Request admin to update syllabus of <i>semester '$sem'</i> ...!!</h1></b></br>";
-          goto a;
-        }
-        ?>
-        <table class="table table-striped table-hover ">
+          echo"<h1><i>Group ".$type1."</i> elective subject:<br /><br /></h1>";?>
+                <table class="table table-striped table-hover ">
           <thead>
             <tr class="danger">
               <th>`</th>
@@ -275,6 +270,12 @@ $numrows=$type1=null;
           <?php 
           $rr=$rr+1;
         }
+        }
+        else
+        {
+          echo "<br><b><h1>Request admin to update syllabus of <i>semester '$sem'  elective '$type1' </i> ...!!</h1></b></br>";
+          goto a;
+        }
       }
       else if($sem=='7'&& $stype=='global')
       {
@@ -286,14 +287,8 @@ $numrows=$type1=null;
           $numrows = mysql_num_rows($result);    
           $t=array($numrows);
           $i=0;
-          echo"<h1><i>Group ".$type2."</i> elective subject:<br /><br /></h1>";
-        }
-        else
-        {
-          echo "<br><b><h1>Request admin to update syllabus of <i>semester '$sem'</i> ...!!</h1></b></br>";
-        }
-        ?>
-        <table class="table table-striped table-hover ">
+          echo"<h1><i>Group ".$type2."</i> elective subject:<br /><br /></h1>";?>
+                <table class="table table-striped table-hover ">
           <thead>
             <tr class="danger">
               <th>`</th>
@@ -330,6 +325,11 @@ $numrows=$type1=null;
           </form>
           <br/><br/>
         <?php
+        }
+        else
+        {
+          echo "<br><b><h1>Request admin to update syllabus of <i>semester '$sem'  elective '$type2' </i> ...!!</h1></b></br>";
+        }
         $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type3."' and syllabus.acy='".$acy."'";         
         $result1=mysql_query($sql);
         $numrows=null;    
@@ -338,13 +338,8 @@ $numrows=$type1=null;
           $numrows = mysql_num_rows($result1);          
           $t=array($numrows);
           $i=0;
-          echo"<thead><h1><i>Group".$type3."</i> elective subject:<br /><br /></h1>";
-        }
-        else
-        {
-          echo "<br><br><b><h1> Request admin to update syllabus of <i>semester '$sem'</i> ...!! </h1></b></br></br>";
-        }?>
-        <tr class="danger">
+          echo"<thead><h1><i>Group".$type3."</i> elective subject:<br /><br /></h1>";?>
+                <tr class="danger">
           <th>`</th>
           <th><h2>Subject Code</h2></th>
           <th><h2>Subject Name</h2></th>
@@ -379,7 +374,13 @@ $numrows=$type1=null;
           </div>
         </form>
         <br/><br/>
-      <?php 
+      <?php
+        }
+        else
+        {
+          echo "<br><br><b><h1> Request admin to update syllabus of <i>semester '$sem'  elective '$type3' </i> ...!! </h1></b></br></br>";
+        }
+ 
       }  
       else
       {
