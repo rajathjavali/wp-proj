@@ -1,8 +1,8 @@
 <?php
 	// Fetching Values From URL
 	
-	$connection = mysql_connect("localhost", "root", "root"); // Establishing Connection with Server..
-	$db = mysql_select_db("bproject", $connection); // Selecting Database
+	 require_once __DIR__ . '/db_connect.php';
+	    $db = new DB_CONNECT();
 	if (isset($_POST['sem1'])) {
 		$sem = $_POST['sem1'];
 		$dept = $_POST['dept1'];
@@ -38,11 +38,17 @@
 			
 		}
 		else
-			$date = "No Subjects Registered";
-			echo $data;
+			$data .= "<option>No Subjects Registered</option>";
+			//echo $data;
 
 
 		}
+		else
+		{
+		
+		$data = "No Subjects Registered";
+
+		}
 	}
-mysql_close($connection); // Connection Closed
+
 ?>

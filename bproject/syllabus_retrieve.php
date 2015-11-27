@@ -98,19 +98,11 @@ header('Location: ../bproject/index.html');
         	  $db = new DB_CONNECT();
            	if($db){
 
-          	$sql1 = "SELECT `Sem` FROM `approve_1` WHERE `USN`='".$usn."'";
-           	$resusn=mysql_query($sql1);
-
-           	if($resusn){
-           		if(mysql_num_rows($resusn)){
-           			 
-           			$ti=array($numrows);
-            		$ii=0;
-           			while ($rows = mysql_fetch_assoc($resusn)) 
-                	{  	$ti[$ii]=$rows["Sem"];
-             			 $ii=$ii+1;	}
-           		}
-           	}
+           $qry1="SELECT MAX(Sem) FROM approve_1 where USN='".$usn."'";
+        $res=mysql_query($qry1);
+        $row1 = mysql_fetch_row($res);
+        $res1 = $row1[0];
+      
          		$sql = "SELECT * FROM syllabus WHERE S_type='core' and sem= '".$sem."' and acy ='".$acy."' and Host_Dpt='".$host_dpt."'";
          		$result=mysql_query($sql);
          		$numrows=null;
@@ -172,7 +164,7 @@ header('Location: ../bproject/index.html');
         </table> 
         <br>
          
-        <?php if( $ti[0]==$sem ){ ?>
+        <?php if( $res1==$sem ){ ?>
 
 
         
@@ -192,7 +184,7 @@ header('Location: ../bproject/index.html');
                 $res=mysql_query($qry);
                 $row = mysql_fetch_row($res);
                 $Deadline= $row[0];
-                if($ti[0]==$sem && strtotime($today)<strtotime($Deadline)){
+                if($res1==$sem && strtotime($today)<strtotime($Deadline)){
                 ?>
                     <button type="reset" class="btn btn-default">Cancel</button>
                     <button type="submit" class="btn btn-primary" value="Register" >Register</button>

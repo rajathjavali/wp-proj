@@ -7,11 +7,9 @@ header('Location: ../bproject/index.html');
 ?>
 <?php
 
-$con=mysqli_connect('localhost','root','root','bproject');
 
-if (mysqli_connect_errno()) { 
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+ require_once __DIR__ . '/db_connect.php';
+ $db = new DB_CONNECT();
 $usn=$_SESSION['usn'];
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -104,11 +102,11 @@ $query = "SELECT distinct cdte,ctme FROM attends,syllabus WHERE syllabus.sem='".
         (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' 
         and syllabus.S_type='".$course."' and attends.ccode=syllabus.S_code and syllabus.Name='".$sub."' 
         and attends.susn='".$usn."'";
-$export = mysqli_query($con,$query ) or die(mysqli_error($con));
+$export = mysql_query($query ) ;
 
 $tablerows = '<tr><th align="center">USN</th>';
 $totalclass = 0;
-while( $row = mysqli_fetch_row( $export ) )
+while( $row = mysql_fetch_row( $export ) )
 {
     $tablerows .= "<th align='center'>";
     $i = 0;
@@ -135,11 +133,11 @@ $query = "SELECT susn,cdte,ctme,status FROM attends,syllabus WHERE syllabus.sem=
         (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' 
         and syllabus.S_type='".$course."' and attends.ccode=syllabus.S_code 
         and syllabus.Name='".$sub."' and attends.susn = '".$usn."'";
-$export = mysqli_query($con,$query ) or die(mysqli_error($con));
+$export = mysql_query($query);
 
 $count=1;
 $tablerows .= "<tr>";
-while( $row = mysqli_fetch_row( $export ) )
+while( $row = mysql_fetch_row( $export ) )
 {
    
     $j=1;

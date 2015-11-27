@@ -2,14 +2,14 @@
 session_start();
 // Check, if username session is NOT set then this page will jump to login page
 if ((!isset($_SESSION['usn']))||(!isset($_SESSION['password']) )){
-header('Location: /bproject/index.html');
+header('Location: ../bproject/index.html');
 }
 ?>
  <?php include ('header.php'); ?>
 <?php include ('navbar1.php'); ?>
 
 <?php
-$acy=$e_type=$semNULL;
+$acy=$e_type=$sem=NULL;
 ?>
 <html>
 <head>
@@ -21,7 +21,8 @@ $acy=$e_type=$semNULL;
       <script type="text/javascript" charset="utf-8" language="javascript" src="js/jquery.dataTables.js"></script>
       <script type="text/javascript" charset="utf-8" language="javascript" src="js/DT_bootstrap.js"></script>
       <script src="jquery-1.9.1.min.js"></script>
-      <script src="excel_uploader_sublist.js"></script>
+      <script src="semcheck.js">
+</script>
       <style>
         .banner { background-color: #686868; }
         #topbar
@@ -84,7 +85,7 @@ $acy=$e_type=$semNULL;
           </div> 
         <hr>
     <div class="box"><center>
-<form class="form-horizontal" id="demo-form" data-parsley-validate method="post"  action="elective_retrieve.php">
+<form class="form-horizontal" id="demo-form" data-parsley-validate method="post"> <!--  action="elective_retrieve.php"> -->
 
     <h1>Retrieve Syllabus Information</h1><hr>
      <div class="form-group">
@@ -134,7 +135,7 @@ $acy=$e_type=$semNULL;
      <div id="b">
 
     </div>
-    <input id="submit" onclick="checkSem()" type="button" value="Submit">
+    <button onclick="check()" > Submit </button>
     <!--<div class="form-group">
       <div class="col-lg-8 col-lg-offset-2">
         <button type="reset" class="btn btn-default">Cancel</button>
@@ -152,6 +153,7 @@ $acy=$e_type=$semNULL;
   <li class="active">Elective subject details</li>
 </ul>
 </div>
+
 </body>
 </html>
 

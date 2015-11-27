@@ -1,10 +1,9 @@
 <?php
 
-$con=mysqli_connect('localhost','root','root','bproject');
+ require_once __DIR__ . '/db_connect.php';
+        $db = new DB_CONNECT();
 
-if (mysqli_connect_errno()) { 
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 $sem=$_POST['sem'];
 $etype=$_POST['etype'];

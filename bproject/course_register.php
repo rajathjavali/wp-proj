@@ -19,9 +19,6 @@ echo "<h1>Register For core subject</h1>";
 	 $sem=$_POST['sem'];
      $acy=$_POST['acy'];
 	 require_once __DIR__ . '/db_connect.php';
-	  
-	 //$ac='HSS';
-	    // connecting to db
 	    $db = new DB_CONNECT();
 	 	if($db){
 

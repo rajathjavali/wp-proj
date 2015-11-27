@@ -73,9 +73,8 @@ $row = $data->rowcount($sheet_index=0);
 $col = $data->colcount($sheet_index=0);
 
 
-$connection = mysql_connect("localhost", "root", "root"); // Establishing Connection with Server..
-$db = mysql_select_db("bproject", $connection); // Selecting Database
-
+ require_once __DIR__ . '/db_connect.php';
+ $db = new DB_CONNECT();
 $acy=$_POST['acy'];
 $sem=$_POST['sem'];
 $dept=$_POST['dept'];

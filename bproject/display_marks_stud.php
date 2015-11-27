@@ -7,11 +7,9 @@ header('Location: ../bproject/index.html');
 ?>
 <?php
 
-$con=mysqli_connect('localhost','root','root','bproject');
 
-if (mysqli_connect_errno()) { 
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+ require_once __DIR__ . '/db_connect.php';
+ $db = new DB_CONNECT();
 $usn = $_SESSION['usn'];
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 $sem = $_POST['sem'];

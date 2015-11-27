@@ -16,7 +16,7 @@ header('Location: ../bproject/index.html');
  if($_SERVER["REQUEST_METHOD"] == "POST"){
    $acy=$_POST['acy'];
    $sem=$_POST['sem'];
-   $type=$_POST['e_type'];
+   $type=$_POST['sub'];
    $dept=$POST['host_dpt'];
     
    require_once __DIR__ . '/db_connect.php';
@@ -41,7 +41,7 @@ header('Location: ../bproject/index.html');
  
 $type1=$type2=null;
 //$ti[0] has got the semester values
-if($e_type=="local") {
+if($type=="local") {
 switch ($sem) {
   case '5':
     $type1 ='A';
