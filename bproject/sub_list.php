@@ -39,6 +39,5 @@
 
 
 		}
-	}
-mysql_close($connection); // Connection Closed
+	}// Connection Closed
 ?>

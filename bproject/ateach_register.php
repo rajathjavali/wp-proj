@@ -2,13 +2,17 @@
  
 
  
-    $name = test_input($_POST['name1']);
+    $fname = test_input($_POST['fname1']);
+    $mname = test_input($_POST['mname1']);
+    $lname = test_input($_POST['lname1']);
+    $sname = test_input($_POST['sname1']);
+    $pass = test_input($_POST['pass1']);
     $staffid = test_input($_POST['staffid1']);
  	$phno = test_input($_POST['phone1']);
  	$email = test_input($_POST['email1']);
  	$err="";
 
- 	if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+ 	if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
  	  $err .= "Only letters and white space allowed in First Name"; 
 	}
 
@@ -33,7 +37,7 @@
  	if($db)
  	{
 	    // mysql inserting a new row
-	    $sql = "insert into staff(Staff_ID,FName,Phone_No,Email_ID) values('".$staffid."','".$name."' ,'".$phno."','".$email."')";
+	    $sql = "insert into staff(Staff_ID,FName,Mname,Lname,Shortname,Phone_No,Email_ID,password) values('".$staffid."','".$fname."','".$mname."','".$lname."','".$sname."','".$phno."','".$email."','".$pass."')";
     	$res = mysql_query($sql);
 	    // check if row inserted or not
 	    if ($res) 

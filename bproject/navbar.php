@@ -78,7 +78,8 @@
                   <ul class="dropdown-menu">
                     <li><a href="subject_students_attendance.php">View attendance</a></li>
 
-                    <li><a href="attendance_uploader.php">Upload attendance</a></li>                             
+                    <li><a href="attendance_uploader.php">Upload attendance</a></li>
+                    <li><a href="nsar_gen.php">Generate NSAR list</a></li>                         
 
                   </ul>
                 </li>

@@ -104,7 +104,7 @@ $query = "SELECT distinct cdte,ctme FROM attends,syllabus WHERE syllabus.sem='".
         and attends.susn='".$usn."'";
 $export = mysql_query($query ) ;
 
-$tablerows = '<tr><th align="center">USN</th>';
+$tablerows = '<tr class="danger"><th align="center">USN</th>';
 $totalclass = 0;
 while( $row = mysql_fetch_row( $export ) )
 {
@@ -172,7 +172,7 @@ if ( $htmldata == "" )
 }
 
 
-echo "<table align='center' border='1' style='width: 75%;height=100%;'>".$htmldata."</table>
+echo "<table class='table table-striped table-hover' align='center' border='1' style='width: 75%;height=100%; background-color:#FFFFFF'>".$htmldata."</table>
 <input type=hidden name=sem required value='$sem'><input type=hidden name=course required value='$course'>
 <input type=hidden name=dept required value='$dept'><input type=hidden name=acy required value='$acy'>
 <input type=hidden name=sub required value='$sub'>";

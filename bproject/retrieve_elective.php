@@ -9,7 +9,7 @@ header('Location: ../bproject/index.html');
 <?php include ('navbar1.php'); ?>
 
 <?php
-$acy=$e_type=$sem=NULL;
+$acy=$type=$sem=NULL;
 ?>
 <html>
 <head>
@@ -85,7 +85,7 @@ $acy=$e_type=$sem=NULL;
           </div> 
         <hr>
     <div class="box"><center>
-<form class="form-horizontal" id="demo-form" data-parsley-validate method="post"> <!--  action="elective_retrieve.php"> -->
+<form class="form-horizontal" id="demo-form" data-parsley-validate method="post" action="elective_retrieve.php"> 
 
     <h1>Retrieve Syllabus Information</h1><hr>
      <div class="form-group">
@@ -128,20 +128,23 @@ $acy=$e_type=$sem=NULL;
         <br>
         <br>
         <br>
-        
+        <label for="select" class="col-lg-3 control-label" align="left">Host Dept</label>
+      <div class="col-lg-9">
+        <select class="form-control" id="type" required name="type" value="<?php echo $type;?>" style="width: 210px;">
+        <option>local</option>
+        <option>global</option>
+        </select>
+        </div>
      <br>
      <br>
      <br>
-     <div id="b">
-
     </div>
-    <button onclick="check()" > Submit </button>
-    <!--<div class="form-group">
+    <div class="form-group">
       <div class="col-lg-8 col-lg-offset-2">
         <button type="reset" class="btn btn-default">Cancel</button>
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
-    </div>  -->
+    </div> 
  
 
     </form>

@@ -60,7 +60,7 @@
 	    {
 			if($res3){
 	        // successfully inserted into database
-	        echo "Inserted Registered"; 
+	        echo "Registered successfully"; 
 	        //header("Location:http://localhost/project/form.php");
 	    	}
 	    } 

@@ -105,7 +105,6 @@ else{
       <th><h2>status</h2></th>
       <th><h2>Registered sem</h2></th>
      <th><h2>Academic year</h2></th>
-      <th><h2>Registered at</h2></th>
     </tr>
   </thead>
   
@@ -122,26 +121,6 @@ else{
       <td><h4><?php if( $rows['registered'] == 1){echo "registered";} else {echo "<p class=text-warning>not registered</p>";} ?></h4></td>
       <td><h4><?php echo $rows['Sem']?></h4></td>
       <td><h4><?php echo $rows['acy']?></h4></td>
-     
-
-      <td><h4><?php 
-$sql23 = "SELECT `timeor` FROM `student` WHERE `USN`='".$rows['USN']."'";
-$result23=mysql_query($sql23);
- 
- while($rows23=mysql_fetch_assoc($result23)){
- 	echo "<p class=text-info >".$rows23['timeor']."</p>";
-}
-if($rows23==" "){
-	echo "string";
-}
-// if(count($rows23)>0){
-// 	echo "N/A";
-// }
-
-
- ?></h4></td>
-   
-
       <!-- <td><h4><?php //echo $rows[Host_Dpt] ?></h4></td> -->
    </ol> </tr>
  <?php 
@@ -150,13 +129,6 @@ $rr=$rr+1;
     
   </tbody>
 </table> 
-
- <br></br>
-   
-    
- <br></br>
- <br></br>
- <br></br>
 </fieldset>
 </form>
 </center>  

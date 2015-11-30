@@ -49,6 +49,7 @@
 		$data = "No Subjects Registered";
 
 		}
+		echo $data;
 	}
 
 ?>

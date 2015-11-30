@@ -86,7 +86,7 @@ header('Location: ../bproject/index.html');
           </center>
         </div>   
 
-        <div id="owl-demo" style="padding-left: 30px; padding-right: 30px; background-color:#FFFFFF">
+        <div id="owl-demo" style="padding-left: 30px; padding-right: 30px; background-color:#FFFFFF; color:#000000">
 
           <div class="owl-item grayscale" style="width: 293px;">
           <img src="images/reg.png" alt="Owl Image">
@@ -110,7 +110,7 @@ header('Location: ../bproject/index.html');
 
           <div class="owl-item grayscale" style="width: 293px;">
           <img src="images/nsarnssr.jpg" alt="Owl Image">
-          <p><center><strong>NSAR and NSSR List</strong></center>
+          <p><center><strong>NSAR List</strong></center>
           </div>
 
           <div class="owl-item grayscale" style="width: 293px;">
@@ -199,38 +199,12 @@ header('Location: ../bproject/index.html');
 
       <div class="row featurette">
         <div class="col-md-7 col-md-push-5" style="padding-left:50px; padding-right:50px; background-color:#66CC99">
-          <h2 class="featurette-heading">Graph based reports <span class="text-muted"><br>For quick analysis</span></h2>
-          <p class="lead">Graphs illustrating attendance and marks status to help in easy analysis and attractive interface for the user!</p>
-        </div>
-        <div class="col-md-5 col-md-pull-7" style="padding-top:110px">
-          <img class="featurette-image img-responsive center-block" src="images/graph.jpg" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7" style="padding-left:50px; padding-right:50px; background-color:#FFCC99">
-          <h2 class="featurette-heading">Mobile App <span class="text-muted"><br>For students and teachers</span></h2>
+          <h2 class="featurette-heading">Mobile App  <span class="text-muted"><br>For students and teachers</span></h2>
           <p class="lead">Mobile Application for attendance and marks management to enable easy access from any mobile device at any time</p>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5 col-md-pull-7" style="padding-top:110px">
           <img class="featurette-image img-responsive center-block" src="images/android.jpg" alt="Generic placeholder image">
         </div>
       </div>
-
-      <hr class="featurette-divider">
-      <!-- /.row -->
-         <!--center>
-          <p> <h3>Add deadline for semister registration</h3></p>
-          <form method="POST" action="add_deadline.php">
-            <input type="datetime-local" name="deadline" step="1"><br>
-           <p> <h3>Add deadline for elective Registration</h3></p>
-            <input type="datetime-local" name="deadline_ele" step="1"><br> 
-            <input type="submit" value="Add deadline date" name="Add deadline date" id="dead_line">
-          </form>
-        </center>
-        </div-->
- 
   </body>
   </html>

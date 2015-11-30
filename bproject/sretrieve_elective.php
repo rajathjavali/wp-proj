@@ -84,7 +84,7 @@ $acy=null;
   <h1>Retrieve Syllabus Information </h1><hr>
 
   
-<form class="form-horizontal" id="demo-form" data-parsley-validate method="post"  action="selective_retrieve.php">
+<form class="form-horizontal" id="demo-form" data-parsley-validate method="post"  action="aselective_retrieve.php">
   <fieldset>
 
      <div class="form-group">
@@ -94,15 +94,33 @@ $acy=null;
            <option>5</option>
            <option>6</option>
             <option>7</option>
-             
+         
         </select>
         <br>
-      </div>
+        </div>
       <label for="textArea" class="col-lg-3 control-label" style="alight:left">Academic Year</label>
         <div class="col-lg-9">
           <input type="text" class="form-control" id="acy" placeholder="2015" name="acy" required value="<?php echo $acy;?>" style="width: 210px;">
+        <br>
         </div>       
-    </div>
+                <label for="select" style="align:left" class="col-lg-3 control-label">Host Dept</label>
+                <div class="col-lg-9">
+                  <select class="form-control" style="width:210px" id="dept" required name="dept" value="<?php echo $dept;?>" style="width: 75px;">
+                   <!--  <option>1</option>
+                    <option>2</option> -->
+                    <option>BT</option>
+                    <option>CSE</option>
+                     <option>ECE</option>
+                      <option>ISE</option>
+                       <option>IT</option>
+                       <option>ME</option>
+                       <option>TC</option>
+                      <option>Sc</option>
+                       <option>HSS</option>
+                  </select>
+                  <br>
+                </div>
+
           <label for="select" class="col-lg-3 control-label" style="alight:left">Type</label>
       <div class="col-lg-9">
         <select class="form-control" id="type" required name="stype" value="<?php echo $stype;?>" style="width: 210px;">
@@ -111,10 +129,8 @@ $acy=null;
              
         </select>
         <br>
+      </div>
       </div> 
-
-
-     
 
     <div class="form-group">
       <div class="col-lg-8 col-lg-offset-2">

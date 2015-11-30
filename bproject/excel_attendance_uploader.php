@@ -115,7 +115,6 @@ while($i<=$col){
 	
 }
 $result=mysql_query($query);
-echo $result;
 if($result)
 echo '<h1>Attendance Successfully updated</h1>';
 else

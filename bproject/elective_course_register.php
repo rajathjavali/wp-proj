@@ -89,6 +89,8 @@ header('Location: /bproject/index.html');
  $scode=$sname=$credit=$sem=$scode=$stype=$t=null;
   $usn=$_SESSION['usn'];
   $acy=$_POST['acy'];
+  $type=$_POST['type'];
+  $dept=$_POST['dept'];
   //$section=$_POST['section'];
    
 if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -107,19 +109,30 @@ $sem=intval($sem);
 
 $type1=$type2=null;
 //$ti[0] has got the semester values
+if($type=="local") {
 switch ($sem) {
-	case '5':
-		$type1 ='A';
-		$type2 ='B';		
-		break;
+  case '5':
+    $type1 ='A';
+    $type2 ='B';    
+    break;
 
-	case '6':
-		$type1='C';
-		$type2='D';
-		break;
+  case '6':
+    $type1='C';
+    $type2='D';
+    break;
+  case '7':
+    $type1='E';
+    break;
 }
+}
+else if($type="global")
+{
+  $type1="GG";
+  $type2="GF";
+}
+if($type=="local"){
 
-$sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type1."'";
+$sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type1."' and S_type='".$type."' and Host_Dpt='".$dept."'";
 //echo $sql;
  		$result=mysql_query($sql);
  		$numrows=null; ?>
@@ -144,14 +157,16 @@ $sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllab
        '; 
  $i=$i+1;
      			 //echo "<br></br> <b><li>Subject name </b>:".$row[Name]."  <b>Subject Code </b>:".$row[S_Code]."</li>";
-      }}   ?>
+      }  }?>
 
 </ol>
  </fieldset>
 
 
 <?php
-  $sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."'";
+if((($sem=='5' || $sem=='6' ) && $type=="local") || ($sem=='7' && $type=="global")){
+
+  $sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."' and Host_Dpt='".$dept."'";
  $result=mysql_query($sql);
     $numrows=null; ?>
     <h2>Select one of subject from <i>Group <?php echo $type2;?></i>  </h2> <br> 
@@ -175,30 +190,98 @@ $sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllab
        '; 
  $i=$i+1;
            //echo "<br></br> <b><li>Subject name </b>:".$row[Name]."  <b>Subject Code </b>:".$row[S_Code]."</li>";
-      }}   ?>
+      }} } } ?>
+
+</ol>
+<?php 
+if($type=="global"){
+  $sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type1."' and S_type='".$type."' and Host_Dpt='".$dept."'";
+//echo $sql;
+    $result=mysql_query($sql);
+    $numrows=null; ?>
+    <h2>Select one of subject from <i>Group <?php echo $type1;?></i>  </h2> <br>
+<form method="post" action="final_elective_register.php">
+<fieldset  style="width:700px" align="justify"><ol>
+    <?php
+   if ($result && mysql_num_rows($result)) 
+   {  
+          $numrows = mysql_num_rows($result);
+        /*$ta=array($numrows);
+        $na=array($numrows);*/
+        $i=0;
+        while ($row = mysql_fetch_assoc($result)) 
+          { 
+            
+          $ta[$i]=$row['S_Code'];
+          $na[$i]=$row['Name'];
+          //echo $na[$i];
+           
+          echo '<input type="radio" name="scode1" required value="'.($ta[$i]).'"/><label style="padding-left: 10px;">'.($na[$i]).'</label><br>
+       '; 
+ $i=$i+1;
+           //echo "<br></br> <b><li>Subject name </b>:".$row[Name]."  <b>Subject Code </b>:".$row[S_Code]."</li>";
+      }  }?>
 
 </ol>
  </fieldset>
 
+
+<?php
+if((($sem=='5' || $sem=='6' ) && $type=="local") || ($sem=='7' && $type=="global")){
+
+  $sql = "SELECT S_Code,Name FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."' and Host_Dpt='".$dept."'";
+ $result=mysql_query($sql);
+    $numrows=null; ?>
+    <h2>Select one of subject from <i>Group <?php echo $type2;?></i>  </h2> <br> 
+
+<fieldset  style="width:700px" align="justify"><ol>
+    <?php
+   if ($result && mysql_num_rows($result)) 
+   {  
+          $numrows = mysql_num_rows($result);
+        /*$ta=array($numrows);
+        $na=array($numrows);*/
+        $i=0;
+        while ($row = mysql_fetch_assoc($result)) 
+          { 
+            
+          $ta[$i]=$row['S_Code'];
+          $na[$i]=$row['Name'];
+          //echo $na[$i];
+           
+          echo '<input type="radio" name="scode2" required value="'.($ta[$i]).'" /><label style="padding-left: 10px;">'.($na[$i]). '</label><br>
+       '; 
+ $i=$i+1;
+           //echo "<br></br> <b><li>Subject name </b>:".$row[Name]."  <b>Subject Code </b>:".$row[S_Code]."</li>";
+      }} } } ?>
+
+</ol>
+       <?php
+}
+
+}
+      
+    else{
+      echo "Problem in connecting to database";
+    }  
+   ?>
+
+ </fieldset>
+
 				<input type="hidden" name="sem" value="<?php echo $sem; ?> ">
        <input type="hidden" name="acy" value="<?php echo $acy; ?>" >
+       <input type="hidden" name="type" value="<?php echo $type;?>">
+       <input type="hidden" name="dept" value="<?php echo $dept?>">
 				<br><br><input type="submit" name="submit" value="Register" >
 				</form>
 
 
                     
           
-       <?php
 
-}
-			
-		else{
-			echo "Problem in connecting to database";
-		}	 
-	 
-}
+
  
-?>
+
 </center> 
 </div>
 </div>

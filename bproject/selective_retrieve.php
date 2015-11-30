@@ -390,7 +390,6 @@ $numrows=$type1=null;
   ?>
 <br>
 <?php a:?>
-  </div>
   </center>
   </div>
     <ul class="breadcrumb" id="footer" style="background-color:#202020">

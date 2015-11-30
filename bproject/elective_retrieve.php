@@ -16,8 +16,10 @@ header('Location: ../bproject/index.html');
  if($_SERVER["REQUEST_METHOD"] == "POST"){
    $acy=$_POST['acy'];
    $sem=$_POST['sem'];
-   $type=$_POST['sub'];
-   $dept=$POST['host_dpt'];
+   $dept=$_POST['host_dpt'];
+   $type=$_POST['type'];
+   $flag='1';
+   //echo $type;
     
    require_once __DIR__ . '/db_connect.php';
     
@@ -25,19 +27,11 @@ header('Location: ../bproject/index.html');
       $db = new DB_CONNECT();
     if($db){
 
-    $sql1 = "SELECT `Sem` FROM `approve_1` WHERE `USN`='".$usn."'";
-    $resusn=mysql_query($sql1);
-//below code is used to get user's semester based on session's usn number, i.e on who login...
-    if($resusn){
-      if(mysql_num_rows($resusn)){
-        $ti=array($numrows);
-        $ii=0;
-        while ($rows = mysql_fetch_assoc($resusn)) 
-          {   $ti[$ii]=$rows["Sem"];
-           $ii=$ii+1; }
-      }
-    }
-
+    $qry1="SELECT MAX(Sem) FROM approve_1 where USN='".$usn."'";
+        $res=mysql_query($qry1);
+        $row = mysql_fetch_row($res);
+        $res1 = $row[0];
+      
  
 $type1=$type2=null;
 //$ti[0] has got the semester values
@@ -62,9 +56,8 @@ else if($type="global")
   $type1="GG";
   $type2="GF";
 }
-//echo $ti[0];
-//$type1='C';''
-$sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type1."' and acy='".$acy."' and sem='".$sem."' and Host_dpt='".$dept."'";
+if($type=="local"){
+$sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type1."' and acy='".$acy."' and sem='".$sem."' and Host_dpt='".$dept."' and S_type='".$type."'";
  
     $result=mysql_query($sql);
     $numrows=null;
@@ -78,8 +71,44 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
       }   else{
         //echo "<br><b> Request admin to update syllabus of <i>semester '$sem'</i> ...!!</b></br>";
       }  
-if($sem=='7' && $type!="local"){
-$sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."' and acy='".$acy."' and sem='".$sem."' and Host_dpt='".$dept."'";
+
+if((($sem=='5' || $sem=='6' ) && $type=="local") || ($sem=='7' && $type=="global")){
+$sql1 = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."' and acy='".$acy."' and sem='".$sem."' and Host_dpt='".$dept."'and S_type='".$type."'";
+ 
+    $result1=mysql_query($sql1);
+    $numrows=null;
+    
+   if ($result1 && mysql_num_rows($result1)) 
+   {  
+     $numrows = mysql_num_rows($result1);
+            echo $numrows;
+        $t1=array($numrows);
+        //$i=0; 
+      }   else{
+        //echo "<br><b> Request admin to update syllabus of <i>semester '$sem'</i> ...!!</b></br>";
+      }  
+ 
+
+}
+
+}
+
+if($type=="global" and $sem=='7'){
+  $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type1."' and acy='".$acy."' and sem='".$sem."' and  S_type='".$type."'";
+ 
+    $result=mysql_query($sql);
+    $numrows=null;    
+   if ($result && mysql_num_rows($result)) 
+   {  
+     $numrows = mysql_num_rows($result);
+            
+        $t=array($numrows);
+       // $i=0; 
+      }   else{
+        //echo "<br><b> Request admin to update syllabus of <i>semester '$sem'</i> ...!!</b></br>";
+      }  
+if((($sem=='5' || $sem=='6' ) && $type=="local") || ($sem=='7' && $type=="global")){
+$sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."' and acy='".$acy."' and sem='".$sem."' and S_type='".$type."'";
  
     $result1=mysql_query($sql);
     $numrows=null;
@@ -88,8 +117,8 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
    {  
      $numrows = mysql_num_rows($result1);
             
-        $t=array($numrows);
-        $i=0; 
+        $t1=array($numrows);
+        //$i=0; 
       }   else{
         //echo "<br><b> Request admin to update syllabus of <i>semester '$sem'</i> ...!!</b></br>";
       }  
@@ -99,10 +128,7 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
 
 }
       
-    else{
-      echo "Problem in connecting to database";
-    }  
-   
+    
 }
  
 ?>
@@ -188,6 +214,7 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
 
         <div class="box"><center>
 <h1>Elective Subject Data</h1><hr>
+<?php if(!($type=="global" and $sem!='7') ){ ?>
 <h1>There are <?php echo $numrows; ?> entries in <i>Group <?php echo $type1."  "; ?></i> elective subject:<br /><br /></h1>
 
 <table class="table table-striped table-hover ">
@@ -205,7 +232,10 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
 
  
 <?php $rr=1; ?>
-<?php while($rows=mysql_fetch_assoc($result)){ 
+
+<?php
+
+while($rows=mysql_fetch_assoc($result)){ 
 
   ?>
   <tbody>
@@ -218,7 +248,7 @@ $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE electiv
    </ol> </tr>
  <?php 
 $rr=$rr+1;
- } if($sem=='7' && $type!="local"){ ?>    
+ } if((($sem=='5' || $sem=='6' ) && $type=="local") || ($sem=='7' && $type=="global")){ ?>    
 
 
  <table class="table table-striped table-hover ">
@@ -240,7 +270,7 @@ $rr=$rr+1;
   ?>
   <tbody>
     <tr ><ol>
-      <td><h4><?php echo $rr; ?>]</h4> </td>
+      <td><h4><?php echo $rr; ?></h4> </td>
       <td><h4><?php echo $rows["S_Code"] ?></h4></td>
       <td><h4><?php echo $rows["Name"] ?></h4></td>
       <td><h4><?php echo $rows["Credits"] ?></h4></td>
@@ -257,7 +287,12 @@ $rr=$rr+1;
 
 
 
-<?php } if( $ti[0]==$sem ){ ?>
+<?php } 
+}
+else
+  echo "<b>No Global Elective for Semester ".$sem;
+  $flag=0;
+if( $res1==$sem ){ ?>
 
 
 
@@ -275,11 +310,11 @@ $rr=$rr+1;
     $res=mysql_query($qry);
     $row = mysql_fetch_row($res);
     $Dealine= $row[0];
-if($ti[0]==$sem && strtotime($today)<strtotime($Dealine)){ ?>
+if($res1==$sem && strtotime($today)<strtotime($Dealine)){ ?>
    
          <input type="hidden" name="sem" value = "<?php echo $sem; ?> ">
          <input type="hidden" name="acy" value ="<?php echo $acy; ?>">
-         <input type="hidden" name="e_type" value="<?php echo $e_type;?>" >
+         <input type="hidden" name="type" value="<?php echo $type;?>" >
          <input type="hidden" name="dept" value="<?php echo $dept?>" >
          <button type="reset" class="btn btn-default">Cancel</button>
          <button type="submit" class="btn btn-primary" value="Register" >Register</button>
@@ -296,9 +331,13 @@ if($ti[0]==$sem && strtotime($today)<strtotime($Dealine)){ ?>
 
 
         <!--  <br><br><input type=submit name=submit value=Register>  -->
-<?php }else{ ?>
-   <br><b>You cannot register for this semester now</b></br> 
-<?php } ?>
+<?php } 
+  
+}
+else{
+      echo "Problem in connecting to database";
+    }  
+   ?>
 
  <br></br>
 </fieldset>

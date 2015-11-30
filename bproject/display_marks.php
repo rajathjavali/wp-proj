@@ -92,19 +92,19 @@ $query = "SELECT susn,ccode,t1,q1,t2,q2,t3,q3,lab,assign FROM marks,syllabus WHE
         syllabus.S_type='".$course."' and marks.ccode=syllabus.S_code 
         and syllabus.Name='".$sub."'";
 
-$htmldata="<tr>";
+$htmldata="<tr class='danger'>";
 
-$export = mysqli_query($con,$query ) or die(mysqli_error($con));
+$export = mysql_query($query );
 
 
 
-while ($fieldinfo=mysqli_fetch_field($export))
+while ($fieldinfo=mysql_fetch_field($export))
 {
     $htmldata .= "<th align='center'>".$fieldinfo->name."</th>";
 }
 $htmldata.="</tr>";
 
-while( $row = mysqli_fetch_row( $export ) )
+while( $row = mysql_fetch_row( $export ) )
 {
     $htmldata .= "<tr>";
     foreach( $row as $value )
@@ -127,7 +127,7 @@ if ( $htmldata == "" )
 }
 
 
-echo "<table align='center' border='1' style='width: 100%;height=100%;'>".$htmldata."</table>
+echo "<table class='table table-striped table-hover' align='center' border='1' style='width: 100%;height=100%;background-color:#FFFFFF'>".$htmldata."</table>
 <input type=hidden name=sem required value='$sem'><input type=hidden name=course required value='$course'>
 <input type=hidden name=dept required value='$dept'><input type=hidden name=acy required value='$acy'>
 <input type=hidden name=sub required value='$sub'>";

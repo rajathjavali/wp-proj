@@ -86,13 +86,14 @@ $numrows=$type1=null;
 <div class="container" style="background-color:#9DBCBC">
 <center>
 <?php 
- $scode=$sname=$credit=$sem=$scode=$stype=$t=$acy=null;
+ $scode=$sname=$credit=$sem=$scode=$stype=$t=$acy=$dept=null;
  $usn=$_SESSION['usn'];
  if($_SERVER["REQUEST_METHOD"] == "POST")
  {
     $acy=$_POST['acy'];
     $stype=$_POST['stype'];
     $sem=$_POST['sem']; 
+    $dept=$_POST['dept'];
     require_once __DIR__ . '/db_connect.php';
     $db = new DB_CONNECT();
     if($db)
@@ -117,7 +118,7 @@ $numrows=$type1=null;
       }
       if(($sem=='5'||$sem=='6')&&$stype=='local')
       {
-        $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type1."'and syllabus.acy='".$acy."'";
+        $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type1."'and syllabus.acy='".$acy."' and Host_Dpt='".$dept."'";
         $result=mysql_query($sql);
         $numrows=null;
         if ($result && mysql_num_rows($result)) 
@@ -170,7 +171,7 @@ $numrows=$type1=null;
         }
         ?>
         <?php
-        $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."' and syllabus.acy='".$acy."'";         
+        $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."' and syllabus.acy='".$acy."' and Host_Dpt='".$dept."'";         
         $result1=mysql_query($sql);
         $numrows=null;    
         if ($result1 && mysql_num_rows($result1)) 
@@ -226,7 +227,7 @@ $numrows=$type1=null;
         echo "<h2>Global electives are not offered in ".$sem." semester</h2>";
       else if($sem=='7'&& $stype=='local')
       {
-        $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type1."'and syllabus.acy='".$acy."'";
+        $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type1."'and syllabus.acy='".$acy."' and Host_Dpt='".$dept."'";
         $result=mysql_query($sql);
         $numrows=null;
         if ($result && mysql_num_rows($result)) 
@@ -279,7 +280,7 @@ $numrows=$type1=null;
       }
       else if($sem=='7'&& $stype=='global')
       {
-        $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."'and syllabus.acy='".$acy."'";
+        $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type2."'and syllabus.acy='".$acy."' and Host_Dpt='".$dept."'";
         $result=mysql_query($sql);
         $numrows=null;
         if ($result && mysql_num_rows($result)) 
@@ -330,7 +331,7 @@ $numrows=$type1=null;
         {
           echo "<br><b><h1>Request admin to update syllabus of <i>semester '$sem'  elective '$type2' </i> ...!!</h1></b></br>";
         }
-        $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type3."' and syllabus.acy='".$acy."'";         
+        $sql = "SELECT S_Code,Name,Credits,Host_Dpt FROM syllabus,elective WHERE elective.E_Code = syllabus.S_Code and E_Type='".$type3."' and syllabus.acy='".$acy."' and Host_Dpt='".$dept."'";         
         $result1=mysql_query($sql);
         $numrows=null;    
         if ($result1 && mysql_num_rows($result1)) 
@@ -391,7 +392,6 @@ $numrows=$type1=null;
   ?>
 <br>
 <?php a:?>
-  </div>
   </center>
   </div>
     <ul class="breadcrumb" id="footer" style="background-color:#202020">

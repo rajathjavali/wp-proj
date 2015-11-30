@@ -90,11 +90,11 @@ $sub = $_POST['sub'];
 $query = "SELECT distinct cdte,ctme FROM attends,syllabus WHERE syllabus.sem='".$sem."' and 
         (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' 
         and syllabus.S_type='".$course."' and attends.ccode=syllabus.S_code and syllabus.Name='".$sub."'";
-$export = mysqli_query($con,$query ) or die(mysqli_error($con));
+$export = mysql_query($query );
 
-$tablerows = '<tr><th align="center">USN</th>';
+$tablerows = '<tr class="danger"><th align="center">USN</th>';
 $totalclass = 0;
-while( $row = mysqli_fetch_row( $export ) )
+while( $row = mysql_fetch_row( $export ) )
 {
     $tablerows .= "<th align='center'>";
     $i = 0;
@@ -120,11 +120,11 @@ $query = "SELECT susn,cdte,ctme,status FROM attends,syllabus WHERE syllabus.sem=
         (syllabus.Host_Dpt='".$dept."' or syllabus.Host_Dpt='HSS') and syllabus.acy='".$acy."' 
         and syllabus.S_type='".$course."' and attends.ccode=syllabus.S_code 
         and syllabus.Name='".$sub."'";
-$export = mysqli_query($con,$query ) or die(mysqli_error($con));
+$export = mysql_query($query );
 
 $count=1;
 $tablerows .= "<tr>";
-while( $row = mysqli_fetch_row( $export ) )
+while( $row = mysql_fetch_row( $export ) )
 {
    
     $j=1;
@@ -159,7 +159,7 @@ if ( $htmldata == "" )
 }
 
 
-echo "<table align='center' border='1' style='width: 100%;height=100%;'>".$htmldata."</table>
+echo "<table class='table table-striped table-hover' align='center' border='1' style='width: 100%;height=100%;background-color:#FFFFFF'>".$htmldata."</table>
 <input type=hidden name=sem required value='$sem'><input type=hidden name=course required value='$course'>
 <input type=hidden name=dept required value='$dept'><input type=hidden name=acy required value='$acy'>
 <input type=hidden name=sub required value='$sub'>";

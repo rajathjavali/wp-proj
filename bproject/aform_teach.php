@@ -12,7 +12,7 @@ header('Location: /bproject/index.html');
 
 <?php 
 
-$fname=$staffid=$email=$phno=NULL;
+$fname=$staffid=$email=$phno=$mname=$lname=$sname=$pass=NULL;
 ?>
  
  <!DOCTYPE html>
@@ -94,9 +94,23 @@ $fname=$staffid=$email=$phno=NULL;
               
 
           	<div class="form-group">
-                <label for="textArea" class="col-lg-3 control-label" style="text-align:left">Full Name</label>
+                <label for="textArea" class="col-lg-3 control-label" style="text-align:left">First Name</label>
                 <div class="col-lg-9">
-                  <input type="text" class="form-control" id="name" placeholder="First name  Last name " name="name" required value="<?php echo $fname;?>" style="width: 210px;">
+                  <input type="text" class="form-control" id="fname" placeholder="First name" name="name" required value="<?php echo $fname;?>" style="width: 210px;">
+                </div>
+              </div>
+
+            <div class="form-group">
+                <label for="textArea" class="col-lg-3 control-label" style="text-align:left">Middle Name</label>
+                <div class="col-lg-9">
+                  <input type="text" class="form-control" id="mname" placeholder="Middle name " name="name" required value="<?php echo $mname;?>" style="width: 210px;">
+                </div>
+              </div>
+
+            <div class="form-group">
+                <label for="textArea" class="col-lg-3 control-label" style="text-align:left">Last Name</label>
+                <div class="col-lg-9">
+                  <input type="text" class="form-control" id="lname" placeholder="Last name " name="name" required value="<?php echo $lname;?>" style="width: 210px;">
                 </div>
               </div>
 
@@ -105,10 +119,17 @@ $fname=$staffid=$email=$phno=NULL;
             <!-- USN:  <input type="text" name="usn" required value="<?php// echo $usn;?>"> -->
                 <label for="textArea" class="col-lg-3 control-label" style="text-align:left">Staff ID</label>
                 <div class="col-lg-9">
-                  <input type="text" class="form-control" id="staffid" placeholder="unique initials" name="staffid" required value="<?php echo $staffid;?>" style="width: 210px;">
+                  <input type="text" class="form-control" id="staffid" placeholder="unique staff id" name="staffid" required value="<?php echo $staffid;?>" style="width: 210px;">
                 </div>
               </div>
 
+              <div class="form-group">
+            <!-- USN:  <input type="text" name="usn" required value="<?php// echo $usn;?>"> -->
+                <label for="textArea" class="col-lg-3 control-label" style="text-align:left">Shortname</label>
+                <div class="col-lg-9">
+                  <input type="text" class="form-control" id="sname" placeholder="unique initials" name="staffid" required value="<?php echo $sname;?>" style="width: 210px;">
+                </div>
+              </div>
 
               <div class="form-group">
                 <label for="inputEmail" class="col-lg-3 control-label" style="text-align:left">Email</label>
@@ -124,6 +145,13 @@ $fname=$staffid=$email=$phno=NULL;
                 </div>
               </div>
 
+              <div class="form-group">
+            <!-- USN:  <input type="text" name="usn" required value="<?php// echo $usn;?>"> -->
+                <label for="textArea" class="col-lg-3 control-label" style="text-align:left">Password for account</label>
+                <div class="col-lg-9">
+                  <input type="text" class="form-control" id="pass" placeholder="Password" name="staffid" required value="<?php echo $pass;?>" style="width: 210px;">
+                </div>
+              </div>
 
 
               <div class="form-group">
@@ -148,12 +176,16 @@ $fname=$staffid=$email=$phno=NULL;
     $(document).ready(function(){
       $("#submit").click(function(){
       var staffid = $("#staffid").val();
-      var name = $("#name").val();
+      var fname = $("#fname").val();
+      var mname = $("#mname").val();
+      var lname = $("#lname").val();
+      var sname = $("#sname").val();
       var email = $("#email").val();
       var phone = $("#phone").val();
+      var pass = $("#pass").val();     
       // Returns successful data submission message when the entered information is stored in database.
-      var dataString = '&staffid1=' + staffid + '&name1='+ name + '&email1='+ email + '&phone1='+ phone;
-      if(staffid==''||name==''||email==''||phone=='')
+      var dataString = '&staffid1=' + staffid + '&fname1='+ fname +'&mname1='+ mname +'&lname1='+ lname + '&sname1='+ sname + '&email1='+ email + '&phone1='+ phone+'&pass1='+ pass;
+      if(staffid==''||fname==''||email==''||phone=='')
       {
       alert("Please Fill All Fields");
       }

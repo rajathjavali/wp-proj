@@ -74,7 +74,8 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Attendance <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="subject_students_attendance_staff.php">View attendance</a></li>
-                    <li><a href="attendance_uploader_staff.php">Upload attendance</a></li>                             
+                    <li><a href="attendance_uploader_staff.php">Upload attendance</a></li>  
+                    <li><a href="nsar_gen_staff.php">Generate NSAR list</a></li>                             
                   </ul>
                 </li>
                <li class="dropdown">
